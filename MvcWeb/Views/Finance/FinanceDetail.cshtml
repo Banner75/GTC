@@ -1,0 +1,89 @@
+﻿@model MvcWeb.DigIncomeDetaiModel
+@{
+    Page.Title = "挖矿收益明细";
+    Layout = null;
+
+    int icount = 0;
+    var DigIncomeDetailList = (List<ZGZY.Model.BS_DigIncomeDetail>)ViewBag.DigIncomeDetailList;
+}
+
+<style type="text/css">
+table{border-collapse:collapse;border-spacing:0}
+.tablebg{width:95%;line-height:28px;border-top:1px solid #f9f9f9;color:#666;height:24px;line-height:24px;margin:20px auto}
+.tablebg a{color:#006dcc}
+.tablebg td,.tablebg th{border-bottom:1px solid #eee;padding:7px 5px;font-size:14px;text-align:center}
+.tablebg .datafield td,.tablebg .datafield th{color:#666;background:#ddb31f;font-size:14px;font-weight:700;text-align:center}
+#blanc_red .tablebg .datafield td,.tablebg .datafield th{background:#ddb31f;color:#fff}
+.tablebg .datalist td{border-left:1px solid #eee}
+.datalist td.datadetail{border:1px #cdcdcd solid;font-size:12px}
+.datadetail span{width:30%;text-align:center;display:block;float:left}
+.dlatext{padding:10px 0}
+.dlatext p{height:32px;line-height:32px;font-size:14px;width:280px;float:left;padding:0 10px}
+.dlatext p.yih{clear:both;width:620px}
+.dlatext p.acc{clear:both;width:620px;border-bottom:1px solid #cdcdcd;border-top:1px solid #cdcdcd;background:#f8f8f8;margin:5px 0}
+.core_page{background:#fff none repeat scroll 0 0;border-image:none;color:#999;font-size:12px;padding:0 12px 15px;text-align:center}
+.core_page a{color:#006dcc;font-size:12px}
+.core_pages{color:#999;font-size:12px;padding:12px 15px;text-align:center}
+.core_pages a{color:#006dcc;font-size:12px}
+.divcentent{background:#fff none repeat scroll 0 0;margin:10px 1%;overflow:hidden;padding:10px 2%;width:94%}
+
+</style>
+
+<div class="divcentent" >
+    <div class="pagepanel" >
+        <div class="core_con">
+            <table class="tablebg">
+                <tbody>
+                     <tr class="datafield">
+                        <th style="border: 1px #cdcdcd solid; font-size: 14px;" colspan="9">
+                            <nobr>挖矿收益明细</nobr>
+                        </th>
+                    </tr>
+                    <tr class="datalist">   
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;">
+                            <nobr>日期</nobr>
+                        </td>
+                                           
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;  width:80px;">
+                            <nobr>收入</nobr>
+                        </td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;  width:80px;">
+                            <nobr>支出</nobr>
+                        </td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid; width:80px;">
+                            <nobr>余额</nobr>
+                        </td>
+@*                        <td style="font-size: 14px; border: 1px #cdcdcd solid; ">
+                            <nobr>类型</nobr>
+                        </td>*@
+                        <td style="border: 1px #cdcdcd solid; font-size: 14px; width:140px; ">
+                            <nobr>流水号</nobr>
+                        </td>  
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid; width:220px;">
+                            <nobr>备注说明</nobr>
+                        </td>
+                    </tr>@if (Model.IncomeList != null && Model.IncomeList.Rows.Count > 0)
+                        {
+                            for (int i = 0, j = 1 + Model.PageModel.PageSize * Model.PageModel.PageIndex; i < Model.IncomeList.Rows.Count; i++, j++)
+                            {
+                    <tr class="datalist">
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.IncomeList.Rows[i]["Occur_Date"]</nobr></td>
+                        
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.IncomeList.Rows[i]["Income"]</nobr></td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.IncomeList.Rows[i]["Pay"]</nobr></td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.IncomeList.Rows[i]["Remain"]</nobr></td>
+                        @*<td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@ZGZY.BLL.BS_DigIncomeDetail.ReturnType(Model.IncomeList.Rows[i]["Kind"].ToString())</nobr></td>*@
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.IncomeList.Rows[i]["id"]</nobr></td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.IncomeList.Rows[i]["Remark"]</nobr></td>
+                          
+                    </tr>
+                            }
+                        }
+                </tbody>
+            </table>
+        </div>
+        <div class="core_page">
+        @Html.Raw(Html.WebPager(Model.PageModel))
+        </div>
+    </div>
+</div>

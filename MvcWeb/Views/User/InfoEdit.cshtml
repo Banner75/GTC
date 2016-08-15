@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "信息更新";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="edit" class="core_main User">
+    <div class="core_title"><span class="core_title_con"><span>当前位置</span>：个人信息&gt;&gt;信息更新</span></div>
+    <div class="core_con">
+        <form enctype="multipart/form-data" action="/User/SetInfo" method="post">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">矿主编号：</td>
+                        <td class="tbval">@Model.ID</td>
+                        <input type="hidden" value="@Model.ID" id="ID" name="ID" />
+                    </tr>
+                    <tr>
+                        <td class="tbkey">矿主级别：</td>
+                        <td class="tbval">@Model.usertypeID&nbsp;  <a href="">【升级账户】</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">昵称：</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.nickname" name="nickname">
+                            <span class="msg"><span class="msg"></span>
+                            </span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">性别：</td>
+                        <td class="tbval">
+                            <select class="xiala" id="sex" name="sex">
+                                <option value="true">男</option>
+                                <option value="false">女</option>
+                            </select>
+                            <span class="msg"></span>
+                            <script> $("#sex").val('@Model.sex');</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">证件号码：</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.cardnum" name="cardnum">
+                            <span class="msg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">Email：</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.Email" id="email" name="email">
+                            <span class="msg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey"><span class="msg">重要提示：</span></td>
+                        <td class="tbval">
+                            <span class="msg">必须正确填写您的手机号码、本人银行卡信息、支付宝账号，才能正常进行BT市场的挂单交易！请一定完善上述资料并提交“确定”保存！</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">移动电话：</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.mobile" name="mobile">
+                            <span class="msg"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户银行：</td>
+                        <td class="tbval">
+                            <select class="xiala" id="bank" name="bank">
+                                <option value="">请选择</option>
+                                <option value="中国银行">中国银行</option>
+                                <option value="中国建设银行">中国建设银行</option>
+                                <option value="中国工商银行">中国工商银行</option>
+                                <option value="中国农业银行">中国农业银行</option>
+                                <option value="浦发银行">浦发银行</option>
+                                <option value="交通银行">交通银行</option>
+                                <option value="中国民生银行">中国民生银行</option>
+                                <option value="中国光大银行">中国光大银行</option>
+                                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                                <option value="兴业银行">兴业银行</option>
+                                <option value="中信银行">中信银行</option>
+                                <option value="招商银行">招商银行</option>
+                                <option value="华夏银行">华夏银行</option>
+                            </select>
+                            <span class="msg"></span>
+                             <script>$("#bank").val('@Model.bank');</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户名：</td>
+                        <td class="tbval">
+                            <input type="text" readonly="" value="@Model.bankuser" name="bankuser">
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">银行卡号：</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.banknum" name="banknum">
+                            <span class="msg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户分行：</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.bankname" name="bankname">
+                            <span class="msg"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">支付宝账号:</td>
+                        <td class="tbval">
+                            <input type="text" value="@Model.alipay" class="xiala" name="alipay"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="2">
+                            <input type="submit" value="确定" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="core_page">
+        <p style="color: red; text-align: left; line-height: 25px; padding-right: 10px;">提示：请详细核对确认您的个人信息是否正确！为了您高特币交易的安全请务必完善您的联系电话、邮箱、和个人收款信息准确无误！如果未填写联系电话和收款信息就提交BT挂单，您将面临扣除信誉星级处罚！</p>
+    </div>
+</div>

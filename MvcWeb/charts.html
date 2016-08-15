@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript">
+function change(obj){
+	var comment = document.getElementById(obj.id);
+ 
+	if (document.all) {
+	 // For IE
+	comment.click();
+	} else if (document.createEvent) {
+	   //FOR DOM2
+	var ev = document.createEvent('MouseEvents');
+	 ev.initEvent('click', false, true);
+	 comment.dispatchEvent(ev);
+	}
+}
+
+
+</script>
+<script type="text/javascript" src="charts_files/jquery1101.js"></script>
+<script type="text/javascript" src="charts_files/highcharts.js"></script>
+<script type="text/javascript">
+$(function () {
+	
+	$('#container').highcharts({
+		title: {//走势图标题
+			text: '',
+			x: 20 ,
+			//style:{display:"none"}可隐藏
+		},
+		subtitle: {//走势图来源
+			text: '',
+			x: 20,
+			style:{display:"none"}//可隐藏
+		},
+		xAxis: {//X轴分类
+			categories: ['04-01','04-02','04-03','04-04','04-05','04-06','04-07','04-08','04-09','04-10','04-11','04-12','04-13','04-14','04-15','04-16']
+		},
+		yAxis: {//Y轴会根据series的data数值自动分格并划分上下限
+			title: {
+				text: '(元/个)',//Y轴表示的文本
+				//style:{display:"none"}可隐藏
+			}
+		},
+		tooltip: {
+			valueSuffix: '(元/个)'//数据的后辍
+		},
+		legend:{//线条所表示的品种分类
+			enabled:0,//0为隐藏1为显示
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		credits:{//制作人；可作为本站水印
+			text:"",
+			href:"",
+			position:{x:-250,y:-180},
+			style:{"z-index":"999"}
+		},
+		series: [{//可以为多个品种
+			name: '金币',
+			data: [1.57,1.62,1.70,1.75,1.82,1.99,1.99,1.02,1.04,1.06,1.10,1.14,1.18,1.21,1.25,1.29]
+		}]
+	});
+	  
+});
+</script>
+
+<style class="firebugResetStyles" type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+/** reset styling **/
+.firebugResetStyles {
+    z-index: 2147483646 !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    border: 0 none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    position: fixed !important;
+    transform: rotate(0deg) !important;
+    transform-origin: 50% 50% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent none !important;
+    pointer-events: none !important;
+    white-space: normal !important;
+}
+style.firebugResetStyles {
+    display: none !important;
+}
+
+.firebugBlockBackgroundColor {
+    background-color: transparent !important;
+}
+
+.firebugResetStyles:before, .firebugResetStyles:after {
+    content: "" !important;
+}
+/**actual styling to be modified by firebug theme**/
+.firebugCanvas {
+    display: none !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBox {
+    width: auto !important;
+    position: static !important;
+}
+
+.firebugLayoutBoxOffset {
+    opacity: 0.8 !important;
+    position: fixed !important;
+}
+
+.firebugLayoutLine {
+    opacity: 0.4 !important;
+    background-color: #000000 !important;
+}
+
+.firebugLayoutLineLeft, .firebugLayoutLineRight {
+    width: 1px !important;
+    height: 100% !important;
+}
+
+.firebugLayoutLineTop, .firebugLayoutLineBottom {
+    width: 100% !important;
+    height: 1px !important;
+}
+
+.firebugLayoutLineTop {
+    margin-top: -1px !important;
+    border-top: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineRight {
+    border-right: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineBottom {
+    border-bottom: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineLeft {
+    margin-left: -1px !important;
+    border-left: 1px solid #999999 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBoxParent {
+    border-top: 0 none !important;
+    border-right: 1px dashed #E00 !important;
+    border-bottom: 1px dashed #E00 !important;
+    border-left: 0 none !important;
+    position: fixed !important;
+    width: auto !important;
+}
+
+.firebugRuler{
+    position: absolute !important;
+}
+
+.firebugRulerH {
+    top: -15px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 14px !important;
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%13%88%00%00%00%0E%08%02%00%00%00L%25a%0A%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%04%F8IDATx%DA%EC%DD%D1n%E2%3A%00E%D1%80%F8%FF%EF%E2%AF2%95%D0D4%0E%C1%14%B0%8Fa-%E9%3E%CC%9C%87n%B9%81%A6W0%1C%A6i%9A%E7y%0As8%1CT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AATE9%FE%FCw%3E%9F%AF%2B%2F%BA%97%FDT%1D~K(%5C%9D%D5%EA%1B%5C%86%B5%A9%BDU%B5y%80%ED%AB*%03%FAV9%AB%E1%CEj%E7%82%EF%FB%18%BC%AEJ8%AB%FA'%D2%BEU9%D7U%ECc0%E1%A2r%5DynwVi%CFW%7F%BB%17%7Dy%EACU%CD%0E%F0%FA%3BX%FEbV%FEM%9B%2B%AD%BE%AA%E5%95v%AB%AA%E3E5%DCu%15rV9%07%B5%7F%B5w%FCm%BA%BE%AA%FBY%3D%14%F0%EE%C7%60%0EU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5JU%88%D3%F5%1F%AE%DF%3B%1B%F2%3E%DAUCNa%F92%D02%AC%7Dm%F9%3A%D4%F2%8B6%AE*%BF%5C%C2Ym~9g5%D0Y%95%17%7C%C8c%B0%7C%18%26%9CU%CD%13i%F7%AA%90%B3Z%7D%95%B4%C7%60%E6E%B5%BC%05%B4%FBY%95U%9E%DB%FD%1C%FC%E0%9F%83%7F%BE%17%7DkjMU%E3%03%AC%7CWj%DF%83%9An%BCG%AE%F1%95%96yQ%0Dq%5Dy%00%3Et%B5'%FC6%5DS%95pV%95%01%81%FF'%07%00%00%00%00%00%00%00%00%00%F8x%C7%F0%BE%9COp%5D%C9%7C%AD%E7%E6%EBV%FB%1E%E0(%07%E5%AC%C6%3A%ABi%9C%8F%C6%0E9%AB%C0'%D2%8E%9F%F99%D0E%B5%99%14%F5%0D%CD%7F%24%C6%DEH%B8%E9rV%DFs%DB%D0%F7%00k%FE%1D%84%84%83J%B8%E3%BA%FB%EF%20%84%1C%D7%AD%B0%8E%D7U%C8Y%05%1E%D4t%EF%AD%95Q%BF8w%BF%E9%0A%BF%EB%03%00%00%00%00%00%00%00%00%00%B8vJ%8E%BB%F5%B1u%8Cx%80%E1o%5E%CA9%AB%CB%CB%8E%03%DF%1D%B7T%25%9C%D5(%EFJM8%AB%CC'%D2%B2*%A4s%E7c6%FB%3E%FA%A2%1E%80~%0E%3E%DA%10x%5D%95Uig%15u%15%ED%7C%14%B6%87%A1%3B%FCo8%A8%D8o%D3%ADO%01%EDx%83%1A~%1B%9FpP%A3%DC%C6'%9C%95gK%00%00%00%00%00%00%00%00%00%20%D9%C9%11%D0%C0%40%AF%3F%EE%EE%92%94%D6%16X%B5%BCMH%15%2F%BF%D4%A7%C87%F1%8E%F2%81%AE%AAvzr%DA2%ABV%17%7C%E63%83%E7I%DC%C6%0Bs%1B%EF6%1E%00%00%00%00%00%00%00%00%00%80cr%9CW%FF%7F%C6%01%0E%F1%CE%A5%84%B3%CA%BC%E0%CB%AA%84%CE%F9%BF)%EC%13%08WU%AE%AB%B1%AE%2BO%EC%8E%CBYe%FE%8CN%ABr%5Dy%60~%CFA%0D%F4%AE%D4%BE%C75%CA%EDVB%EA(%B7%F1%09g%E5%D9%12%00%00%00%00%00%00%00%00%00H%F6%EB%13S%E7y%5E%5E%FB%98%F0%22%D1%B2'%A7%F0%92%B1%BC%24z3%AC%7Dm%60%D5%92%B4%7CEUO%5E%F0%AA*%3BU%B9%AE%3E%A0j%94%07%A0%C7%A0%AB%FD%B5%3F%A0%F7%03T%3Dy%D7%F7%D6%D4%C0%AAU%D2%E6%DFt%3F%A8%CC%AA%F2%86%B9%D7%F5%1F%18%E6%01%F8%CC%D5%9E%F0%F3z%88%AA%90%EF%20%00%00%00%00%00%00%00%00%00%C0%A6%D3%EA%CFi%AFb%2C%7BB%0A%2B%C3%1A%D7%06V%D5%07%A8r%5D%3D%D9%A6%CAu%F5%25%CF%A2%99%97zNX%60%95%AB%5DUZ%D5%FBR%03%AB%1C%D4k%9F%3F%BB%5C%FF%81a%AE%AB'%7F%F3%EA%FE%F3z%94%AA%D8%DF%5B%01%00%00%00%00%00%00%00%00%00%8E%FB%F3%F2%B1%1B%8DWU%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*UiU%C7%BBe%E7%F3%B9%CB%AAJ%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5J%95*U%AAT%A9R%A5*%AAj%FD%C6%D4%5Eo%90%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5%86%AF%1B%9F%98%DA%EBm%BBV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%ADV%AB%D5j%B5Z%AD%D6%E4%F58%01%00%00%00%00%00%00%00%00%00%00%00%00%00%40%85%7F%02%0C%008%C2%D0H%16j%8FX%00%00%00%00IEND%AEB%60%82") repeat-x !important;
+    border-top: 1px solid #BBBBBB !important;
+    border-right: 1px dashed #BBBBBB !important;
+    border-bottom: 1px solid #000000 !important;
+}
+
+.firebugRulerV {
+    top: 0 !important;
+    left: -15px !important;
+    width: 14px !important;
+    height: 100% !important;
+    background: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%0E%00%00%13%88%08%02%00%00%00%0E%F5%CB%10%00%00%00%04gAMA%00%00%D6%D8%D4OX2%00%00%00%19tEXtSoftware%00Adobe%20ImageReadyq%C9e%3C%00%00%06~IDATx%DA%EC%DD%D1v%A20%14%40Qt%F1%FF%FF%E4%97%D9%07%3BT%19%92%DC%40(%90%EEy%9A5%CB%B6%E8%F6%9Ac%A4%CC0%84%FF%DC%9E%CF%E7%E3%F1%88%DE4%F8%5D%C7%9F%2F%BA%DD%5E%7FI%7D%F18%DDn%BA%C5%FB%DF%97%BFk%F2%10%FF%FD%B4%F2M%A7%FB%FD%FD%B3%22%07p%8F%3F%AE%E3%F4S%8A%8F%40%EEq%9D%BE8D%F0%0EY%A1Uq%B7%EA%1F%81%88V%E8X%3F%B4%CEy%B7h%D1%A2E%EBohU%FC%D9%AF2fO%8BBeD%BE%F7X%0C%97%A4%D6b7%2Ck%A5%12%E3%9B%60v%B7r%C7%1AI%8C%BD%2B%23r%00c0%B2v%9B%AD%CA%26%0C%1Ek%05A%FD%93%D0%2B%A1u%8B%16-%95q%5Ce%DCSO%8E%E4M%23%8B%F7%C2%FE%40%BB%BD%8C%FC%8A%B5V%EBu%40%F9%3B%A72%FA%AE%8C%D4%01%CC%B5%DA%13%9CB%AB%E2I%18%24%B0n%A9%0CZ*Ce%9C%A22%8E%D8NJ%1E%EB%FF%8F%AE%CAP%19*%C3%BAEKe%AC%D1%AAX%8C*%DEH%8F%C5W%A1e%AD%D4%B7%5C%5B%19%C5%DB%0D%EF%9F%19%1D%7B%5E%86%BD%0C%95%A12%AC%5B*%83%96%CAP%19%F62T%86%CAP%19*%83%96%CA%B8Xe%BC%FE)T%19%A1%17xg%7F%DA%CBP%19*%C3%BA%A52T%86%CAP%19%F62T%86%CA%B0n%A9%0CZ%1DV%C6%3D%F3%FCH%DE%B4%B8~%7F%5CZc%F1%D6%1F%AF%84%F9%0F6%E6%EBVt9%0E~%BEr%AF%23%B0%97%A12T%86%CAP%19%B4T%86%CA%B8Re%D8%CBP%19*%C3%BA%A52huX%19%AE%CA%E5%BC%0C%7B%19*CeX%B7h%A9%0C%95%E1%BC%0C%7B%19*CeX%B7T%06%AD%CB%5E%95%2B%BF.%8F%C5%97%D5%E4%7B%EE%82%D6%FB%CF-%9C%FD%B9%CF%3By%7B%19%F62T%86%CA%B0n%D1R%19*%A3%D3%CA%B0%97%A12T%86uKe%D0%EA%B02*%3F1%99%5DB%2B%A4%B5%F8%3A%7C%BA%2B%8Co%7D%5C%EDe%A8%0C%95a%DDR%19%B4T%C66%82fA%B2%ED%DA%9FC%FC%17GZ%06%C9%E1%B3%E5%2C%1A%9FoiB%EB%96%CA%A0%D5qe4%7B%7D%FD%85%F7%5B%ED_%E0s%07%F0k%951%ECr%0D%B5C%D7-g%D1%A8%0C%EB%96%CA%A0%A52T%C6)*%C3%5E%86%CAP%19%D6-%95A%EB*%95q%F8%BB%E3%F9%AB%F6%E21%ACZ%B7%22%B7%9B%3F%02%85%CB%A2%5B%B7%BA%5E%B7%9C%97%E1%BC%0C%EB%16-%95%A12z%AC%0C%BFc%A22T%86uKe%D0%EA%B02V%DD%AD%8A%2B%8CWhe%5E%AF%CF%F5%3B%26%CE%CBh%5C%19%CE%CB%B0%F3%A4%095%A1%CAP%19*Ce%A8%0C%3BO*Ce%A8%0C%95%A12%3A%AD%8C%0A%82%7B%F0v%1F%2FD%A9%5B%9F%EE%EA%26%AF%03%CA%DF9%7B%19*Ce%A8%0C%95%A12T%86%CA%B8Ze%D8%CBP%19*Ce%A8%0C%95%D1ae%EC%F7%89I%E1%B4%D7M%D7P%8BjU%5C%BB%3E%F2%20%D8%CBP%19*Ce%A8%0C%95%A12T%C6%D5*%C3%5E%86%CAP%19*Ce%B4O%07%7B%F0W%7Bw%1C%7C%1A%8C%B3%3B%D1%EE%AA%5C%D6-%EBV%83%80%5E%D0%CA%10%5CU%2BD%E07YU%86%CAP%19*%E3%9A%95%91%D9%A0%C8%AD%5B%EDv%9E%82%FFKOee%E4%8FUe%A8%0C%95%A12T%C6%1F%A9%8C%C8%3D%5B%A5%15%FD%14%22r%E7B%9F%17l%F8%BF%ED%EAf%2B%7F%CF%ECe%D8%CBP%19*Ce%A8%0C%95%E1%93~%7B%19%F62T%86%CAP%19*Ce%A8%0C%E7%13%DA%CBP%19*Ce%A8%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4h%A9%0C%B3E%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%A9%0CZf%8B%16-Z%B4h%D1R%19f%8B%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1R%19%B4%CC%16-Z%B4h%D1%A2%A52%CC%16-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2%A52h%99-Z%B4h%D1%A2EKe%98-Z%B4h%D1%A2EKe%D02%5B%B4h%D1%A2EKe%D02%5B%B4h%D1%A2E%8B%96%CA0%5B%B4h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%96%CA%A0e%B6h%D1%A2E%8B%16-%95a%B6h%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-%95A%CBl%D1%A2E%8B%16-Z*%C3l%D1%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z*%83%96%D9%A2E%8B%16-Z%B4T%86%D9%A2E%8B%16-Z%B4T%06-%B3E%8B%16-Z%B4%AE%A4%F5%25%C0%00%DE%BF%5C'%0F%DA%B8q%00%00%00%00IEND%AEB%60%82") repeat-y !important;
+    border-left: 1px solid #BBBBBB !important;
+    border-right: 1px solid #000000 !important;
+    border-bottom: 1px dashed #BBBBBB !important;
+}
+
+.overflowRulerX > .firebugRulerV {
+    left: 0 !important;
+}
+
+.overflowRulerY > .firebugRulerH {
+    top: 0 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.fbProxyElement {
+    position: fixed !important;
+    pointer-events: auto !important;
+}
+</style></head>
+<body>
+
+	<div data-highcharts-chart="0" id="container" style="width:100%;height:200px;margin:0 auto"><div style="position: relative; overflow: hidden; width: 1904px; height: 200px; text-align: left; line-height: normal; z-index: 0; font-family: &quot;Lucida Grande&quot;,&quot;Lucida Sans Unicode&quot;,Verdana,Arial,Helvetica,sans-serif; font-size: 12px; left: 0px; top: 0px;" id="highcharts-0" class="highcharts-container"><svg height="200" width="1904" xmlns="http://www.w3.org/2000/svg" version="1.1"><desc>Created with Highcharts 3.0.7</desc><defs><clipPath id="highcharts-1"><rect height="157" width="1829" y="0" x="0" fill="none"></rect></clipPath></defs><rect height="200" width="1904" y="0" x="0" fill="#FFFFFF" ry="5" rx="5"></rect><g zIndex="1" class="highcharts-grid"></g><g zIndex="1" class="highcharts-grid"><path opacity="1" zIndex="1" stroke-width="1" stroke="#C0C0C0" d="M 65 128.5 L 1894 128.5" fill="none"></path><path opacity="1" zIndex="1" stroke-width="1" stroke="#C0C0C0" d="M 65 89.5 L 1894 89.5" fill="none"></path><path opacity="1" zIndex="1" stroke-width="1" stroke="#C0C0C0" d="M 65 49.5 L 1894 49.5" fill="none"></path><path opacity="1" zIndex="1" stroke-width="1" stroke="#C0C0C0" d="M 65 9.5 L 1894 9.5" fill="none"></path><path opacity="1" zIndex="1" stroke-width="1" stroke="#C0C0C0" d="M 65 167.5 L 1894 167.5" fill="none"></path></g><g zIndex="2" class="highcharts-axis"><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 293.5 167 L 293.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 407.5 167 L 407.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 521.5 167 L 521.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 636.5 167 L 636.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 750.5 167 L 750.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 864.5 167 L 864.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 979.5 167 L 979.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1093.5 167 L 1093.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1207.5 167 L 1207.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1321.5 167 L 1321.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1436.5 167 L 1436.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1550.5 167 L 1550.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1664.5 167 L 1664.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1779.5 167 L 1779.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 1894.5 167 L 1894.5 172" fill="none"></path><path opacity="1" stroke-width="1" stroke="#C0D0E0" d="M 178.5 167 L 178.5 172" fill="none"></path><path stroke-width="1" stroke="#C0D0E0" d="M 64.5 167 L 64.5 172" fill="none"></path><path visibility="visible" zIndex="7" stroke-width="1" stroke="#C0D0E0" d="M 65 167.5 L 1894 167.5" fill="none"></path></g><g zIndex="2" class="highcharts-axis"><text visibility="visible" transform="translate(0,0) rotate(270 29.616666793823242 88.5)" text-anchor="middle" zIndex="7" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#4d759e;font-weight:bold;fill:#4d759e;" y="88.5" x="29.616666793823242"><tspan x="29.616666793823242">(元/个)</tspan></text></g><g zIndex="3" class="highcharts-series-group"><g clip-path="url(#highcharts-1)" transform="translate(65,10) scale(1 1)" zIndex="0.1" visibility="visible" class="highcharts-series"><path stroke-linecap="round" stroke-linejoin="round" zIndex="1" stroke-width="2" stroke="#2f7ed8" d="M 57.15625 73.005 L 171.46875 69.08 L 285.78125 62.8 L 400.09375 58.875 L 514.40625 53.379999999999995 L 628.71875 40.035 L 743.03125 40.035 L 857.34375 116.18 L 971.65625 114.61 L 1085.96875 113.03999999999999 L 1200.28125 109.89999999999999 L 1314.59375 106.76 L 1428.90625 103.62 L 1543.21875 101.265 L 1657.53125 98.125 L 1771.84375 94.985" fill="none"></path><path style="" class=" highcharts-tracker" zIndex="2" stroke-width="22" stroke="rgb(192,192,192)" stroke-opacity="0.0001" visibility="visible" stroke-linejoin="round" d="M 47.15625 73.005 L 57.15625 73.005 L 171.46875 69.08 L 285.78125 62.8 L 400.09375 58.875 L 514.40625 53.379999999999995 L 628.71875 40.035 L 743.03125 40.035 L 857.34375 116.18 L 971.65625 114.61 L 1085.96875 113.03999999999999 L 1200.28125 109.89999999999999 L 1314.59375 106.76 L 1428.90625 103.62 L 1543.21875 101.265 L 1657.53125 98.125 L 1771.84375 94.985 L 1781.84375 94.985" fill="none"></path></g><g style="" clip-path="none" transform="translate(65,10) scale(1 1)" zIndex="0.1" visibility="visible" class="highcharts-markers highcharts-tracker"><path d="M 1771 90.985 C 1776.328 90.985 1776.328 98.985 1771 98.985 C 1765.672 98.985 1765.672 90.985 1771 90.985 Z" fill="#2f7ed8"></path><path d="M 1657 94.125 C 1662.328 94.125 1662.328 102.125 1657 102.125 C 1651.672 102.125 1651.672 94.125 1657 94.125 Z" fill="#2f7ed8"></path><path d="M 1543 97.265 C 1548.328 97.265 1548.328 105.265 1543 105.265 C 1537.672 105.265 1537.672 97.265 1543 97.265 Z" fill="#2f7ed8"></path><path d="M 1428 99.62 C 1433.328 99.62 1433.328 107.62 1428 107.62 C 1422.672 107.62 1422.672 99.62 1428 99.62 Z" fill="#2f7ed8"></path><path d="M 1314 102.76 C 1319.328 102.76 1319.328 110.76 1314 110.76 C 1308.672 110.76 1308.672 102.76 1314 102.76 Z" fill="#2f7ed8"></path><path d="M 1200 105.89999999999999 C 1205.328 105.89999999999999 1205.328 113.89999999999999 1200 113.89999999999999 C 1194.672 113.89999999999999 1194.672 105.89999999999999 1200 105.89999999999999 Z" fill="#2f7ed8"></path><path d="M 1085 109.03999999999999 C 1090.328 109.03999999999999 1090.328 117.03999999999999 1085 117.03999999999999 C 1079.672 117.03999999999999 1079.672 109.03999999999999 1085 109.03999999999999 Z" fill="#2f7ed8"></path><path d="M 971 110.61 C 976.328 110.61 976.328 118.61 971 118.61 C 965.672 118.61 965.672 110.61 971 110.61 Z" fill="#2f7ed8"></path><path d="M 857 112.18 C 862.328 112.18 862.328 120.18 857 120.18 C 851.672 120.18 851.672 112.18 857 112.18 Z" fill="#2f7ed8"></path><path stroke-width="1" d="M 743.03125 36.035 C 748.35925 36.035 748.35925 44.035 743.03125 44.035 C 737.70325 44.035 737.70325 36.035 743.03125 36.035 Z" fill="#2f7ed8"></path><path stroke-width="1" d="M 628.71875 36.035 C 634.04675 36.035 634.04675 44.035 628.71875 44.035 C 623.39075 44.035 623.39075 36.035 628.71875 36.035 Z" fill="#2f7ed8"></path><path stroke-width="1" d="M 514.40625 49.379999999999995 C 519.73425 49.379999999999995 519.73425 57.379999999999995 514.40625 57.379999999999995 C 509.07825 57.379999999999995 509.07825 49.379999999999995 514.40625 49.379999999999995 Z" fill="#2f7ed8"></path><path stroke-width="1" d="M 400.09375 54.875 C 405.42175 54.875 405.42175 62.875 400.09375 62.875 C 394.76575 62.875 394.76575 54.875 400.09375 54.875 Z" fill="#2f7ed8"></path><path stroke-width="1" d="M 285.78125 58.8 C 291.10925 58.8 291.10925 66.8 285.78125 66.8 C 280.45325 66.8 280.45325 58.8 285.78125 58.8 Z" fill="#2f7ed8"></path><path d="M 171 65.08 C 176.328 65.08 176.328 73.08 171 73.08 C 165.672 73.08 165.672 65.08 171 65.08 Z" fill="#2f7ed8"></path><path stroke-width="1" d="M 57.15625 69.005 C 62.48425 69.005 62.48425 77.005 57.15625 77.005 C 51.82825 77.005 51.82825 69.005 57.15625 69.005 Z" fill="#2f7ed8"></path></g></g><g zIndex="7" class="highcharts-axis-labels"><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="122.15625"><tspan x="122.15625">04-01</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="236.46875"><tspan x="236.46875">04-02</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="350.78125"><tspan x="350.78125">04-03</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="465.09375"><tspan x="465.09375">04-04</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="579.40625"><tspan x="579.40625">04-05</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="693.71875"><tspan x="693.71875">04-06</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="808.03125"><tspan x="808.03125">04-07</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="922.34375"><tspan x="922.34375">04-08</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1036.65625"><tspan x="1036.65625">04-09</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1150.96875"><tspan x="1150.96875">04-10</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1265.28125"><tspan x="1265.28125">04-11</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1379.59375"><tspan x="1379.59375">04-12</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1493.90625"><tspan x="1493.90625">04-13</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1608.21875"><tspan x="1608.21875">04-14</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1722.53125"><tspan x="1722.53125">04-15</tspan></text><text opacity="1" text-anchor="middle" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="181" x="1836.84375"><tspan x="1836.84375">04-16</tspan></text></g><g zIndex="7" class="highcharts-axis-labels"><text opacity="1" text-anchor="end" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="170" x="57"><tspan x="57">0.5</tspan></text><text opacity="1" text-anchor="end" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="130.75" x="57"><tspan x="57">1</tspan></text><text opacity="1" text-anchor="end" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="91.5" x="57"><tspan x="57">1.5</tspan></text><text opacity="1" text-anchor="end" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="52.25" x="57"><tspan x="57">2</tspan></text><text opacity="1" text-anchor="end" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:11px;color:#666;cursor:default;line-height:14px;fill:#666;" y="13" x="57"><tspan x="57">2.5</tspan></text></g><g visibility="hidden" opacity="0" transform="translate(682,16)" style="cursor:default;padding:0;white-space:nowrap;" zIndex="8" class="highcharts-tooltip"><rect transform="translate(1, 1)" stroke-width="5" stroke-opacity="0.049999999999999996" stroke="black" isShadow="true" fill-opacity="0.85" height="49" width="113" y="0.5" x="0.5" fill="none" ry="3" rx="3"></rect><rect transform="translate(1, 1)" stroke-width="3" stroke-opacity="0.09999999999999999" stroke="black" isShadow="true" fill-opacity="0.85" height="49" width="113" y="0.5" x="0.5" fill="none" ry="3" rx="3"></rect><rect transform="translate(1, 1)" stroke-width="1" stroke-opacity="0.15" stroke="black" isShadow="true" fill-opacity="0.85" height="49" width="113" y="0.5" x="0.5" fill="none" ry="3" rx="3"></rect><rect anchorY="34" anchorX="126.5" stroke-width="1" stroke="#2f7ed8" fill-opacity="0.85" height="49" width="113" y="0.5" x="0.5" fill="rgb(255,255,255)" ry="3" rx="3"></rect><text zIndex="1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:12px;color:#333333;fill:#333333;" y="21" x="8"><tspan x="8" style="font-size: 10px">04-07</tspan><tspan dy="16" x="8" style="fill:#2f7ed8">金币</tspan><tspan dx="0">: </tspan><tspan dx="0" style="font-weight:bold">1.99(元/个)</tspan></text></g><text zIndex="8" text-anchor="end" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Verdana, Arial, Helvetica, sans-serif;font-size:9px;cursor:pointer;color:#909090;z-index:999;fill:#909090;" y="20" x="1654"></text></svg></div></div>
+
+
+
+</body></html>

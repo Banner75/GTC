@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "注册审核";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+  <div id="acclist" class="core_main Sale">
+                <div class="core_title">
+                    <span class="core_title_con"><span>当前位置</span>：矿主管理&gt;&gt;注册审核    	<span><a class="btn-danger" data-toggle="modal" href="/index.php?s=/User/Sale/experience">进入排队系统</a></span>    	</span>
+                </div>
+                <div class="core_con">
+                    <table class="tablebg">
+                        <tbody>
+                            <tr class="datafield">
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>编号</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>购买日期</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>姓名</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>级别</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>报单金额</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>状态</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>报单类别</nobr>
+                                </th>
+                                <th style="border-right: 1px solid #cdcdcd; font-size: 12px;">
+                                    <nobr>操作</nobr>
+                                </th>
+                            </tr>
+                            <tr class="datalist">
+                                <td style="font-size: 12px;">
+                                    <nobr>fis0033720</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr>2016-03-29 10:28:18</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr>朱泽洋</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr>会员</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr>1000.00</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr>未确认</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr>注册新账户</nobr>
+                                </td>
+                                <td style="font-size: 12px;">
+                                    <nobr><a onclick="return show_del()" href="/index.php?s=/User/Sale/del/id/90800">删除</a>&nbsp;&nbsp;&nbsp;<a onclick="return show_dels()" href="/index.php?s=/User/Sale/tj_accok/id/90800/userid/fis0033720">激活</a></nobr>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="core_page">
+                    <span>共1条记录 1/1页 &nbsp;</span>
+                    <span>首页&nbsp;&nbsp;</span>        <a href="/index.php?s=%2FUser%2FSale%2Facclist&amp;p=0">上一页</a>&nbsp;&nbsp;
+                        1&nbsp;&nbsp;
+                        <a href="/index.php?s=%2FUser%2FSale%2Facclist&amp;p=2">下一页</a>&nbsp;&nbsp;
+        <span>尾页</span>
+                </div>
+                <div class="core_page">
+                    <p style="color: red; text-align: left; line-height: 25px; padding-right: 10px;">提示：该页面列出您和您直接推荐的新矿主注册信息，您可以进入高特币市场购买高特币然后转入账户自己激活账户。如果您为下级矿主激活账户将会扣除您的账户，请谨慎操作！</p>
+                </div>
+            </div>
+        </div>

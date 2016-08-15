@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "发送邮件";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div id="send" class="core_main Mail">
+    <div class="core_title">
+        <span class="core_title_con"><span>当前位置</span>：信息中心&gt;&gt;发件箱<span><a class="btn-danger2" data-toggle="modal" href="/Message/SendBox">发件箱</a></span>&nbsp;<span><a class="btn-danger2" data-toggle="modal" href="/Message/Message">收件箱</a></span>&nbsp;<span><a class="btn-danger2" data-toggle="modal" href="/Message/SendMessage">发送邮件</a></span></span>
+    </div>
+    <div class="core_con">
+        <form  method="post" action="/Message/SendMessagefrom" id="sendform" title="">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">标题：</td>
+                        <td class="tbval">
+                            <input type="text" id="title" name="title"></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">内容：</td>
+                        <td class="tbval">
+                            <textarea style="width: 670px; height: 350px" class="kuangao" name="sendcontent" id="sendcontent"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" value="发送邮件" onclick="SendMessagefrom()" onmouseout="this.className='button_onmouseout'" onmouseup="this.className='button_onmouseup'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="core_page"></div>
+</div>
+<script>
+    function SendMessagefrom() {
+        var title = $("#title").val();
+        var sendcontent = $("#sendcontent").val();
+        if (title.length == 0) {
+            alert("标题不能为空");
+            return;
+        }
+        if (sendcontent.length == 0) {
+            alert("内容不能为空");
+            return;
+        }
+        var para = {};
+        para.title = title;
+        para.sendcontent = sendcontent;
+        $.ajax({
+            url: "/Message/SendMessagefrom",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/Message/SendBox";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    }
+</script>

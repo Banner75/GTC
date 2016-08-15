@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "GTC收支流水";
+    Layout = "~/Views/_Market.cshtml";
+}
+
+<div id="index" class="core_main Fun_bank">
+    <div class="core_title">
+       @* <span class="core_title_con"><span><a class="btn-danger" data-toggle="modal" href="/Market/BTorder">出售MRC</a></span></span>*@
+    </div>
+
+    <div id="core_con" class="core_con" >
+        
+    </div>
+    <div id="core_page" class="core_page" ></div>
+</div>
+<script type="text/javascript" >
+    $(function () {
+        getbtmarketlist("1");
+    })
+    function getbtmarketlist(page) {
+        var para = {};
+        para.page = page;
+        $.ajax({
+            url: "/Market/getmrclist",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                var rowcontent = "<table class='tablebg'>" +
+                "<tbody><tr  class='datafield'>" +
+                "<th style='border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid'><nobr>发生时间</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid'><nobr>类别</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid'><nobr>数量</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid'><nobr>备注</nobr></th>" +
+                "</tr>" +
+                "</tbody>";
+
+                for (var o in data.rows) {
+                    var typename = "";
+                    if (data.rows[o].Type == 1) {
+                        typename = "支出";
+                    } else if (data.rows[o].Type == 2) {
+                        typename = "收入";
+                    }
+                    rowcontent = rowcontent + "<tr  class='datalist'>";
+                    rowcontent = rowcontent + "<td style='font-size:12px; width:25%;'><nobr>" + data.rows[o].CreateDate + "</nobr></td>";
+                    rowcontent = rowcontent + "<td style='font-size:12px; width:25%;'><nobr>" + typename + "</nobr></td>";
+                    rowcontent = rowcontent + "<td style='font-size:12px; width:25%;'><nobr>" + data.rows[o].Sum + "</nobr></td>";
+                    rowcontent = rowcontent + "<td style='font-size:12px; width:25%;'><nobr>" + data.rows[o].Remark + "</nobr></td>";
+                }
+                $("#core_con").html(rowcontent + "</table>");
+                var para2 = {};
+                para2.page = page;
+                para2.totalCount = data.total;
+                para2.jsaction = "getbtmarketlist";
+                $.ajax({
+                    url: "/Market/getbtmarketlistpage",
+                    data: para2,
+                    type: "POST",
+                    success: function (pagedata) {
+                        $("#core_page").html(pagedata);
+                    }
+                });
+            }
+        });
+    }
+</script>

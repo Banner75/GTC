@@ -1,0 +1,38 @@
+﻿@{
+    Page.Title = @ViewBag.Title;
+    Layout = null;
+}
+
+@{
+    var Kind = (int)ViewBag.Kind;
+    var NoticeList = (List<ZGZY.Model.BS_Notices>)ViewBag.NoticeList; 
+}
+
+<style type="text/css">
+    .deftitle { height:36px; line-height:36px;  position:absolute; right:10%; bottom:86%; left:10%; background-color:#B9D1EA; }
+    .editbox { position: absolute; top: 15%; right: 10%; bottom: 15%; left: 10%; border: 1px solid #8C988A; }
+    .defeditrow { height: 36px; line-height: 36px; margin: 2px 20px; border-bottom: 1px solid #8C988A; }
+    .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+    .defeditrow ul li.cpt { width: 70%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .defeditrow ul li.txt { width: 30%; height: 36px; line-height: 36px; text-align: right; float: left; }
+</style>
+
+<script src="~/Scripts/Information/Notice.js"></script>
+
+<div class="deftitle fnttitle">&nbsp;&nbsp;@ViewBag.Title</div>
+<div class="editbox fntcpt">
+    @{
+        if (NoticeList != null && NoticeList.Count > 0)
+        {
+            foreach (ZGZY.Model.BS_Notices n in NoticeList)
+            {
+                <div class="defeditrow">
+                    <ul>
+                        <li class="cpt"><a href="#" onclick="LnkNoticeItemClick(@Kind,@n.ID)"> @n.Title</a></li>
+                        <li class="txt">@n.LastUpdatedDate.ToShortDateString()</li>
+                    </ul>
+                </div> 
+            }
+        }
+    }
+</div>

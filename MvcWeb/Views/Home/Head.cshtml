@@ -1,0 +1,26 @@
+﻿@{
+    var CustomerInfo = (ZGZY.Model.BS_Customers)ViewBag.CustomerInfo;
+    string userName = "";
+    if (CustomerInfo.Bank_User.Length == 0)
+    {
+        userName = CustomerInfo.Login_Account;
+    }
+    else
+    {
+        userName = CustomerInfo.Bank_User;
+    }
+    
+}
+    <div class="wd12" style="height: 98px;">
+    <a class="tblogoa"></a>
+
+    <div style="float: right; padding-top: 35px;">
+        <p class="tbnihao" >@userName  您好，欢迎回到 高特币！</p>
+        <a class="tbaqtca"  style="width:100px; color:#fff;" href="/Home/OutLogion" >安全退出</a>
+        <a class="tbgja1"></a>
+　　    <a class="tbgja2"></a>
+    </div>
+</div>
+<div class="navbox">
+   
+</div>

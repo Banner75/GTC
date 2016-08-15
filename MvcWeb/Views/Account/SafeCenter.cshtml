@@ -1,0 +1,203 @@
+﻿@{
+    Page.Title = "账户安全中心";
+    Layout = null;
+}
+<script src="~/Scripts/Account/SafeCenter.js"></script>
+@{
+    var AccountSafeGrade = (int)ViewBag.AccountSafeGrade;
+    var TradePwdResult = (int)ViewBag.TradePwdResult;
+    var MySafeAccount = (ZGZY.Model.BS_Customers)ViewBag.MySafeAccount;
+    var SafeProblemList = (List<ZGZY.Model.BS_Safe_Problems>)ViewBag.SafeProblemList;   
+ }
+
+<style type="text/css">
+    .deftitle { height:36px; line-height:36px;  position:absolute; right:10%; bottom:86%; left:10%; background-color:#B9D1EA; }
+    .editbox { position: absolute; top: 15%; right: 10%; bottom: 15%; left: 10%; border: 1px solid #8C988A; }
+    .defeditrow { height: 36px; line-height: 36px; margin: 2px 20px; border-bottom: 1px solid #8C988A; }
+    .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+    .defeditrow ul li.aba { width: 30%; height:36px; line-height:36px; text-align: right; float:left; }
+    .defeditrow ul li.abb { width:70%; height:36px; line-height:36px; text-align:left; float:left; }
+    .defeditrow ul li.li1 { width: 18%; height: 36px; line-height: 36px; text-align: right; float: left; }
+    .defeditrow ul li.li2 { width: 12%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .defeditrow ul li.li3 { width: 50%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .defeditrow ul li.li4 { width: 20%; height: 36px; line-height: 36px; text-align: right; float: left; }
+</style>
+
+<div class="deftitle fnttitle">&nbsp;&nbsp;账户安全设置</div>
+<div class="editbox">
+    <div class="defeditrow fnttxt">
+        <ul>
+            <li class="aba">您的账户安全级别：&nbsp;
+                @{
+                    if (@AccountSafeGrade == 0)
+                    {
+                        <label class="fntcpt">低</label>
+                    }
+                    if (@AccountSafeGrade == 1)
+                    {
+                        <label class="fntcpt">中</label>
+                    }
+                    if (@AccountSafeGrade == 2)
+                    {
+                        <label class="fntcpt">高</label>
+                    }
+                }
+            </li>
+            <li class="abb">&nbsp;
+                @{
+                    if (@AccountSafeGrade == 0)
+                    {
+                        <img src="~/Content/Images/Other/p_low.png" />
+                    }
+                    if (@AccountSafeGrade == 1)
+                    {
+                        <img src="~/Content/Images/Other/p_middle.png" />
+                    }
+                    if (@AccountSafeGrade == 2)
+                    {
+                        <img src="~/Content/Images/Other/p_high.png" />
+                    }
+                }
+            </li>
+        </ul>
+    </div> 
+    <div class="defeditrow fntcpt">
+        <ul>
+            <li class="aba">您使用的安全服务和产品&nbsp;</li>
+            <li class="abb">&nbsp;</li>
+        </ul>
+    </div>
+    <div class="defeditrow fnttxt">
+        <ul>
+            <li class="li1">
+                @{
+                    if (@TradePwdResult == 0)
+                    {
+                        <img src="~/Content/Images/Other/p_f.png" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/Images/Other/p_T.png" />
+                    }
+                }
+            </li>
+            <li class="li2">&nbsp;交易密码</li>
+            <li class="li3">
+                @{
+                    if (@TradePwdResult == 0)
+                    {
+                        <label>您的交易密码过于简单，请重新设置。</label>
+                    }
+                    else
+                    {
+                        <label></label>
+                    }
+                }
+            </li>
+            <li class="li4">&nbsp;
+                <input type="button" id="btnEdit" class="button" value="修 改" />
+                &nbsp;
+                <input type="button" id="btnFindBack" class="button" value="找 回" />
+            </li>
+        </ul>
+    </div>
+   <div class="defeditrow fnttxt">
+        <ul>
+            <li class="li1">
+                @{
+                    if (SafeProblemList != null && SafeProblemList.Count > 0)
+                    {
+                        <img src="~/Content/Images/Other/p_t.png" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/Images/Other/p_f.png" />
+                    }
+                }
+            </li>
+            <li class="li2">&nbsp;安全保护问题</li>
+            <li class="li3"><label id="lblHint2"></label></li>
+            <li class="li4">&nbsp;
+                <input type="button" id="btnSet" class="button" value="设 置" onclick="SetClick()" />
+            </li>
+        </ul>
+    </div>
+    <div class="defeditrow fnttxt">
+        <ul>
+            <li class="li1">
+                @{
+                    if (MySafeAccount != null)
+                    {
+                        if (MySafeAccount.Mobile.Trim() != "")
+                        {
+                            <img src="~/Content/Images/Other/p_t.png" />
+                        }
+                        else
+                        {
+                           <img src="~/Content/Images/Other/p_f.png" /> 
+                        }
+                    }
+                    else
+                    {
+                        <img src="~/Content/Images/Other/p_f.png" />
+                    }
+                }
+            </li>
+            <li class="li2">&nbsp;手机绑定</li>
+            <li class="li3">
+                @{
+                    if (MySafeAccount != null)
+                    {
+                        if (MySafeAccount.Mobile.Trim() != "")
+                        {
+                            @: 你的手机号码为： @MySafeAccount.Mobile;
+                        }
+                    }
+                 }
+            </li>
+            <li class="li4">&nbsp;
+                <input type="button" id="btnModify" class="button" value="修 改" />
+                &nbsp;
+                <input type="button" id="btnCancel" class="button" value="取 消" />
+            </li>
+        </ul>
+    </div>
+    <div class="defeditrow fnttxt">
+        <ul>
+            <li class="li1">
+                @{
+                    if (MySafeAccount != null)
+                    {
+                        if (MySafeAccount.Email.Trim() != "")
+                        {
+                            <img src="~/Content/Images/Other/p_t.png" />
+                        }
+                        else
+                        {
+                           <img src="~/Content/Images/Other/p_f.png" /> 
+                        }
+                    }
+                    else
+                    {
+                        <img src="~/Content/Images/Other/p_f.png" />
+                    }
+                }
+            </li>
+            <li class="li2">&nbsp;邮箱绑定</li>
+            <li class="li3">
+                @{
+                    if (MySafeAccount != null)
+                    {
+                        if (MySafeAccount.Email.Trim() != "")
+                        {
+                            @: 您的电子邮箱号为： @MySafeAccount.Email;
+                        }
+                    }
+                 }
+            </li>
+            <li class="li4">&nbsp;
+                <input type="button" id="btnBind" class="button" value="绑 定" />
+            </li>
+        </ul>
+    </div>
+</div>

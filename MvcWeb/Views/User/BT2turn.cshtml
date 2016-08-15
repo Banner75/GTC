@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "BT2turn";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="give" class="core_main Fun_bank">
+    <div class="core_title">
+        <span class="core_title_con"><span>当前位置</span>：资产管理&gt;&gt;BT2账户转账                      <span><a class="btn-danger" data-toggle="modal" href="/User/BT2Index">返回BT2账户</a></span>              </span>
+
+        <span class="core_title_edit"></span>
+    </div>
+    <div class="core_con">
+        <form id="giveform" onsubmit="return checkform()" method="post" action="/index.php?s=/User/Fun_bank/giveSave/args/fun_bank[3]">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">账户余额：</td>
+                        <td class="tbval"><span>0.00</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">转账类型：</td>
+                        <td class="tbval"><span>
+                            <input type="hidden" value="0" name="giveTo">
+                            Transferred BT1                                </span></td>
+                    </tr>
+
+                    <tr style="display: none" id="hideuserid">
+                        <td class="tbkey">转入人编号：</td>
+                        <td class="tbval">
+                            <span>
+                                <input type="text" autocomplete="off" onkeyup="getid(this)" value="" id="userid" name="userid"></span>
+                            <span id="giveidname"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">转账金额：</td>
+                        <td class="tbval"><span>
+                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="givesum" value=""></span>
+                            <span int="0" id="giveMoneyInt1"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey"><span>手续费</span>(<span id="givetax">0</span>%)：</td>
+                        <td class="tbval">
+                            <span id="tax">0</span><span style="color: red;" id="tax_convert"></span>
+                            <input type="hidden" value="0" id="leastComCharge">
+                            <input type="hidden" value="0" id="limitComCharge">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">备注：</td>
+                        <td class="tbval"><span>
+                            <input type="text" name="memo" value=""></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" onclick="tijiao()" name="but" value="确定" id="subbut" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="hidden" value="8c51898281db60474dac0679ce876ff3_21e334cd09d26d27bdd25d466014dcff" name="__hash__">
+        </form>
+    </div>
+</div>
+

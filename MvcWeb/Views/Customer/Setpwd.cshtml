@@ -1,0 +1,72 @@
+﻿@{
+    Page.Title = "修改查询密码";
+    Layout = null;
+}
+
+<link href="~/theme/css/view.css" rel="stylesheet" />
+
+<div id="setPass" class="core_main User">
+    <div class="core_con">
+        <form action="" method="post" name="form1">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">原一级密码：</td>
+                        <td class="tbval">
+                            <input type="password" id="loginpwd" name="loginpwd"></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">一级新密码：</td>
+                        <td class="tbval">
+                            <input type="password" id="reloginpwd" name="reploginpwd"><span class="msg">至少6位</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">原二级密码：</td>
+                        <td class="tbval">
+                            <input type="password" id="paypwd" name="paypwd"></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">二级新密码：</td>
+                        <td class="tbval">
+                            <input type="password" id="repaypwd" name="repaypwd"><span class="msg">至少6位</span></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="2">
+                            <input type="button" name="but" value="确定" id="but" onclick="Setpwdform()" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="core_page"></div>
+</div>
+<script>
+    function Setpwdform() {
+        var loginpwd = $("#loginpwd").val();
+        var reloginpwd = $("#reloginpwd").val();
+        var paypwd = $("#paypwd").val();
+        var repaypwd = $("#repaypwd").val();
+        
+
+        var para = {};
+        para.loginpwd =loginpwd;
+        para.reloginpwd =reloginpwd;
+        para.paypwd = paypwd;
+        para.repaypwd =repaypwd;
+        $.ajax({
+            url: "/User/Setpwdform",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.msg);
+                    window.location.href = "/";
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    }
+</script>

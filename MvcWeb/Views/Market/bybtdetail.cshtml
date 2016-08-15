@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "详情";
+    Layout = "~/Views/_Market.cshtml";
+}
+<div id="edit" class="core_main User">
+    <div class="core_title"><span class="core_title_con"><span>当前位置</span>：交易详情</span></div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr>
+                    <td class="tbkey">买家编号：</td>
+                    <td class="tbval">@(Model.Rows[0]["buyuserID"])（诚信值：@ZGZY.BLL.CustomerBL.ShowStare(Model.Rows[0]["buyuserID"])）</td>
+
+                </tr>
+                <tr>
+                    <td class="tbkey">购买数量：</td>
+                    <td class="tbval">@Model.Rows[0]["dealmoney"]</td>
+                </tr>
+
+                <tr>
+                    <td class="tbkey">购买价格：</td>
+                    <td class="tbval">@Model.Rows[0]["rate"] US$</td>
+                </tr>
+
+                <tr>
+                    <td class="tbkey">购买金额：</td>
+                    <td class="tbval">@(Convert.ToDouble(Model.Rows[0]["dealmoney"])*Convert.ToDouble(Model.Rows[0]["rate"])) US$</td>
+                </tr>
+
+                <tr>
+                    <td class="tbkey">购买时间：</td>
+                    <td class="tbval">@Model.Rows[0]["addtime"]</td>
+                </tr>
+                <tr>
+                    <td class="tbkey">汇款金额：</td>
+                    <td class="tbval">@(Convert.ToDouble(Model.Rows[0]["dealmoney"])*Convert.ToDouble(Model.Rows[0]["rate"])*Convert.ToDouble(ViewBag.usdRate)) CNY</td>
+                </tr>
+                <tr>
+                    <td class="tbkey">卖家编号：</td>
+                    <td class="tbval">@(Model.Rows[0]["showuserID"])（诚信值：@ZGZY.BLL.CustomerBL.ShowStare(Model.Rows[0]["showuserID"])）</td>
+                </tr>
+                @if (@Model.Rows[0]["state"] == 6)
+                {
+                    <tr>
+                        <td class="tbkey">卖家电话：</td>
+                        <td class="tbval">@Model.Rows[0]["showmobile"]</td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">汇款时间：</td>
+                        <td class="tbval">@Model.Rows[0]["transfertime"]</td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">流水号：</td>
+                        <td class="tbval">@Model.Rows[0]["transfernum"]</td>
+                    </tr>                }
+                <tr>
+                    <td style="text-align: center;" colspan="2">
+                        <input type="button" value="返回" class="button_text" onclick="history.back();">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

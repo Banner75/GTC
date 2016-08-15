@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "我的GD2 ";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="deal_list" class="core_main Fun_ep_deal">
+    <div class="core_title">
+        <span class="core_title_con">GD2金币账户列表
+        <span><a class="btn-danger" data-toggle="modal" href="/User/GD1Log">我的GD1</a></span>
+            <span><a class="btn-danger" data-toggle="modal" href="/User/BookGD">GD预约订单列表</a></span>
+        </span>
+    </div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr style="font-size: 12px;" class="datafield">
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">卖出金币数</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">卖出价格</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">已结转数量</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">可结转数量</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">待结转收益</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">操作</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="core_page">
+        <span>0条记录 1/1页 &nbsp;</span>
+        <span>首页&nbsp;&nbsp;</span>    <a href="/index.php?s=%2FUser%2FMarket%2Fmygds&amp;p=0">上一页</a>&nbsp;&nbsp;
+            1&nbsp;&nbsp;
+            <a href="/index.php?s=%2FUser%2FMarket%2Fmygds&amp;p=2">下一页</a>&nbsp;&nbsp;
+    <span>尾页</span>
+    </div>
+</div>

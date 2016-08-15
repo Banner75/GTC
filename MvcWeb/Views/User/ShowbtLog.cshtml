@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "交易记录";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="index" class="core_main Fun_ep_deal">
+    <div class="core_title">
+        <span class="core_title_con">当前位置：高特币交易市场&gt;&gt;交易记录<span><a class="btn-danger2" data-toggle="modal" href="/index.php?s=/User/Fun_gold/index/args/fun_gold">返回交易市场</a></span></span>
+    </div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr class="datafield">
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>买家编号</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>交易数量</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>汇款金额</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>状态</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>操作</nobr>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="core_page">
+        共0条记录 1/1页 &nbsp;
+        首页&nbsp;&nbsp;        <a href="/index.php?s=%2FUser%2FFun_gold%2Fdetail%2Fargs%2Ffun_gold%2F1&amp;args=fun_gold&amp;p=0">上一页</a>&nbsp;&nbsp;
+                        1&nbsp;&nbsp;
+                        <a href="/index.php?s=%2FUser%2FFun_gold%2Fdetail%2Fargs%2Ffun_gold%2F1&amp;args=fun_gold&amp;p=2">下一页</a>&nbsp;&nbsp;
+        尾页  
+    </div>
+    <div class="core_page">
+        <p style="color: red; text-align: left; line-height: 25px; padding-right: 10px;">
+            提示：	1：当订单状态为“待付”，买家已经拍下订单，当超过2小时买家仍然没有付款，操作栏会出现“撤销”功能，您可以撤销该订单。<br>
+            2：当订单状态为：“已付”，请您确认是否已经收到汇款（银行卡转账有延迟最长24小时），如果已经收到款项，请点击“确认收款”。如果超过2小时未收到汇款，您可以点击“查看详情”查看对方联系电话联系确认。<br>
+            3：如果超过24小时仍然没有收到汇款，请让电话联络买家提供汇款凭据确认对方是否转账，如果对方没有转账请点击“申请仲裁”。     
+        </p>
+    </div>
+</div>

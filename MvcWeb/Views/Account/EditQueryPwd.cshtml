@@ -1,0 +1,48 @@
+﻿@{
+    Page.Title = @ViewBag.Title;
+    Layout = null;
+}
+
+@{
+    var PWDKind = (int)ViewBag.PWDKind;
+    var LoginAccount = ViewBag.LoginAccount.ToString();  
+ }
+
+<style type="text/css">
+    .defeditrow { height: 36px; line-height: 36px; margin: 10px 20px; }
+    .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+    .defeditrow ul li.cpt { width: 30%; height: 36px; line-height: 36px; text-align: right; float: left; }
+    .defeditrow ul li.txt { width: 70%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .deftxt { width:300px; height:26px; line-height:24px; background-color:#FAFAFA; border:1px double #8C988A; }
+</style>
+
+<script src="~/Scripts/Account/EditQueryPwd.js"></script>
+
+<div class="hkremittance">&nbsp;&nbsp;@ViewBag.Title</div>
+<div class="editbox">
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">旧 密 码：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;<input type="password" id="txtOldPwd" class="deftxt" /></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">新 密 码：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;<input type="password" id="txtNewPwd" class="deftxt" /></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">确认密码：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;<input type="password" id="txtConfigPwd" class="deftxt" /></li>
+        </ul>
+    </div>
+    <div class="buttonbox">
+        <div class="buttonrowc">
+             <input type="button" value="提 交" class="button"  onclick="ModifyPwdClick(@(PWDKind))"/>
+        </div>
+    </div>
+</div>
+
+

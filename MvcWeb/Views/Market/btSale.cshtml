@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+    string tradeRate = (new ZGZY.BLL.BS_Configuration()).GetModel(15).value;
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>btSale</title>
+    <script type="text/javascript">
+    $(function () {
+        $("#salebtn").click(function () {
+            saleMrc();
+        });
+    })
+
+    </script>
+    <script src="~/Scripts/Market/Market.js"></script>
+</head>
+<body>
+  <div style="float:left; width:49%; margin-top:30px; display:none;">
+     <div class="core_title">
+    	<span class="core_title_con">我要卖GTC@*<span><a class="btn-danger2" data-toggle="modal" href="/User/BybtLog">GT成交记录</a></span><span><a class="btn-danger2" data-toggle="modal" href="/Market/BTorder">BT挂单记录</a></span>*@</span>
+     </div>
+     <div class="core_con">
+
+  @*  <form action="/Market/shouwbt" method="post" autocomplete="off" >*@
+      <table class="tablebg">        
+      <tbody>
+        <tr class="datalist"><td class="tbkey">注意事项：</td><td class="tbval"><p style="color:#F00; font-size:12px;">&nbsp;&nbsp;必须完善个人收款账户信息才可提交出售挂单，<br>&nbsp;&nbsp;否则将会导致交易失败并处罚1颗信誉星级。</p></td></tr>        <tr class="datalist">
+          <td style="border-left: 1px solid rgb(213, 213, 213);" class="tbkey">GTC余额：</td>
+          <td class="tbval"><font style="color:#F00;">@Model.MRC</font></td>
+      </tr>
+       <tr class="datalist" style="display:none;">
+         <td class="tbkey" >实际扣减数量：</td>
+         <td class="tbval"><input type="text" style="border-radius:5px; width:160px;" name="num1" id="Salenum1" value="" placeholder ="将扣减数量"  autocomplete="off"   ><p style="color:#F00; font-size:12px;">&nbsp;&nbsp;实际出售数量加上 @tradeRate%手续费，将作为出售方被扣减数量。</p>
+         <input type="hidden" id="AccId" name="AccId" value="" />
+         </td>
+      </tr>
+      <tr class="datalist">
+         <td class="tbkey" >实际出售数量：</td>
+         <td class="tbval"><input type="text" style="border-radius:5px; width:160px;" name="num" id="Salenum" value="" placeholder ="实际出售数量"  autocomplete="off"   ></td>
+      </tr>
+		  <tr class="datalist">
+			<td class="tbkey">二级密码：</td>
+			<td class="tbval"><span><input type="password" style="width:160px;" name="paypwd" id="Salepaypwd" value="" autocomplete="off" ></span>&nbsp;<span class="form_notice">*</span></td>
+		  </tr>
+          <tr>
+                <td colspan="2"  ><input type="button" value="提交至交易市场" class="input_button" id="salebtn"> <!--input type="button" value="提交至回收大厅" class="input_button" id="salesysbtn"></td-->
+          </tr>
+       </tbody>
+     </table>
+@*</form>*@
+  </div>
+  </div>
+
+</body>
+</html>

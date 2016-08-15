@@ -1,0 +1,93 @@
+﻿@{
+    Page.Title = "高特币转帐";
+    Layout = null;
+    string tradeRate = "0"; //(new ZGZY.BLL.BS_Configuration()).GetModel(15).value;
+}
+<style type="text/css">
+    /*.deftitle { height: 36px; line-height: 36px; position: absolute; top: 10px; right: 30px; left: 30px; background-color: #B9D1EA; }
+    .editbox { position: relative; top: 20px; bottom: 18px; left: 14px; border: 1px solid #8C988A; width:956px;overflow:auto; }*/
+    .defeditrow { height: 36px; line-height: 36px; margin: 10px 20px; }
+        .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+            .defeditrow ul li.cpt { width: 40%; height: 36px; line-height: 36px; text-align: right; float: left; }
+            .defeditrow ul li.txt { width: 60%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .special { height: 36px; }
+        .special ul { height: 36px; list-style: none; width: 100%; }
+            .special ul li.li1 { height: 36px; line-height: 36px; width: 50px; text-align: right; float: left; }
+            .special ul li.li2 { height: 36px; line-height: 36px; width: 50px; text-align: center; float: left; }
+            .special ul li.li3 { height: 36px; line-height: 36px; width: 50px; text-align: left; float: left; }
+            .special ul li.li4 { height: 36px; line-height: 36px; width: 50px; text-align: center; float: left; }
+            .special ul li.li5 { height: 36px; line-height: 36px; width: 50px; text-align: left; float: left; }
+</style>
+
+<div class="hkremittance">&nbsp;&nbsp;高特币转帐</div>
+<div class="editbox">
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">对方帐号：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+                <input type="text" id="txtZhanghao" onblur="chkZHName(this.value);" class="txt" style="background-color: #fff;"><span class="msg">*</span><span class="fntcpt" id="zhangHaoName"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">高特币数量：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+                <input type="text" id="txtNum" class="txt" style="background-color: #fff;"><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+@*    <div class="defeditrow">
+        <ul>
+            <li><span style="color:#f00;">注：实际转帐数量加 @tradeRate%手续费，将作为转帐方被扣减数量。</span></li><li></li>
+        </ul>
+    </div>*@
+
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">交易密码：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+                <input type="password" id="txtPwd" class="txt" style="background-color: #fff;"><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+    <div class="buttonbox">
+        <div class="buttonrowc">
+            <input type="button" id="btnConfirm" value="确 定" class="button" onclick="OrderCoinClick()" />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // 
+    function OrderCoinClick() {
+        var data = {};
+        data.zhangHao = $("#txtZhanghao").val();
+        data.num = $("#txtNum").val();
+        data.pwd = $("#txtPwd").val();
+        $.post("/Finance/TransferMRC", data, function (jsons) {
+            if (jsons.status == 0) {　//成功
+                alert(jsons.msg);
+                location.href = "";
+            } else {
+                alert(jsons.msg)
+                return;
+            }
+        }, 'json');
+    };
+
+    //$(function () {
+    //    $("#txtZhanghao").bind("click", chkZHName($("#txtZhanghao").val()));
+
+    //});
+
+    function chkZHName(zhangHao) {
+        var data = {};
+        data.loginAccount = zhangHao;
+        $.post("/Account/getBankUser", data, function (jsons) {
+            $("#zhangHaoName").text("    对方名字：" +jsons.BankUser);
+        }, 'json');
+
+
+    }
+
+</script>

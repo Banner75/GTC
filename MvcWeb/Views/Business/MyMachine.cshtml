@@ -1,0 +1,250 @@
+﻿@{
+    Page.Title = "我的矿机";
+    Layout = null;
+    
+}
+@{
+    var MyMachine = (System.Data.DataTable)ViewBag.MyMachine;
+    var Cus = ViewBag.Cus as ZGZY.Model.BS_Customers;
+    var MachineConfigList = new ZGZY.BLL.BS_MachineConfig().GetModelList("1=1");
+    
+    
+    
+    
+}
+<!-- 页内样式定义 -->
+<style type="text/css">
+
+    .defeditrow {
+        height: 36px;
+        line-height: 36px;
+        margin: 10px 20px;
+    }
+
+        .defeditrow ul {
+            height: 36px;
+            line-height: 36px;
+            width: 100%;
+            list-style: none;
+        }
+
+            .defeditrow ul li.cpt {
+                width: 30%;
+                height: 36px;
+                line-height: 36px;
+                text-align: right;
+                float: left;
+            }
+
+            .defeditrow ul li.txt {
+                width: 70%;
+                height: 36px;
+                line-height: 36px;
+                text-align: left;
+                float: left;
+            }
+
+    input.txt, select.slt {
+        height: 26px;
+        line-height: 26px;
+        width: 300px;
+        background-color: #FAFAFA;
+        border: 1px double #E6E6E6;
+    }
+
+
+    .Machine {
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+        .Machine li {
+            float: left;
+            list-style-type: none;
+            margin-left: 20px;
+        }
+
+    .BuyBtn {
+        display: inline-block;
+        padding: 5px 15px;
+        background: #5bc0de;
+        border: 1px solid #46b8da;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 auto;
+        font-size: 14px;
+        font-family: '宋体';
+    }
+
+        .BuyBtn:hover {
+            font-weight: normal;
+            font-size: 14px;
+            font-family: '宋体';
+        }
+
+    .MachineBar p {
+        line-height: 25px;
+    }
+
+    .title {
+        padding: 10px 30px;
+        border-bottom: 1px solid #e5e5e5;
+        color: #fff;
+        background: #003d74;
+        margin: 10px 10px;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+
+    .MachineBar {
+        border: 1px solid #e5e5e5;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="hkremittance">&nbsp;&nbsp;我的矿机</div>
+
+
+
+
+<div class="editbox">
+
+
+
+
+    @if (MyMachine != null && MyMachine.Rows.Count > 0 && MachineConfigList.Count > 0)//有正在运行的矿机
+    {
+        var MyMachineType = (from MT in MachineConfigList where ZGZY.Common.TypeConverter.ObjectToInt(MyMachine.Rows[0]["type"], 0) == MT.id select MT).ToList();
+        <div>
+            <div class="title">现有矿机</div>
+            <div>
+                <ul class="Machine">
+                    <li>
+                        <div class="MachineBar">
+                             @{string IMGName = "machine" + MyMachineType[0].id + ".gif";}
+                            <p><img src="~/Content/Images/Other/@IMGName" alt="" style="width: 265px; height: 200px;" /></p>
+                            <p id="ss">矿机类型：@MyMachineType[0].MachineName</p>
+                            @*<p>最小收益：@MyMachineType[0].MinProfit (个/天)</p>
+                            <p>最大收益：@MyMachineType[0].MaxProfit (个/天)</p>*@
+                            <p>创建时间：@MyMachine.Rows[0]["createrdate"]</p>
+                            @{
+        //var UseDay = (ZGZY.Common.TypeConverter.ObjectToDateTime(MyMachine.Rows[0]["end_run_time"]) - ZGZY.Common.TypeConverter.ObjectToDateTime(MyMachine.Rows[0]["start_run_time"])).Days;
+                                
+                            }
+                            <p>结束日期：@MyMachine.Rows[0]["end_run_time"]</p>
+                            <p>矿机价格：@MyMachineType[0].MachinePrice</p>
+
+                            @{
+        var StatusName = "未知";
+        switch (MyMachine.Rows[0]["status"].ToString()) 
+        {
+            case "1": StatusName = "停止挖矿"; break;
+            case "2": StatusName = "正在运行"; break;
+            case "3": StatusName = "已过期"; break;
+        }
+                                }
+
+                            <p>状态：@StatusName</p>
+
+
+                            <div><a class="BuyBtn" onclick="KeepMachine('@MyMachine.Rows[0]["id"]')">续租</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!--div class="title">注册新矿机</div-->
+        <ul class="Machine">
+            @foreach (var MachineConfig in MachineConfigList)
+            {
+                <li>
+                    <div class="MachineBar">
+                        <p>
+                            @{string IMGName = "machine" + MachineConfig.id+".gif";}
+                         
+                        <img src="~/Content/Images/Other/@IMGName" alt="" style="width: 265px; height: 200px;" /></p>
+                        <p>矿机类型：@MachineConfig.MachineName</p>
+                        <p>最小收益：@MachineConfig.MinProfit (个/天)</p>
+                        @if (MachineConfig.id!=3){
+                        <p>最大收益：@MachineConfig.MaxProfit (个/天)</p>
+                        }else
+                        {
+                            <p>最大收益：110 (个/天)</p>
+                        }
+                        <p>矿机价格：@MachineConfig.MachinePrice (个高特币)</p>
+                        <p>租期天数：@MachineConfig.Tenancy (天)</p>
+                        <p>矿机小区最大收益：@MachineConfig.Maximum (个/天)</p>
+                        <div><a class="BuyBtn" onclick="BuyMachine('@MachineConfig.id')">租赁</a></div>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+
+
+</div>
+<style>
+.loading_message_mask{position:fixed;left:0;top:0;bottom:0;right:0;background:#ccc;opacity:0.3;filter:alpha(opacity=30);display:none;z-index:10000000000;}
+.loading_message{position:fixed;left:50%;top:50%;width:auto;height:50px;width:50px;background:#fff url('/Content/images/loading12.gif') no-repeat  center;border:2px solid #fece2f;color:#222;display:none;z-index:10000000001;}
+</style>
+<div class="loading_message_mask"></div>
+<div class="loading_message"></div>
+<script type="text/javascript" >
+    function loadingShow() {
+        $('.loading_message_mask').show();
+        $('.loading_message').show();
+    }
+
+    function loadingHide() {
+        $('.loading_message_mask').hide();
+        $('.loading_message').hide();
+    }
+</script>
+<script type="text/javascript">
+    function BuyMachine(id) {
+
+        if (confirm("您确定要购买此类型矿机吗？")) {
+            loadingShow();
+            $.ajax({
+                url: "/Business/BuyMachine",
+                data: { type: id },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                        alert(data.msg);
+                        loadingHide();
+                        $("#dvSubPage").load("/Business/MyMachine");
+                }
+            });
+        }
+
+    };
+    function KeepMachine(id) {
+        if (confirm("您确定要续租此矿机吗？")) {
+            loadingShow();
+            $.ajax({
+                url: "/Business/KeepMachine",
+                data: { ID: id },
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    alert(data.msg);
+                    loadingHide();
+                    $("#dvSubPage").load("/Business/MyMachine");
+                }
+            });
+        }
+    }
+
+</script>
+
+
+
+

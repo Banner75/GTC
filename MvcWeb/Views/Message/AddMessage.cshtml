@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<!-- 页内样式定义 -->
+<style type="text/css">
+.editbox{position:relative;top:56px;right:30px;bottom:10px;left:30px;border:1px solid #e5e5e5;overflow:auto}
+.defeditrow{height:36px;line-height:36px;margin:10px 20px}
+.defeditrow ul{height:36px;line-height:36px;width:100%;list-style:none}
+.defeditrow ul li.cpt{width:30%;height:36px;line-height:36px;text-align:right;float:left}
+.defeditrow ul li.txt{width:70%;height:36px;line-height:36px;text-align:left;float:left}
+input.txt,select.slt{height:26px;line-height:26px;width:300px;background-color:#FAFAFA;border:1px double #E6E6E6}
+.btn {padding:6px 15px;border:1px solid #3568f6;border-radius:5px;color:#fff;background:#3568f6;cursor:pointer;font-family:'Microsoft YaHei'}
+</style>
+<script src="~/Scripts/Business/Register.js"></script>
+
+<div class="deftitle fnttitle">&nbsp;&nbsp;我的留言</div>
+<div class="editbox">
+    <div style="overflow:hidden;margin:20px 0;padding:10px;">
+        <div style="float:left;width:30%;line-height:36px;height:30px;text-align:right">
+            标题：
+        </div>
+        <div style="float:left;line-height:36px;height:30px;">
+        <input type="text" style="height:30px;width:300px" name="title" id="title" />
+       </div>
+    </div>
+
+    <div style="margin:20px 0;padding:10px;">
+        <div style="float:left;width:30%;line-height:36px;height:30px;text-align:right;height:150px;">
+            内容：
+        </div>
+        <div style="float:left;line-height:36px;height:30px;">
+        <textarea rows="10" cols="10" style="width:400px;resize:none;" name="content" id="content"></textarea>
+       </div>
+    </div>
+    <div style="clear:both"></div>
+    <div style="margin-top:50px;text-align:center;">
+       <a class="btn" onclick="sub()">提交</a>
+
+    </div>
+    
+</div>
+<script>
+    $(function () {
+        @*var Userid = "@Userid";
+        if (Userid == "") {
+            location.href = '/Home/Login';
+        }*@
+    })
+    function sub() {
+        var title = $("#title").val();
+        var content = $("#content").val();
+
+        if (title == "")
+        {
+            alert("标题为空");
+            return;
+        }
+        if (content == "")
+        {
+            alert("内容为空1");
+            return;
+        }
+
+        $.post("/Message/Add", { title: title, content: content }, function (data) {
+            alert(data);
+        });
+    }
+</script>

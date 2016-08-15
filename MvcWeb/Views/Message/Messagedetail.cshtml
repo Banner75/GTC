@@ -1,0 +1,47 @@
+﻿@model ZGZY.Model.Message
+@{
+    ViewBag.Title = "详细";
+    Layout = null;
+}
+<div id="send" class="core_main Mail" style="margin:10px;padding:10px;">
+    <div class="hkremittance">
+        <span class="core_title_con"><span>当前位置</span>：我的留言&gt;&gt;详细</span>
+    </div>
+    <br />
+
+
+    <div class="core_con"　style="margin:20px;padding:20px;">
+        <form method="post" action="" id="sendform" title="">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">标题：</td>
+                        <td class="tbval">
+                            <input type="text" id="title" name="title" value="@Model.Title"></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">内容：</td>
+                        <td class="tbval">
+                            <textarea style="width: 670px; height: 350px" class="kuangao" name="sendcontent" id="sendcontent">@Model.Content</textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">回复：</td>
+                        <td class="tbval">
+                            <textarea style="width: 670px; height: 350px" class="kuangao" name="replycontent" id="replycontent">@Model.Reply</textarea>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" value="返回" onclick="javascript: SubMenuItemClick(21, '我的留言', '新闻公告', '/Message/MyMessage');" onmouseout="this.className='button_onmouseout'" onmouseup="this.className='button_onmouseup'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="core_page"></div>
+</div>

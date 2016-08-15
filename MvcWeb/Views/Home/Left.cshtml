@@ -1,0 +1,84 @@
+﻿@{
+    ZGZY.BLL.MenuBL service = new ZGZY.BLL.MenuBL();
+    List<ZGZY.Model.SY_Menus> MenuLists = service.GetHomeMenus(1, 1, true);
+
+
+    List<ZGZY.Model.SY_Menus> SubMenuLists = service.GetHomeMenus(1, 1, false);
+
+    var MenuList = (List<ZGZY.Model.SY_Menus>)MenuLists;
+    var SubMenuList = (List<ZGZY.Model.SY_Menus>)SubMenuLists;
+}
+
+<!-- 首页 -->
+<div class="homeitem fnt-menu">
+    <ul>
+        <li class="pic">
+            <img src="/Content/Images/gtbsy1.png" /></li>
+        &nbsp;  
+        <li class="lnk">
+            <a href="#" class="lnkmenu" onclick="HomeItemClick('首页','/Home')">首页</a>
+        </li>
+    </ul>
+</div>
+
+<!-- 左边菜单 -->
+<div class="menubox">
+    @if ((MenuList != null) && (MenuList.Count > 0))
+    {
+        foreach (var m in MenuList)
+        {
+        <div id="dvMenuItem@(m.ID)" class="menu">
+            <ul>
+                <li class="pic">
+                    <img src="@(m.Icon)" /></li>
+                &nbsp;
+                <li class="lnk"><a href="#" id="lnkMenuItem@(m.ID)" class="lnkmenu" onclick="MenuItemClick(@m.ID,'@m.Caption')">@(m.Caption)</a>
+                <li>
+            </ul>
+
+        </div>
+        <div id="dvSubMenuBox@(m.ID)" class="submentbox" style="display:none;" >
+            @if (SubMenuList != null && SubMenuList.Count > 0)
+            {
+                foreach (ZGZY.Model.SY_Menus sm in SubMenuList)
+                {
+                    if (@sm.ParentID == m.ID)
+                    {
+                <div id="dvSubMenuItem@(sm.ID)" class="submenu">
+                    <ul>
+                        <li class="pic"></li>
+                        <li class="lnk">
+                            <a href="#" class="lnksubmenu" onclick="SubMenuItemClick(@sm.ID,'@sm.Caption','@sm.ParentCaption','@sm.Url')">@sm.Caption</a>
+                        </li>
+                    </ul>
+                </div>
+                    }
+                }
+            }
+        </div>
+        }   
+    }
+            <div class="menu" id="dvMenuItem32">
+            <ul>
+                <li class="pic">
+                    <img src="../../Content/Images/gtbsy3.png"></li>
+                &nbsp;
+                <li class="lnk"><a onclick="MenuItemClick(32,'交易市场')" class="lnkmenu" id="lnkMenuItem32" href="#">交易市场</a>
+                </li><li>
+            </li></ul>
+
+        </div>
+        <div style="display: none;" class="submentbox" id="dvSubMenuBox32">
+                <div class="submenu" id="dvSubMenuItem41">
+                    <ul>
+                        <li class="pic"></li>
+                        <li class="lnk">
+                            <a  href="/Market/btmarket" class="lnksubmenu" >交易市场</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+</div>
+

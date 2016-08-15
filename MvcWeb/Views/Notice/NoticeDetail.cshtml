@@ -1,0 +1,28 @@
+﻿@model ZGZY.Model.BS_Notices
+@{
+    ViewBag.Title = "查看公告";
+    Layout = null;
+}
+
+<div id="showNotice" class="core_main User">
+    @*<div class="core_title">
+        <span class="core_title_con">当前位置：查看公告</span>
+    </div>*@
+    <div class="core_con" style="width:90%;margin:0 auto;">
+        <div>
+            <h3 style="text-align:center;line-height:30px;margin:30px 20px 20px;">@Model.Title</h3>
+        </div>
+        <div style="text-align:right;margin-bottom:20px;font-size:14px;border-bottom:1px solid #e5e5e5;padding:10px;">
+
+            创建日期：@Model.CreatedDate
+
+        </div>
+        <div>
+            @Html.Raw(Model.Contents)
+
+
+        </div>
+        
+    </div>
+    
+</div>

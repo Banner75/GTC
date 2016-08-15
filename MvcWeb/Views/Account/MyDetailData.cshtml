@@ -1,0 +1,192 @@
+﻿@{
+    Page.Title = "我的详细信息";
+    Layout = null;
+}
+
+<div class="hkremittance">&nbsp;&nbsp;基本信息</div>
+@{
+    var CustomerList = (ZGZY.Model.BS_Customers)ViewBag.CustomerList;
+
+    List<SelectListItem> list = new List<SelectListItem>() 
+            {    
+                new SelectListItem(){Text="中国银行",Value="中国银行"},
+                new SelectListItem(){Text="中国建设银行",Value="中国建设银行"},
+                new SelectListItem(){Text="中国工商银行",Value="中国工商银行"},
+                new SelectListItem(){Text="中国农业银行",Value="中国农业银行"},
+                new SelectListItem(){Text="浦发银行",Value="浦发银行"},
+                new SelectListItem(){Text="交通银行",Value="交通银行"},
+                new SelectListItem(){Text="中国民生银行",Value="中国民生银行"},
+                new SelectListItem(){Text="中国光大银行",Value="中国光大银行"},
+                new SelectListItem(){Text="中国邮政储蓄银行",Value="中国邮政储蓄银行"},
+                new SelectListItem(){Text="兴业银行",Value="兴业银行"},
+                new SelectListItem(){Text="中信银行",Value="中信银行"},
+                new SelectListItem(){Text="招商银行",Value="招商银行"},
+                new SelectListItem(){Text="华夏银行",Value="华夏银行"}
+                
+            };
+         
+            }
+
+<style type="text/css">
+    .editbox {  border: 1px solid #fff; margin:10px 1%; min-width:1000px; padding:10px 2%; overflow: auto; background:#fff;  }
+    .defeditrow { height: 36px; line-height: 36px; margin: 2px 20px;  }
+    .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+    .defeditrow ul li.cpt { width: 15%; height: 36px; line-height: 36px; text-align: right; float: left; }
+    .defeditrow ul li.txt { width: 25%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .defeditrow ul li.spc { width: 20%; height: 36px; line-height: 36px; float: left; }
+    .defeditrow ul li{ font-weight:100; font-size:14px;}
+    .defeditrow input[type='button'] { width:150px; height:32px;  background:#ddb31f; border:1px solid #ddb31f; color:#fff;  border-radius:8px; margin:0 auto; cursor:pointer;       }
+    .EditInfo { display:none; }
+    .input_text {  padding:7px 5px; border:1px solid #f0f0f0; border-radius:4px; }
+    .deftitle { height: 36px; line-height: 36px;  background-color: #B9D1EA;margin: 10px 1%;}
+</style>
+
+
+<div class="editbox fntcpt">
+    @{
+        if (CustomerList != null)
+        {
+            <div class="ShowInfo" >
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">登录帐号：&nbsp;</li>
+                    <li class="txt">&nbsp;<label  >@CustomerList.Login_Account</label> </li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">上级会员：&nbsp;</li>
+                    <li class="txt">&nbsp;<label>@CustomerList.Parent</label></li>
+                    <!--li class="cpt">昵称：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="NickName_label">@CustomerList.Nick_Name</label></li-->
+                </ul>
+            </div>
+            <!--div class="defeditrow">
+                <ul>
+                    <li class="cpt">真实姓名：&nbsp;</li>
+                    <li class="txt">&nbsp<label id="TrulyName_label">@CustomerList.Truly_Name</label></li>
+                    <li class="spc">&nbsp;</li>
+
+                </ul>
+            </div-->
+           
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">电子邮件：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="Email_label">@CustomerList.Email</label></li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">手机号码：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="Mobile_label" >@CustomerList.Mobile</label></li>
+                </ul>
+            </div>
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">当前状态：&nbsp;</li>
+                    <li class="txt">&nbsp;<label>@ZGZY.BLL.CustomerBL.GetStatus(CustomerList.State)</label></li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">开户银行：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="Bank_label">@CustomerList.Bank</label></li>
+                </ul>
+            </div>
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">开户姓名：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="BankUser_label" >@CustomerList.Bank_User</label></li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">银行帐号：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="BankAccount_label" >@CustomerList.Bank_Account</label></li>
+                </ul>
+            </div>
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">开户分行：&nbsp;</li>
+                    <li class="txt">&nbsp;<label  id="BankBranch_label">@CustomerList.Bank_Branch</label></li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">支付宝帐号：&nbsp;</li>
+                    <li class="txt">&nbsp;<label id="Alipay_label">@CustomerList.Alipay</label></li>
+                </ul>
+            </div>
+@*            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">高特币：&nbsp;</li>
+                    <li class="txt">&nbsp;<label>@CustomerList.MRC</label></li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">矿机币：&nbsp;</li>
+                    <li class="txt">&nbsp;<label>@CustomerList.ORE</label></li>
+                </ul>
+            </div>*@
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">注册时间：&nbsp;</li>
+                    <li class="txt">&nbsp;<label>@CustomerList.Register_Date</label></li>
+                    <li class="spc">&nbsp;</li>
+                    @*<li class="cpt">矿机数量：&nbsp;</li>
+                    <li class="txt">&nbsp;<label>@CustomerList.Mills_Num</label></li>*@
+                </ul>
+            </div>
+            <div class="defeditrow" style="text-align:center;">
+                 <input  type="button" id="editinfo" value="编辑会员资料" />  
+            </div>
+          </div>
+            <div class="EditInfo" >
+                <div class="defeditrow">
+                <ul>
+                    <li class="cpt">登录帐号：&nbsp;</li>
+                    <li class="txt">&nbsp;<label> @CustomerList.Login_Account</label> </li>
+                    <li class="spc">&nbsp;</li>
+                   <li class="cpt">开户银行：&nbsp;</li>
+                    <li class="txt">&nbsp;@Html.DropDownList("Bank", list, new { @Class="input_text"})</li>
+                </ul>
+            </div>
+
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">开户姓名：&nbsp;</li>
+                    <li class="txt">&nbsp;@Html.TextBoxFor(m=>CustomerList,new {@id="BankUser",@Value=CustomerList.Bank_User,@Class="input_text"})</li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">银行帐号：&nbsp;</li>
+                    <li class="txt">&nbsp;@Html.TextBoxFor(m=>CustomerList,new {@id="BankAccount",@Value=CustomerList.Bank_Account,@Class="input_text"})</li>
+                </ul>
+            </div>
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">开户分行：&nbsp;</li>
+                    <li class="txt">&nbsp;@Html.TextBoxFor(m=>CustomerList,new {@id="BankBranch",@Value=CustomerList.Bank_Branch,@Class="input_text"})</li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">支付宝帐号：&nbsp;</li>
+                    <li class="txt">&nbsp;@Html.TextBoxFor(m=>CustomerList,new {@id="Alipay",@Value=CustomerList.Alipay,@Class="input_text"})</li>
+                </ul>
+            </div>
+            <div class="defeditrow">
+                <ul>
+                    <li class="cpt">手机号码：&nbsp;</li>
+                    <li class="txt">&nbsp;@Html.TextBoxFor(m=>CustomerList,new {@id="Mobile",@Value=CustomerList.Mobile,@Class="input_text"})</li>
+                    <li class="spc">&nbsp;</li>
+                    <li class="cpt">&nbsp;</li>
+                    <li class="txt">&nbsp</li>
+                </ul>
+            </div>
+            <div class="defeditrow" style="text-align:center;">
+                 <input  type="button" id="comfrom" value="确认修改" />  
+                <input  type="button" id="cancel" value="取消修改" />  
+            </div>
+            </div>
+        }
+    }
+</div>
+<script src="~/Scripts/Account/EditDetail.js?ver=1.01"></script>
+    <script type="text/javascript" >
+        var bank = "@CustomerList.Bank";
+        $(function () {
+            if (bank != "")
+            {
+                $("#Bank").val(bank);
+            }
+            $("#editinfo").click(function () {
+                editinfo();
+            });
+            $("#cancel").click(function () {
+                cancel();
+            })
+            $("#comfrom").click(function () {
+                comfrom();
+            })
+        })
+    </script>

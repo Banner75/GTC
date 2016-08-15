@@ -1,0 +1,151 @@
+﻿@{
+    Page.Title = "注册新矿主";
+    Layout = null;
+    int count=0;
+    string Userid = ZGZY.Common.LogionCookie.GetUserId();
+
+    System.Data.DataTable dt = new ZGZY.BLL.CustomerBL().GetList(" Person_Liable='" + Userid + "'").Tables[0];
+    if (dt != null)
+    {
+       
+            count = dt.Rows.Count;
+    }
+}
+
+<!-- 页内样式定义 -->
+<style type="text/css">
+/*.deftitle{height:36px;line-height:36px;position:absolute;top:10px;right:30px;left:30px;background-color:#B9D1EA}
+.editbox { position: relative; top: 20px; bottom: 18px; left: 14px; border: 1px solid #efefef; width:956px;overflow:auto; }*/
+.defeditrow{height:36px;line-height:36px;margin:10px 20px}
+.defeditrow ul{height:36px;line-height:36px;width:100%;list-style:none}
+.defeditrow ul li.cpt{width:30%;height:36px;line-height:36px;text-align:right;float:left}
+.defeditrow ul li.txt{width:70%;height:36px;line-height:36px;text-align:left;float:left}
+input.txt,select.slt{height:26px;line-height:26px;width:300px;background-color:#FAFAFA;border:1px double #E6E6E6}
+</style>
+<script src="~/Scripts/Business/Register.js?ver=1.01"></script>
+
+<div class="hkremittance">&nbsp;&nbsp;注册新矿主</div>
+<div class="editbox">
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">登录名：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+                <input type="text" id="txtLoginAccount" class="txt"><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+    @*<div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">区域位置：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+        <select id="sltIndirectParent" class="slt">
+            <option value="1">左区</option>
+            <option value="2">右区</option>
+        </select><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>*@
+    @if (count>=2){
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">所属责任人：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+        <input type="text" id="txtPerson_Liable" class="txt"><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+    }
+    <div class="defeditrow" style="display:none;">
+        <ul>
+            <li class="cpt fntcpt">昵 称：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+        <input type="text" id="txtNickName" class="txt"><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+@*    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">证件号码：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtCardNo" class="txt"><span class="msg">*</span></li>
+        </ul>
+    </div>*@
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">电子邮箱：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtEmail" class="txt"></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">手 机 号：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtMobile" class="txt"><span class="msg">*</span></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">开户银行：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+            <select id="sltBank" class="slt">
+                <option value="中国银行">中国银行</option>
+                <option value="中国建设银行">中国建设银行</option>
+                <option value="中国工商银行">中国工商银行</option>
+                <option value="中国农业银行">中国农业银行</option>
+                <option value="浦发银行">浦发银行</option>
+                <option value="交通银行">交通银行</option>
+                <option value="中国民生银行">中国民生银行</option>
+                <option value="中国光大银行">中国光大银行</option>
+                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                <option value="兴业银行">兴业银行</option>
+                <option value="中信银行">中信银行</option>
+                <option value="招商银行">招商银行</option>
+                <option value="华夏银行">华夏银行</option>
+            </select>
+            </li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">开户名：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtBankUser" class="txt"></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">开户分行：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtBankBranch" class="txt"></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">银行卡号：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtBankAccount" class="txt"></li>
+        </ul>
+    </div>
+    
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">支付宝号：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;&nbsp;<input type="text" id="txtAlipay" class="txt"></li>
+        </ul>
+    </div>
+    <!--div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;</li>
+        </ul>
+    </div-->
+    <div class="buttonbox">
+        <div class="buttonrowc">
+            <input type="button" id="btnSubmit" value="提 交" class="button" onclick="CustomerRegisterClick()" />
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var Userid = "@Userid";
+        if (Userid == "")
+        { 
+            location.href = '/Home/Login';
+        }
+    })
+</script>

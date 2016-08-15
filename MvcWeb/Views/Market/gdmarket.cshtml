@@ -1,0 +1,298 @@
+﻿@{
+    ViewBag.Title = "gdmarket";
+    Layout = "~/Views/_Market.cshtml";
+}
+<div id="deal_list" class="core_main Fun_ep_deal">
+
+    <div class="market">
+        <ul class="market-boxes">
+            <li>
+                <a href="/index.php?s=/User/Market/mcharts">
+                    <div style="padding: 11px 10px 7px 0; line-height: 47px; width: 160px; font-size: 18px;" class="market-left">进入GT买家市场</div>
+                </a>
+                <div style="font-size: 12px;" class="market-left digital"><span>
+                    <img src="/theme/images/market2.png"></span>Buyers</div>
+            </li>
+            <li>
+                <a href="/index.php?s=/User/Market/charts">
+                    <div style="padding: 11px 10px 7px 0; line-height: 47px; width: 160px; font-size: 18px;" class="market-left">进入GT市场</div>
+                </a>
+                <div style="font-size: 12px;" class="market-left digital"><span>
+                    <img width="50" height="24" src="/theme/images/market2.png"></span>Sellers</div>
+            </li>
+        </ul>
+    </div>
+    <div style="text-align: left;" class="core_title">
+        <span class="core_title_con">走势图</span>
+    </div>
+    <div style="padding-top: 20px; background: #fff;" class="core_con">
+        <iframe width="100%" height="200" frameborder="no" allowtransparency="yes" scrolling="no" marginheight="0" marginwidth="0" border="0" src="/charts.html" runat="server"></iframe>
+    </div>
+    <div style="margin-top: 10px; width: 99.9%; text-align: left;" class="core_title">
+        <span class="core_title_con">GD出售列表</span>
+    </div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr class="datafield">
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>当前价格(元/枚)</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>GD1买盘</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>买盘状态</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>GD1卖盘</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>卖盘状态</nobr>
+                    </th>
+                </tr>
+
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.56</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol0">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol0">370600</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>可&nbsp;售&nbsp;出</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.57</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol1">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol1">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.58</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol2">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol2">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.59</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol3">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol3">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.60</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol4">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol4">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.61</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol5">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol5">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.62</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol6">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol6">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+                <tr class="datalist">
+                    <td style="font-size: 12px; border-left: 1px #cfcfcf solid; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">1.63</nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="cvol7">800000</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>已&nbsp;挂&nbsp;满</span></nobr>
+                    </td>
+                    <td style="font-size: 12px; height: 19px; overflow: hidden; width: 25%; white-space: nowrap;">
+                        <nobr style="height: 19px; overflow: hidden; width: 25%; white-space: nowrap;" id="svol7">0</nobr>
+                    </td>
+                    <td style="font-size: 12px;">
+                        <nobr><span>未&nbsp;开&nbsp;放</span></nobr>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--我要买入结束-->
+    <div style="float: left; width: 49%; margin-top: 10px;">
+        <div style="text-align: left;" class="core_title">
+            <span class="core_title_con">我要卖出
+          <span><a class="btn-danger2" data-toggle="modal" href="/User/GD2Log">我的GD2</a></span>
+                <span><a class="btn-danger2" data-toggle="modal" href="/User/GD1Log">我的GD1</a></span>
+            </span>
+        </div>
+        <div class="core_con">
+            <form action="/index.php?s=/User/Market/domprice" method="post">
+                <table class="tablebg">
+                    <!-- 价格 -->
+                    <tbody>
+                        <tr class="datalist">
+                            <td class="tbkey">GD2余额：</td>
+                            <td class="tbval">
+                                <p id="kmjb" style="color: #F00;"></p>
+                            </td>
+                        </tr>
+                        <tr class="datalist">
+                            <td class="tbkey">收益：</td>
+                            <td class="tbval">&nbsp;/0&nbsp;</td>
+                        </tr>
+                        <tr class="datalist">
+                            <td class="tbkey">卖出金币数：</td>
+                            <td class="tbval">
+                                <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" style="border-radius: 5px; width: 160px;" name="price" value=""></td>
+                        </tr>
+                        <tr class="datalist">
+                            <td class="tbkey">卖出价格：</td>
+                            <td class="tbval">
+                                <select style="width: 180px;" class="xiala" name="basic">
+                                    <option value="1.56">1.56                        </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="datalist">
+                            <td class="tbkey">二级密码：</td>
+                            <td class="tbval">
+                                <span>
+                                    <input type="password" style="width: 160px;" name="pass2" id="pass2" value=""></span>&nbsp;&nbsp;<span style="line-height: 24px;" class="form_notice">*</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2">
+                                <input type="submit" value="确认提交" id="gtzt4" class="input_button kes1">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="hidden" value="98f267d4f92e4f70ba4effcbc517118d_b3dff27416381801be0bcf1405cd16ff" name="__hash__">
+            </form>
+        </div>
+    </div>
+
+    <!--我要卖出结束-->
+    <div style="float: right; width: 49%; margin-top: 10px;">
+        <div style="text-align: left;" class="core_title">
+            <span class="core_title_con">矿机金币转入</span><span><a style="margin-top: -34px;" class="btn-danger2" data-toggle="modal" href="/User/miner">查看矿机记录</a></span>
+        </div>
+        <div class="core_con">
+            <form action="/index.php?s=/User/Market/dozhuanru" method="post">
+                <table class="tablebg">
+                    <tbody>
+                        <tr class="datalist">
+                            <td class="tbkey">拥有矿机：</td>
+                            <td class="tbval">
+                                <p id="kmjb" style="color: #F00;">0</p>
+                            </td>
+                        </tr>
+                        <!-- 价格 -->
+                        <tr class="datalist">
+                            <td class="tbkey">矿机金币：</td>
+                            <td class="tbval">
+                                <p id="kmjb" style="color: #F00;">0</p>
+                            </td>
+                        </tr>
+
+                        <tr class="datalist">
+                            <td class="tbkey">提示：</td>
+                            <td class="tbval">
+                                <p id="kmjb" style="color: #F00;">点击一键转入，将把所有矿机金币转入GD2</p>
+                            </td>
+                        </tr>
+                        <tr class="datalist">
+                            <td class="tbkey">二级密码：</td>
+                            <td class="tbval">
+                                <span>
+                                    <input type="password" style="width: 100px;" name="pass2" id="pass2" value=""></span>
+                                &nbsp;<span class="form_notice">*</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2">
+                                <!--<div class="input_button" style="background: #ccc;border: 1px #ccc solid;">挂单进行中</div>-->
+                                <input type="submit" onclick="return show_del()" value="一键转入" class="input_button">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="hidden" value="98f267d4f92e4f70ba4effcbc517118d_b3dff27416381801be0bcf1405cd16ff" name="__hash__">
+            </form>
+        </div>
+    </div>
+</div>

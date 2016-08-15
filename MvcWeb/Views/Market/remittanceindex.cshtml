@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "汇款";
+    Layout = "~/Views/_Market.cshtml";
+}
+<script  type="text/javascript" src="/theme/My97DatePicker/WdatePicker.js"></script>
+<div id="edit" class="core_main User">
+    <div class="core_title"><span class="core_title_con"><span>当前位置</span>：高特币交易市场&gt;&gt;汇款信息</span></div>
+    <div class="core_con">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">卖家编号：</td>
+                        <td class="tbval">@Model.Rows[0]["showuserID"]
+                            <input type="hidden" id="ID" value="@Model.Rows[0]["ID"]" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户银行：</td>
+                        <td class="tbval">@Model.Rows[0]["showbank"]
+                        </td>
+                    </tr>
+                     <tr>
+                        <td class="tbkey">开户分行：</td>
+                        <td class="tbval">@Model.Rows[0]["showbankname"]
+                        </td>
+                    </tr>
+                     <tr>
+                        <td class="tbkey">银行卡号：</td>
+                        <td class="tbval">@Model.Rows[0]["showbanknum"]
+                        </td>
+                    </tr>
+                     <tr>
+                        <td class="tbkey">开户名：</td>
+                        <td class="tbval">@Model.Rows[0]["showbankuser"]
+                        </td>
+                    </tr>
+
+                     <tr>
+                        <td class="tbkey">支付宝账号：</td>
+                        <td class="tbval">@Model.Rows[0]["showalipay"]
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">购买金额(美元)：</td>
+                        <td class="tbval">@(Convert.ToDouble(Model.Rows[0]["dealmoney"])*Convert.ToDouble(Model.Rows[0]["rate"])) US$</td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">汇款方式：</td>
+                        <td class="tbval"><input type="radio" value="2" name="buytype" checked="checked" />银行转账<input type="radio" value="1" name="buytype"/>支付宝转账</td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">汇款金额：</td>
+                        <td class="tbval">@(Convert.ToDouble(Model.Rows[0]["dealmoney"])*Convert.ToDouble(Model.Rows[0]["rate"])*Convert.ToDouble(ViewBag.usdRate)) CNY</td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">汇款时间：</td>
+                        <td class="tbval"><input type="text"id="transfertime"  class="Wdate" onClick="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss', alwaysUseStartDate: true })"/></td>
+                    </tr>
+                     <tr>
+                        <td class="tbkey">汇款流水：</td>
+                        <td class="tbval"><input type="text" id="transfernum" /></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="2">
+                            <input type="button" value="确定汇款" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text" onclick="remittance()">
+                            <input type="button" value="返回" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text" onclick="history.back();">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+<script>
+    function remittance() {
+        var ID = $("#ID").val();
+        var buytype=$(':radio[name="buytype"]:checked').val();
+        var transfertime = $("#transfertime").val();
+        var transfernum = $("#transfernum").val();
+        if (ID.length == 0) {
+            alert("参数错误请刷新重试");
+            return;
+        }
+        if (buytype.length == 0) {
+            alert("汇款方式不能为空");
+            return;
+        }
+        if (transfertime.length == 0) {
+            alert("汇款时间不能为空");
+            return;
+        }
+        if (transfernum.length == 0) {
+            alert("汇款流水不能为空");
+            return;
+        }
+        var para = {};
+        para.ID = ID;
+        para.buytype = buytype;
+        para.transfertime = transfertime;
+        para.transfernum = transfernum;
+        $.ajax({
+            url: "/Market/remittance",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (pagedata) {
+                if (pagedata.success) {
+                    alert(pagedata.msg);
+                    window.location.href = "/User/BybtLog";
+                }
+                else {
+                    alert(pagedata.msg);
+                }
+            }
+        });
+    }
+</script>

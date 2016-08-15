@@ -1,0 +1,116 @@
+﻿@{
+    Page.Title = "组织架构图";
+    Layout = null;
+
+    var CustomerInfo = (new ZGZY.BLL.CustomerBL()).GetCustomerByID(ViewBag.theAccId ); //ZGZY.Common.LogionCookie.GetUserId()
+
+    System.Data.DataTable dt_sta = (System.Data.DataTable)ZGZY.Common.SqlHelper.Query("exec sp_getTeamStatistics '" + ViewBag.theAccId + "' ").Tables[0];
+    string uSta = "";
+    if (dt_sta != null)
+    {
+        uSta = "<div>左矿机：" + dt_sta.Rows[0]["lm"].ToString() + "，业绩：" + dt_sta.Rows[0]["lIncome"].ToString() + "</div><div>右矿机：" + dt_sta.Rows[0]["rm"].ToString() + "，业绩：" + dt_sta.Rows[0]["rIncome"].ToString() + "</div>";
+    }
+    else
+    {
+        uSta = "";
+    }    
+}
+<style type="text/css">
+
+    .deftitle { height: 36px; line-height: 36px;  background-color: #B9D1EA;margin: 10px 1%;}
+    .icon-search {
+    background: url('/Content/Images/search.png') no-repeat right;
+    width:150px;
+    border:1px groove;
+    cursor:pointer;
+    }
+</style>
+<script type="text/javascript">
+
+    function goSearch(pAccId) {
+
+        SubMenuItemClick(24, '安置系统图', '业务管理', '/Mills/SetSystem?theAccId=' + pAccId);
+    }
+</script>
+<div class="hkremittance">&nbsp;&nbsp;安置系统图</div>
+<div>&nbsp;&nbsp;会员编号：<input type="text" name="pAccId" id="pAccId" value="@ViewBag.theAccId" /><span class="icon-search" onclick="javascript:goSearch($('#pAccId').val());" >&nbsp;&nbsp;搜索&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+
+
+<link href="~/Content/group-structure/group-structure/css.css?v=314" rel="stylesheet" />
+<div class="strt-wrap" id="strtWrap" style="left:10%;width:1600px;">
+<div class="strt-block">
+<div class="strt-part">
+	<span class="strt-name">@CustomerInfo.Login_Account<br />@(ZGZY.BLL.BS_Machine.FinMachine(CustomerInfo.Login_Account))@Html.Raw(uSta)</span>
+@*	<div class="line-v"><span></span></div>
+	<div class="strt-block">
+		<div class="strt-part">
+			<span class="line-h line-h-r"></span>
+			<div class="line-v"><span></span></div>
+			<span class="strt-name">软件开发</span>
+			<div class="line-v"><span></span></div>
+			<div class="strt-block">
+				<div class="strt-part">
+					<span class="line-h line-h-r"></span>
+					<div class="line-v"><span></span></div>
+					<span class="strt-name">WEB开发</span>
+					<div class="line-v"><span></span></div>
+					<div class="strt-block">
+						<div class="strt-part">
+							<span class="line-h line-h-r"></span>
+							<div class="line-v"><span></span></div>
+							<span class="strt-name">网页设计</span>
+                            <div class="line-v"><span></span></div>
+					        <div class="strt-part">
+						<span class="strt-name">4742G</span>
+					</div>
+						</div>
+						
+						<div class="strt-part">
+							<span class="line-h line-h-l"></span>
+							<div class="line-v"><span></span></div>
+							<span class="strt-name">程序设计</span>
+						</div>
+					</div>
+				</div>
+				<div class="strt-part">
+					<span class="line-h line-h-l"></span>
+					<div class="line-v"><span></span></div>
+					<span class="strt-name">客户端用户交互</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="strt-part">
+			<span class="line-h line-h-l"></span>
+			<div class="line-v"><span></span></div>
+			<span class="strt-name">电脑品牌</span>
+			<div class="line-v"><span></span></div>
+			<div class="strt-block">
+				<div class="strt-part">
+					<span class="line-h line-h-r"></span>
+					<div class="line-v"><span></span></div>
+					<span class="strt-name">华硕</span>
+				</div>
+				<div class="strt-part">
+					<span class="line-h line-h-c"></span>
+					<div class="line-v"><span></span></div>
+					<span class="strt-name">宏碁</span>
+					<div class="line-v"><span></span></div>
+					<div class="strt-part">
+						<span class="strt-name">4742G</span>
+					</div>
+				</div>
+				<div class="strt-part">
+					<span class="line-h line-h-l"></span>
+					<div class="line-v"><span></span></div>
+					<span class="strt-name">联想</span>
+				</div>
+			</div>
+		</div>
+	</div>*@
+    @Html.Raw(ViewData["SON"])
+</div>
+</div>
+</div>
+<script src="~/Content/group-structure/group-structure/jquery.ui.draggable.min.js"></script>
+<script src="~/Content/group-structure/group-structure/main.js"></script>

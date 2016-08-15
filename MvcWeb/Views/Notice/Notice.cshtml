@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "系统公告";
+    Layout = null;
+}
+
+    
+    
+    @*<div class="core_page">
+        <span>共46条记录 1/4页 &nbsp;</span>
+        <span>首页&nbsp;&nbsp;</span><a href="">上一页</a>&nbsp;&nbsp;1&nbsp;&nbsp;
+        <a href="">2</a>&nbsp;&nbsp;<a href="">3</a>&nbsp;&nbsp;<a href="">下一页</a>&nbsp;&nbsp;
+        <a href="">尾页</a>
+        @Html.Raw(ViewBag.pagination)
+    </div>*@
+
+
+
+
+
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .tablebg {
+        width: 95%;
+        line-height: 28px;
+        border-top: 1px solid #f9f9f9;
+        color: #666;
+        height: 24px;
+        line-height: 24px;
+        margin: 20px auto;
+    }
+
+        .tablebg a {
+            color: #006dcc;
+        }
+
+        .tablebg td, .tablebg th {
+            border-bottom: 1px solid #eee;
+            padding: 7px 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .tablebg .datafield td, .tablebg .datafield th {
+            color: #666;
+            background: #ddb31f;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        #blanc_red .tablebg .datafield td, .tablebg .datafield th {
+            background: #ddb31f;
+            color: #fff;
+        }
+
+        .tablebg .datalist td {
+            border-left: 1px solid #eee;
+        }
+
+    .datalist td.datadetail {
+        border: 1px #cdcdcd solid;
+        font-size: 12px;
+    }
+
+    .datadetail span {
+        width: 30%;
+        text-align: center;
+        display: block;
+        float: left;
+    }
+
+    .dlatext {
+        padding: 10px 0;
+    }
+
+        .dlatext p {
+            height: 32px;
+            line-height: 32px;
+            font-size: 14px;
+            width: 280px;
+            float: left;
+            padding: 0 10px;
+        }
+
+            .dlatext p.yih {
+                clear: both;
+                width: 620px;
+            }
+
+            .dlatext p.acc {
+                clear: both;
+                width: 620px;
+                border-bottom: 1px solid #cdcdcd;
+                border-top: 1px solid #cdcdcd;
+                background: #f8f8f8;
+                margin: 5px 0;
+            }
+
+    .core_page {
+        background: #fff none repeat scroll 0 0;
+        border-image: none;
+        color: #999;
+        font-size: 12px;
+        padding: 0 12px 15px;
+        text-align: center;
+    }
+
+        .core_page a {
+            color: #006dcc;
+            font-size: 12px;
+        }
+
+    .core_pages {
+        color: #999;
+        font-size: 12px;
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+        .core_pages a {
+            color: #006dcc;
+            font-size: 12px;
+        }
+
+    .divcentent {
+        background: #fff none repeat scroll 0 0;
+        margin: 10px 1%;
+        overflow: hidden;
+        padding: 10px 2%;
+        width: 94%;
+    }
+</style>
+
+<div class="divcentent" >
+    <div class="pagepanel" >
+        <div class="core_con">
+            <table class="tablebg">
+                <tbody>
+                     <tr class="datafield">
+                        <th style="border: 1px #cdcdcd solid; font-size: 14px;" colspan="9">
+                            <nobr>公司公告</nobr>
+                        </th>
+                    </tr>
+                    <tr class="datalist">   
+                        <td style="border: 1px #cdcdcd solid; font-size: 14px;">
+                            <nobr>标题</nobr>
+                        </td>                     
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;">
+                            <nobr>创建时间</nobr>
+                        </td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid; ">
+                            <nobr>操作</nobr>
+                        </td>
+                        
+                    </tr>
+
+                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    {
+              
+                        
+                        <tr class="datalist">
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.Rows[i]["Title"]</nobr></td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr>@Model.Rows[i]["Created_Date"]</nobr></td>
+                        <td style="font-size: 14px; border: 1px #cdcdcd solid;"><nobr><a onclick="GoDetail('@Model.Rows[i]["ID"]')" style="font-size:14px;cursor:pointer;font-family:'Microsoft YaHei'">查看</a></nobr></td>
+                        
+                    </tr>
+                        
+                    }
+
+                    
+
+                </tbody>
+            </table>
+        </div>
+        <div class="core_page">
+       
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function GoDetail(id) {
+        $("#dvSubPage").load("/Notice/NoticeDetail?ID="+id);
+    }
+
+
+</script>

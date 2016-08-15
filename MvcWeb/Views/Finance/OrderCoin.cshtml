@@ -1,0 +1,115 @@
+﻿
+@{
+    Page.Title = "矿机币换购高特币";
+    Layout = null;
+
+    var CustomerList = new ZGZY.BLL.CustomerBL().GetCustomerByID(ZGZY.Common.LogionCookie.GetUserId());
+}
+
+
+<style type="text/css">
+   /* .deftitle { height: 36px; line-height: 36px; position: absolute; top:10px; right: 30px;  left: 30px; background-color: #B9D1EA; }
+    .editbox { position: relative; top: 20px; bottom: 18px; left: 14px; border: 1px solid #8C988A; width:956px;overflow:auto; }*/
+    .defeditrow { height: 36px; line-height: 36px; margin: 10px 20px; }
+    .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+    .defeditrow ul li.cpt { width: 40%; height: 36px; line-height: 36px; text-align: right; float: left; }
+    .defeditrow ul li.txt { width: 60%; height: 36px; line-height: 36px; text-align: left; float: left; }
+</style>
+
+<div class="hkremittance">&nbsp;&nbsp;矿机币换购高特币</div>
+<input type="hidden" value="@(new ZGZY.BLL.BS_Configuration().GetModel(3).value )" id="sxf" />
+<div class="editbox">
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">矿主：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;@CustomerList.Login_Account
+            </li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">矿机币数量：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;<span id="nowshul" >@CustomerList.ORE</span></li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">换购数量：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+                <input type="text" id="txtOrderNum" class="txt" value="0" ><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">换购手续费：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;@(new ZGZY.BLL.BS_Configuration().GetModel(3).value ) % </li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">实际到账高特币：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;<span id="payre" >0</span> </li>
+        </ul>
+    </div>
+    <div class="defeditrow">
+        <ul>
+            <li class="cpt fntcpt">交易密码：&nbsp;</li>
+            <li class="txt fnttxt">&nbsp;
+                <input type="password" id="txtPayPassword" class="txt"><span class="msg">*</span>
+            </li>
+        </ul>
+    </div>
+    <div class="buttonbox">
+        <div class="buttonrowc">
+            <input type="button" id="btnConfirm" value="确 定" class="button" />
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" >
+    $(function () {
+        var r = /^[0-9]*[1-9][0-9]*$/
+        $("#txtOrderNum").blur(function () {
+           
+            if ($(this).val() == "")
+            {               
+                $(this).val("0");
+            }
+            if (r.test($(this).val()) == false) {
+                $(this).val("0");
+            }
+            var sxf = $("#sxf").val();
+            $("#payre").text(parseInt($(this).val() - parseInt($(this).val()) * parseFloat(sxf / 100)));
+
+
+        });
+
+        $("#btnConfirm").click(function () {
+            if ($("#txtOrderNum").val() == "")
+            {
+                alert("请输入数量！");
+                return;
+            }
+            if ($("#txtPayPassword").val() == "") {
+                alert("请输入密码！");
+                return;
+            }
+
+            var now = $("#nowshul").text();
+
+            var payre = $("#txtOrderNum").val();
+            if (parseInt(now) < parseInt(payre)) { alert("超出可兑换矿币额度！"); return; }
+            loadingShow();
+            $.post("/Finance/ExchangeMRC", { num: $("#txtOrderNum").val(), pwd: $("#txtPayPassword").val() }, function (jsons) {
+                loadingHide();
+                alert(jsons.msg);
+                if (jsons.status == 0) {
+                    location.reload();
+                } else {
+                    return;
+                }
+            }, 'json');
+        })
+    })
+</script>

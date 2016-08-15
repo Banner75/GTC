@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "GD预约订单列表";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="deal_list" class="core_main Fun_ep_deal">
+    <div class="core_title">
+        <span class="core_title_con">GD预约订单列表
+        <span><a class="btn-danger" data-toggle="modal" href="/User/GD1Log">我的GD1</a></span>
+            <span><a class="btn-danger" data-toggle="modal" href="/User/GD2Log">我的GD2</a></span>
+        </span>
+    </div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr style="font-size: 12px;" class="datafield">
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">GD报单数量</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">GD报单价格</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">生成GD账户</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">买入成本</th>
+                    <th style="border-left: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid">操作</th>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="core_page">
+        <span>0条记录 1/1页 &nbsp;</span>
+        <span>首页&nbsp;&nbsp;</span>    <a href="/index.php?s=%2FUser%2FMarket%2Fmygdes&amp;p=0">上一页</a>&nbsp;&nbsp;
+            1&nbsp;&nbsp;
+            <a href="/index.php?s=%2FUser%2FMarket%2Fmygdes&amp;p=2">下一页</a>&nbsp;&nbsp;
+    <span>尾页</span>
+    </div>
+    <!--
+  <div class="core_title" style="margin-top:10px;">
+    	<span class="core_title_con">我要卖出</span>
+  </div>
+  <div class="core_con">
+    <form method="post"  action="/index.php?s=/User/Market/domprice">
+      <table class="tablebg">
+          
+      <tr class="datalist">
+          <td class="tbkey">GD2余额：</td>
+          <td  class="tbval"><P style="color:#F00;" id="kmjb"></P></td>
+      </tr>
+      <tr class="datalist">
+          <td class="tbkey">收益：</td>
+          <td  class="tbval">&nbsp;/&nbsp;</td>
+      </tr>
+		  <tr class="datalist">
+          	<td class="tbkey">卖出金币数：</td>
+			<td  class="tbval">
+			   <input type="text" value="" name="price" style="border-radius:5px; width:160px;"/></td>
+          </tr>
+          <tr class="datalist">
+            <td class="tbkey">卖出价格：</td>
+            <td  class="tbval">
+				<select name="basic" class="xiala" style="width:180px;">
+				<option value=""/>请选择价格（元/个）
+								</select>
+			</td>
+      </tr>
+		  <tr class="datalist">
+			<td class="tbkey">二级密码：</td>
+			<td class="tbval">
+			 <span><input type="password" value="" id="pass2" name="pass2"  style="width:160px;"/></span>&nbsp;&nbsp;<span class="form_notice" style="line-height:24px;">*</span>
+			</td>
+		  </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <span class="input_button" style="background: #ccc;border: 1px #ccc solid;">暂未开放</span>
+              <input type="submit" class="input_button" value="确认提交" >
+            </td>
+          </tr>
+     </table>
+     <input type="hidden" name="__hash__" value="db0bd81dd34db43871a0cdc75a88f726_eae2749908021730e974f96199acf829" /></form> 
+  </div>
+  -->
+</div>

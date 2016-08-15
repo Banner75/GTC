@@ -1,0 +1,46 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>高特币-@ViewBag.Title</title>
+    <link href="/Content/Patterns/bassGTB.css" rel="stylesheet" />
+    <link href="/Content/Patterns/Global.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="/Scripts/Home/Menu.js?v=123"></script>
+    
+</head>
+
+<body>
+    <div class="wd16 syimgdiv">
+
+        <div class="wd16" style="background-color: #32323a; height: 98px;">
+             @Html.Partial("Head","Home")
+        </div>
+        <div class="wd16">
+            <div class="wd12" style="height: auto; padding: 10px 0px 20px 0px;">
+                <div class="syleftnavdiv">
+                     @Html.Partial("Left","Home")
+       
+                </div>
+
+                <div id="dvSubPage" class="syrightdiv">
+                    <!-- 子页面内容 -->
+                        @RenderBody()
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 底部 -->
+        <div class="wd16" style="background-color: #32323a; height: 54px;">
+            <div class="wd12 dbbanquandiv">
+                © 2016-2026 gotter.com 粤ICP证050897号 免责声明  高特币 版权所有
+            </div>
+        </div>
+        <!-- 底部end -->
+
+    </div>
+</body>
+</html>

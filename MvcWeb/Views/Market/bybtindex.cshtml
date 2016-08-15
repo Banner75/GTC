@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "购买GT";
+    Layout = "~/Views/_Market.cshtml";
+}
+<div id="edit" class="core_main User">
+    <div class="core_title"><span class="core_title_con"><span>当前位置</span>：购买GT</span></div>
+    <div class="core_con">
+        <form >
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">矿主编号：</td>
+                        <td class="tbval">@Model.userID
+                            <input type="hidden" id="BTID" value="@Model.ID" name="BTID" /></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">出售数量：</td>
+                        <td class="tbval">@Model.showmoney</td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey"><span class="msg">提示：</span></td>
+                        <td class="tbval">
+                            <span class="msg">你可全额购买或部分购买卖家出售的GT</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">购买数量：</td>
+                        <td class="tbval">
+                            <input type="text" value="" name="bynum" id="bynum">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="2">
+                            <input type="button" value="下一步" class="button_text" style="margin: 10px;" onclick="bybtform()">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+    
+</script>
+

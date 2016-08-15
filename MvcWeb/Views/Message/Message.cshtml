@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "站内邮件";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div id="index" class="core_main Mail">
+    <div class="core_title">
+        <span class="core_title_con"><span>当前位置</span>：信息中心&gt;&gt;站内邮件<span><a class="btn-danger2" data-toggle="modal" href="/Message/SendBox">发件箱</a></span>&nbsp;<span><a class="btn-danger2" data-toggle="modal" href="/Message/Message">收件箱</a></span>&nbsp;<span><a class="btn-danger2" data-toggle="modal" href="/Message/SendMessage">发送邮件</a></span></span>
+    </div>
+    <div class="core_con">
+        <table onmouseout="changeback()" onmouseover="changeto()" class="tablebg">
+            <tbody>
+                <tr class="datafield">
+                    <th style="border-right: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid; font-size: 12px;">
+                        <nobr>标题</nobr>
+                    </th>
+                    <th style="border-right: 1px #cdcdcd solid; border-bottom: 1px #cdcdcd solid; font-size: 12px;">
+                        <nobr>收件时间</nobr>
+                    </th>
+                   
+                    <th style="font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                        <nobr>基本操作</nobr>
+                    </th>
+                </tr>
+                 @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+
+                    
+                    <tr class="datalist">
+                        <td style="border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr>@Model.Rows[i]["title"]</nobr>
+                        </td>
+                        <td style="border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr>@Model.Rows[i]["addtime"]</nobr>
+                        </td>
+                      
+                        <td style="font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr><a href="/Message/Messagedetail?ID=@Model.Rows[i]["ID"]">查看</a></nobr>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="core_page">
+        @Html.Raw(ViewBag.pagination)
+    </div>
+</div>

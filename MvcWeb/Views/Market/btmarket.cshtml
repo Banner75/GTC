@@ -1,0 +1,491 @@
+﻿@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/_Market.cshtml";
+    string tradeRate = (new ZGZY.BLL.BS_Configuration()).GetModel(15).value;
+}
+    <link href="/theme/css/css.css" rel="stylesheet" type="text/css">
+    <link href="/theme/css/view.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/unicorn.css" />
+    <script src="/scripts/highcharts/highcharts.js" type="text/javascript"></script>
+
+<div id="deal_list" class="core_main Fun_ep_deal">
+    <eq value="1" name="gold:sellOpen">
+    <div class="core_title">
+    	<span class="core_title_con">高特币交易市场</span>
+    </div>
+    
+    <div class="market">
+       <ul class="market-boxes">
+           <li>
+                <div style="font-size:12px;" class="market-left digital"><span><img src="/theme/images/market1.png">
+                 </span>@Html.Raw(ZGZY.BLL.BS_appreciation.UpsAndDowns(1))</div>
+                <div class="market-right">
+                    @{string today = new ZGZY.BLL.BS_Configuration().GetModel(5).value; }
+                    <strong>@today</strong>
+                     今日价格
+                </div>
+            </li>
+            <li>
+                <div style="font-size:12px;" class="market-left digital"><span><img src="/theme/images/market1.png">
+                </span>+20%</div>
+                <div class="market-right">
+                    @{string allbtlog = new ZGZY.BLL.BTtransactionson().GetSumBTtransactionson("1=1"); }
+                    <strong>@allbtlog</strong>
+                    历史成交总量
+                </div>
+            </li>
+            <li>
+                <div style="font-size:12px;" class="market-left digital"><span><img width="50" height="24" src="/theme/images/market2.png"></span>+5%</div>
+                <div class="market-right">
+                     @{string dayshowbt = new ZGZY.BLL.BTtransaction().GetSumBTtransaction("addtime>=convert(varchar(10),Getdate(),120) and addtime<convert(varchar(10),dateadd(d,1,Getdate()),120)"); }
+                    <strong>@dayshowbt</strong>
+                    今日GTC挂单总量
+                </div>
+            </li>
+            <li>
+                <div style="font-size:12px;" class="market-left digital"><span><img width="50" height="24" src="/theme/images/market1.png"></span>+5%</div>
+                <div class="market-right">
+                    @{string daybtlog = new ZGZY.BLL.BTtransactionson().GetSumBTtransactionson("addtime>=convert(varchar(10),Getdate(),120) and addtime<convert(varchar(10),dateadd(d,1,Getdate()),120)"); }
+                    <strong>@daybtlog</strong>
+                    今日GTC出售总量
+                </div>
+            </li>
+
+            <li>
+                <div style="font-size:12px;" class="market-left digital"><span><img width="50" height="24" src="/theme/images/market1.png"></span>+5%</div>
+                <div class="market-right">
+                    @{string usdRate = new ZGZY.BLL.BS_Configuration().GetModel(17).value;}
+                    <strong><span id="usdrate">@usdRate</span></strong>
+                    今日美元对人民币汇率
+
+
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+  <div style="margin-top:10px;" class="core_title">
+    <span class="core_title_con">出售列表</span>
+  </div>
+  <div class="core_con" id="core_con">
+     
+    </div>
+  <div class="core_page" id="core_page">
+  </div>
+
+ <div style="margin-top:10px;" class="core_title">
+     <span class="core_title_con">
+         </span>
+  </div>
+     <div  style="ui_MRCRate_layout" class="easyui-layout" data-options="fit:true,border:false">
+      <div style="z-index:999;position:absolute">
+            <a href="javascript:void(0);" onclick="javascript:preView();"> <<<前三个月</a>      
+            <a href="javascript:void(0);" onclick="javascript:nextView();">  后三个月>>></a>
+      </div>
+          <div data-options="region:'north',border:false,height:'240'">
+             <div id="container" style="min-width: 310px; height: 240px; margin: 0 auto"></div>
+        </div>
+        <div data-options="region:'center',border:false">
+            <table id="ui_MRCRateList_dg" data-options="fit:true,border:false"></table>
+        </div>
+    </div>
+
+        
+  <!--我要买入-->
+  @*<div style="float:left; width:49%; margin-top:10px;">
+    <div class="core_title">
+    	<span class="core_title_con">我要买GT（系统匹配）<span><a class="btn-danger2" data-toggle="modal" href="/User/BybtLog">MRC购买记录</a></span></span>
+  </div>
+    <div class="core_con">
+    <form class="form-horizontal" method="post" action="">
+      <table class="tablebg">    
+      <tbody><tr class="datalist">
+          	<td class="tbkey">注意事项：</td>
+			      <td class="tbval"><p style="color:#F00; font-size:12px;">1.购买GT可在列表中“直接购买”或“系统匹配”功能购买。</p><p style="color:#F00; font-size:12px;">2.下单后务必在30分钟内汇款！否则可能影响您的信誉值。</p><p style="color:#F00; font-size:12px;">3.付款完成后，请拨打卖家电话确认订单。</p></td>
+      </tr>  
+        <tr class="datalist">
+          <td style="border-left: 1px solid rgb(213, 213, 213);" class="tbkey">买入价：</td>
+          <td class="tbval"><font style="color:#F00;">1MRC = @(new ZGZY.BLL.BS_Configuration().GetModel(5).value) CNY</font></td>
+      </tr>    
+      <tr class="datalist">
+          <td class="tbkey">购买数量：</td>
+			    <td class="tbval">
+			        <input type="text" style="width:160px; border-radius:5px;" name="volume" value="" id="price">
+          </td>
+      </tr>
+		  <tr class="datalist">
+			<td class="tbkey">二级密码：</td>
+			<td class="tbval"><span><input style="display:none"><!-- for disable autocomplete on chrome --><input type="password" style="display:none"><!-- for disable autocomplete on chrome --><input type="password" style="width:160px" name="pass2" id="pass2" value=""></span>
+			 &nbsp;<span class="form_notice">*</span></td>
+		  </tr>
+          <tr>
+            <td align="center" colspan="2"><input type="submit" value="确认提交" class="input_button"></td>
+          </tr>
+     </tbody></table>
+  </form> 
+  </div>
+  </div>*@
+  <div style="float:left; width:49%; margin-top:30px;">
+     <div class="core_title">
+    	<span class="core_title_con">我要卖GTC@*<span><a class="btn-danger2" data-toggle="modal" href="/User/BybtLog">GT成交记录</a></span><span><a class="btn-danger2" data-toggle="modal" href="/Market/BTorder">BT挂单记录</a></span>*@</span>
+        <span>
+            @{
+                DateTime st_run_time = DateTime.Parse("2050-01-01");
+                string saleInfo = "";
+                bool blnCanSale = true;
+                System.Data.DataSet ds = null;
+                if(Model.Class ==0 || Model.Class == null )
+                {
+                    ZGZY.Model.BS_Machine aMachine = new ZGZY.BLL.BS_Machine().GetModelByAccount(Model.Login_Account);
+                    if(aMachine != null)
+                    {
+                        st_run_time = aMachine.start_run_time;
+                        ds = new ZGZY.BLL.BTtransaction().GetBTtransactionList(" UserId='" + Model.Login_Account + "'  and state !=1 ");
+                    }
+                    else
+                    {
+                        saleInfo = "您未租凭矿机，不能卖出GTC.";
+                        blnCanSale = false;
+                    }
+                    
+                    if(st_run_time.AddDays(120) < DateTime.Now ) //120天后可自由买卖
+                    {
+                            //;
+                    }
+                    else if (st_run_time.AddDays(90) < DateTime.Now) //90天后可50%
+                    {
+                        saleInfo = "您有一次机会卖出最多50%的GTC."; //;
+                        if(ds !=null)
+                        {
+                         if(ds.Tables[0].Rows.Count >=2)
+                         {
+                             saleInfo = "您已经使用过卖出GTC的机会.";
+                             blnCanSale = false;
+                         }   
+                        }
+                            
+                    }else if (st_run_time.AddDays(60) < DateTime.Now) //60天后可30%
+                    {
+                        saleInfo = "您有一次机会卖出最多30%的GTC."; //;
+                        if (ds != null)
+                        {
+                            if (ds.Tables[0].Rows.Count >= 1)
+                            {
+                                saleInfo = "您已经使用过卖出GTC的机会.";
+                                blnCanSale = false;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        saleInfo = "租凭矿机60天内不能卖出GTC.";
+                        blnCanSale = false;
+                    }
+                }
+                
+            }
+            
+        </span>
+     </div>
+     <div class="core_con">
+
+  @*  <form action="/Market/shouwbt" method="post" autocomplete="off" >*@
+      <table class="tablebg">        
+      <tbody>
+        <tr class="datalist"><td class="tbkey">注意事项：</td><td class="tbval"><p style="color:#F00; font-size:12px;">&nbsp;&nbsp;必须完善个人收款账户信息才可提交出售挂单，<br>&nbsp;&nbsp;否则将会导致交易失败并处罚1颗信誉星级。</p></td></tr>        <tr class="datalist">
+          <td style="border-left: 1px solid rgb(213, 213, 213);" class="tbkey">GTC余额：</td>
+          <td class="tbval"><font style="color:#F00;">@Model.MRC</font></td>
+      </tr>
+       <tr class="datalist" style="display:none;">
+         <td class="tbkey" >实际扣减数量：</td>
+         <td class="tbval"><input type="text" style="border-radius:5px; width:160px;" name="num1" id="Salenum1" value="" placeholder ="将扣减数量"  autocomplete="off"   ><p style="color:#F00; font-size:12px;">&nbsp;&nbsp;实际出售数量加上 @tradeRate%手续费，将作为出售方被扣减数量。</p></td>
+      </tr>
+      <tr class="datalist">
+         <td class="tbkey" >实际出售数量：</td>
+         <td class="tbval"><input type="text" style="border-radius:5px; width:160px;" name="num" id="Salenum" value="" placeholder ="实际出售数量"  autocomplete="off"   ></td>
+      </tr>
+		  <tr class="datalist">
+			<td class="tbkey">二级密码：</td>
+			<td class="tbval"><span><input type="password" style="width:160px;" name="paypwd" id="Salepaypwd" value="" autocomplete="off" ></span>&nbsp;<span class="form_notice">*</span></td>
+		  </tr>
+          <tr>
+                <td colspan="2"  >@if(blnCanSale) { <input type="button" value="提交至交易市场" class="input_button" id="salebtn"> } <p style="color:#F00; font-size:12px;">&nbsp;&nbsp;@saleInfo </p>  <!--input type="button" value="提交至回收大厅" class="input_button" id="salesysbtn"></td-->
+          </tr>
+       </tbody>
+     </table>
+@*</form>*@
+  </div>
+  </div>
+</eq>
+</div>
+<script>
+    $(function () {
+        $("#salebtn").click(function () {
+            saleMrc();
+        })
+
+        $("#Salenum1").blur(function () {
+            var tRate = @tradeRate /100.0 ;
+            //tRate=tRate.toFixed(4);
+            if ($("#Salenum1").val() > 0) {
+                $("#Salenum").val( ($("#Salenum1").val() /(1.0 + tRate)).toFixed(2) );
+            }
+
+        })
+
+        $("#Salenum").blur(function () {
+            var tRate = @tradeRate /100.0;
+            //tRate=tRate.toFixed(4);
+            if ($("#Salenum").val() > 0) {
+                $("#Salenum1").val( ($("#Salenum").val() * (1+tRate)).toFixed(2) );
+            }
+
+        })
+
+        $("#salesysbtn").click(function () {
+            //reycle();
+        })
+    })
+    function getbtmarketlist(page) {
+        var para = {};
+        para.page = page;
+        $.ajax({
+            url: "/Market/getbtmarketlist",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                var rowcontent = "<table class='tablebg'>" +
+                "<tbody><tr style='border-left: #d5d5d5 solid 1px;' class='datafield'>" +
+                "<th style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%;'><nobr>卖 家</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%;'><nobr>出售数量</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%;'><nobr>交易中</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%;'><nobr>已售出</nobr></th>" +
+                "<th style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%;'><nobr>操作</nobr></th>" +
+                "</tr>" +
+                "</tbody>";
+
+                for (var o in data.rows) {
+                    rowcontent = rowcontent + "<tr style='border-left: #d5d5d5 solid 1px;' class='datalist'>";
+                    rowcontent = rowcontent + "<td style='border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;'><nobr>" + data.rows[o].userID + "</nobr></td>";
+                    rowcontent = rowcontent + "<td style='border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;'><nobr>" + data.rows[o].showmoney + "</nobr></td>";
+                    rowcontent = rowcontent + "<td style='border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;'><nobr>" + data.rows[o].dealmoney + "</nobr></td>";
+                    rowcontent = rowcontent + "<td style='border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;'><nobr>" + data.rows[o].salemoney + "</nobr></td>";
+                    if (parseInt(data.rows[o].showmoney) == 0)
+                    {
+                        rowcontent = rowcontent + "<td style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%; border-bottom: 1px #cdcdcd solid;'>已售罄</td></tr>";
+                    } else {
+                        rowcontent = rowcontent + "<td style='border-right: 1px solid #cdcdcd;font-size:12px; width:20%; border-bottom: 1px #cdcdcd solid;'><a class='btn-danger2'style='color: #fff;float:inherit;' href='/Market/bybtindex?BTID=" + data.rows[o].ID + "'>直接购买</a></td></tr>";
+                    }
+                }
+                $("#core_con").html(rowcontent + "</table>");
+                var para2 = {};
+                para2.page = page;
+                para2.totalCount = data.total;
+                para2.jsaction = "getbtmarketlist";
+                $.ajax({
+                    url: "/Market/getbtmarketlistpage",
+                    data: para2,
+                    type: "POST",
+                    success: function (pagedata) {
+
+                        $("#core_page").html(pagedata);
+
+                    }
+                });
+            }
+        });
+    }
+    getbtmarketlist('1');
+
+    //提交至回收大厅
+    function reycle()
+    {
+        var count_fee = "@(ViewData.ContainsKey("Counter_fee")?ViewData["Counter_fee"].ToString():"0")";
+        if (confirm("-卖出价格受市场波动影响，实际卖出价格将以会员购买日期的当日价格为准\r\n-提交至回收大厅将会在提交数量上收取" + count_fee + "手续费，是否继续提交?")) {
+        }
+        else {
+            return;
+        }
+        loadingShow();
+        var mrcb = '@Model.MRC';
+        var salecount = $("#Salenum").val();
+        //判断数字
+        if (mrcb <= 0) {
+            alert("您的GTC余额:0，没有可用的高特币出售");
+            loadingHide();
+            return;
+        }
+        else {
+            if (salecount == "") {
+                alert("GTC出售数量不能为空");
+                loadingHide();
+                return;
+            }
+            //判断salecount是不是数字
+            var re = /^[0-9]+.?[0-9]*$/;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/  
+            if (!re.test(salecount)) {
+                alert("GTC出售数量不为数字");
+                loadingHide();
+                return;
+            }
+            if (salecount > mrcb)
+            {
+                alert("您的高特币余额小于你的高特币出售出售数量，请重新设置");
+                loadingHide();
+                return;
+            }
+        }
+        if ($("#Salepaypwd").val()=="")
+        {
+            alert("密码不能为空");
+            loadingHide();
+            return;
+        }
+        var para = {};
+        para.salenum = salecount;
+        para.password = $("#Salepaypwd").val();
+        $.ajax({
+            url: "/Market/SubmitRecycling",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status==1) {
+                    alert(data.msg);
+                    window.location.href = "/Market/btmarket";
+                    return true;
+                } else {
+                    alert(data.msg);
+                    loadingHide();
+                }
+            }
+        });
+    }
+
+
+</script>
+<script type="text/javascript">
+    var Months = 3;
+    var stDetaMonth = Months;
+    $(function () {
+        $('#container').highcharts({
+            title: {
+                text: '高特币转换比率',
+                x: -20 //center
+            },
+            subtitle: {
+                text: '',//'<a href="void(0);" onclick="javascript:preView();">前三个月</a>  <a href="void(0);" onclick="javascript:nextView();">后三个月</a>',
+                x: -20
+            },
+            xAxis: {
+                categories: ['1.1', '1.2', '1.3', '2.1', '2.2', '2.3', '3.1', '3.2', '3.3', '4.1', '4.2', '4.3', '5.1', '5.2', '5.3', '6.1', '6.2', '6.3', '7.1', '7.2', '7.3', '8.1', '8.2', '8.3', '9.1', '9.2', '9.3', '10.1', '10.2', '10.3', '11.1', '11.2', '11.3', '12.1', '12.2', '12.3', '13.1', '13.2', '13.3', '14.1', '14.2', '14.3', '15.1', '15.2', '15.3', '16.1', '16.2', '16.3', '17.1', '17.2', '17.3', '18.1', '18.2', '18.3', '19.1', '19.2', '19.3', '20.1', '20.2', '20.3', '21.1', '21.2', '21.3', '22.1', '22.2', '22.3', '23.1', '23.2', '23.3', '24.1', '24.2', '24.3', '25.1', '25.2', '25.3', '26.1', '26.2', '26.3', '27.1', '27.2', '27.3', '28.1', '28.2', '28.3', '29.1', '29.2', '29.3', '30.1', '30.2', '30.3', '31.1', '31.2', '31.3']
+                //['1.1', '1.2', '1.3', '2.1', '2.2', '2.3', '3.1', '3.2', '3.3', '4.1', '4.2', '4.3', '5.1', '5.2', '5.3', '6.1', '6.2', '6.3', '7.1', '7.2', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']
+            },
+            yAxis: {
+                title: {
+                    text: '' // 'Temperature (°C)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '2015年7月',
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8]
+            }, {
+                name: '2016年6月',
+                data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            }, {
+                name: '2016年5月',
+                data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+            }, {
+                name: '2016年4月',
+                data: []
+            }
+            ],
+            credits:enabled=false
+        });
+        viewChart();
+    });
+    
+    function viewChart() {
+        var para = {};
+        para.Months = Months;
+        para.stDetaMonth = stDetaMonth;
+        var chart = $('#container').highcharts();
+        //var d3 ="([-3.9, 0.6, 3.5, 8.4, 11.5, 17.0, 18.6, 17.9, 11])";
+        //chart.series[3].setData(eval(d3));
+        var i = 0;
+        i = chart.series.length;
+        for (var j = 0; j < i; j++) {
+            chart.series[0].remove();
+        }
+
+        $.ajax({     //请求当前用户可以操作的按钮
+            url: "/Market/getMonthRates",
+            type: "post",
+            data: para,
+            dataType: "json",
+            timeout: 5000,
+            success: function (data) {
+                for (var i = 0; i < data.series.length; i++) {
+                    var aseries = {};
+                    aseries.name = data.series[i].name;
+                    aseries.data = data.series[i].data;
+                    chart.addSeries(aseries, false);
+                }
+                chart.render();
+
+            }
+        });
+
+    } //end viewChart
+
+
+    function preView() {
+        stDetaMonth += Months;
+        viewChart();
+    }
+    function nextView() {
+        if (stDetaMonth > Months) {
+            stDetaMonth -= Months;
+            viewChart();
+        }
+    }
+
+    $(function () {
+        return;
+
+        var rateUrl = "http://api.k780.com:88/?app=finance.rate&scur=USD&tcur=CNY&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4";
+        $.ajax({
+            url: rateUrl,
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+                    alert(data.result);
+                    $("usdrate").text(data.result.rate);
+                }
+            }
+        });
+
+    }
+    )
+
+    
+
+</script>

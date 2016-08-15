@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "GT账户转账";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<div id="give" class="core_main Fun_bank">
+    <div class="core_title">
+        <span class="core_title_con"><span>当前位置</span>：资产管理&gt;&gt;GT账户转账                              <span><a class="btn-danger" data-toggle="modal" href="/User/GTIndex">返回GT账户</a></span>      </span>
+
+        <span class="core_title_edit"></span>
+    </div>
+    <div class="core_con">
+        <form id="giveform" onsubmit="return checkform()" method="post" action="/index.php?s=/User/Fun_bank/giveSave/args/fun_bank[4]">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">账户余额：</td>
+                        <td class="tbval"><span>0.00</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">转账类型：</td>
+                        <td class="tbval"><span>
+                            <input type="hidden" value="0" name="giveTo">
+                            Into BT-70%, GT1-30%                                </span></td>
+                    </tr>
+
+                    <tr style="display: none" id="hideuserid">
+                        <td class="tbkey">转入人编号：</td>
+                        <td class="tbval">
+                            <span>
+                                <input type="text" autocomplete="off" onkeyup="getid(this)" value="" id="userid" name="userid"></span>
+                            <span id="giveidname"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">转账金额：</td>
+                        <td class="tbval"><span>
+                            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" name="givesum" value=""></span>
+                            <span int="100" id="giveMoneyInt1">必须为100的整数倍</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey"><span>手续费</span>(<span id="givetax">10</span>%)：</td>
+                        <td class="tbval">
+                            <span id="tax">0</span><span style="color: red;" id="tax_convert"></span>
+                            <input type="hidden" value="0" id="leastComCharge">
+                            <input type="hidden" value="0" id="limitComCharge">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">备注：</td>
+                        <td class="tbval"><span>
+                            <input type="text" name="memo" value=""></span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">二级密码：</td>
+                        <td class="tbval"><span>
+                            <input type="password" name="pass2" value=""></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" onclick="tijiao()" name="but" value="确定" id="subbut" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="hidden" value="fbb53346e45d176d7a3b2fc8c7bb86c9_94da1d003c574e4491231b388b2698f0" name="__hash__">
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,124 @@
+﻿* { margin: 0px; padding: 0px; font-size: 14px; font-family: '微软雅黑'; }
+ul, ol { list-style: none; }
+a { text-decoration: none; cursor: pointer; }
+.wd16 { width: 1600px; height: auto; overflow: hidden; }
+.wd12 { width: 1200px; height: auto; overflow: hidden; margin: 0px auto; }
+
+/*#region  dl-登陆.html */
+.dldenglu { background: url('/Content/images/gtbdldenglu.jpg') no-repeat; height: 800px; margin: 0px auto; }
+.dllogo { width: 294px; height: 188px; margin: 100px auto 20px; }
+.dllogindiv { width: 293px; height: 327px; padding: 23px 37px; background-color: #124688; margin: 0px auto; border-radius: 5px; overflow: hidden; }
+.dlloginul { width: 100%; height: auto; overflow: hidden; }
+    .dlloginul li { width: 100%; height: auto; overflow: hidden; }
+    .dlloginul .dlyhdlspan { display: block; width: 100%; height: 30px; line-height: 30px; font-size: 20px; color: #fff; font-weight: 900; margin-bottom: 10px; }
+    .dlloginul .dlymyspan { float: left; width: 85px; height: 43px; line-height: 43px; margin-right: 1px; color: #fff; font-size: 15px; }
+    .dlloginul .dlymytext { float: left; width: 290px; height: 43px; line-height: 43px; border-radius: 5px; border: solid 1px #e5e5e5; text-indent: 1em; }
+    .dlloginul .dlyzmlgimg { float: left; width: 120px; height: 45px; margin-left: 10px; border-radius: 5px; }
+    .dlloginul .dllogindla { display: block; margin: 20px 0px 15px 0px; width: 290px; height: 50px; text-align: center; line-height: 50px; font-size: 18px; color: #fff; font-weight: bold; border-radius: 5px; background-color: #005794; background-image: -webkit-linear-gradient(bottom, #2db9fc, #005794); box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.5), 0 5px 25px rgba(30, 136, 201, 0.5); border: solid 1px #30dfdf; }
+    .dlloginul .dlloginwma { color: #ebebeb; }
+/*#endregion */
+
+/*#region tb-头部 */
+.tblogoa { float: left; width: 289px; height: 69px; margin-top: 15px; background: url('/Content/images/gtblogo.png') no-repeat; }
+.tbnihao { float: left; font-size: 16px; color: #fff; line-height: 33px; }
+.tbaqtca { float: left; font-size: 16px; color: #fff; padding-left: 25px; background: url('/Content/images/gtbsyout.png') no-repeat; background-position: 0px 8px; margin-left: 40px; line-height: 33px; }
+.tbgja1 { float: left; background: url('/Content/images/gtbsygj1.png') no-repeat; width: 33px; height: 33px; margin: 0px 22px 0px 38px; }
+.tbgja2 { float: left; background: url('/Content/images/gtbsygj2.png') no-repeat; width: 33px; height: 33px; }
+/*#endregion */
+
+/*#region db-底部 */
+.dbbanquandiv { height: 54px; text-align: center; font-size: 12px; color: #fff; line-height: 54px; }
+/*#endregion */
+
+/*#region sy-首页.html */
+.syimgdiv { background: url('/Content/images/gtbsybgimg.jpg') no-repeat; height: 1077px; margin: 0px auto; }
+/*#region 首页左侧导航 */
+.syleftnavdiv { width: 202px; height: 896px; background-color: #32323a; border-radius: 5px; float: left; margin-right: 10px; }
+.syleftspan { display: block; width: 202px; height: auto; line-height: 45px; }
+.sylefta { display: block; width: 157px; padding-left: 45px; height: 45px; line-height: 45px; color: #fff; font-size: 16px; }
+    .sylefta:hover { width: 156px; padding-left: 44px; height: 43px; line-height: 43px; margin: 1px; background-color: #1190d1; background-position-x: 14px; }
+.syleftahot { width: 156px; padding-left: 44px; height: 43px; line-height: 43px; margin: 1px; background-color: #1190d1; background-position-x: 14px; }
+.sytb1 { background: url('/Content/images/gtbsy1.png') no-repeat; background-position: 15px 11px; }
+.sytb2 { background: url('/Content/images/gtbsy2.png') no-repeat; background-position: 15px 11px; }
+.sytb3 { background: url('/Content/images/gtbsy3.png') no-repeat; background-position: 15px 13px; }
+.sytb4 { background: url('/Content/images/gtbsy4.png') no-repeat; background-position: 15px 13px; }
+.sytb5 { background: url('/Content/images/gtbsy5.png') no-repeat; background-position: 15px 15px; }
+.sytb6 { background: url('/Content/images/gtbsy6.png') no-repeat; background-position: 15px 14px; }
+.syleftxian { width: 100%; height: 1px; background-color: #484951; }
+.syleftul li a { display: block; height: 44px; width: 100%; border-bottom: solid 1px #484951; line-height: 44px; color: #fff; text-indent: 3.5em; }
+    .syleftul li a:hover { background-color: #0db89a; }
+/*#endregion */
+/*#region 右侧内容 */
+.syrightdiv { width: 988px; height: 896px; background-color: #fff; border-radius: 5px; float: left; overflow: hidden; }
+.syyoudiv { width: 934px; height: 842px; padding: 27px; overflow: hidden; }
+.syshangdiv { width: 848px; height: 89px; background: url('/Content/images/gtbsytouxiangbj.jpg') no-repeat; margin-bottom: 22px; padding: 17px 43px; }
+.sytximg { width: 87px; height: 87px; border-radius: 87px; float: left; }
+.syhydiv { float: left; margin-left: 28px; margin-top: 15px; width: 390px; }
+.syzxdiv { line-height: 30px; font-size: 16px; color: #fff; }
+.sygbw { float: left; line-height: 89px; font-size: 28px; color: #fff; }
+.syzhongdiv { width: 100%; height: auto; overflow: hidden; margin-bottom: 20px; }
+.syzhonga { float: left; width: 296px; height: 90px; padding-top: 134px; }
+.syzhongtu1 { background: url('/Content/images/gtbsyz1.png') no-repeat; }
+.syzhongtu2 { background: url('/Content/images/gtbsyz2.png') no-repeat; margin: 0px 23px; }
+.syzhongtu3 { background: url('/Content/images/gtbsyz3.png') no-repeat; }
+.syzhongtu4 { background: url('/Content/images/gtbsyz4.png') no-repeat; margin-top: 19px; }
+.syzhongtu5 { background: url('/Content/images/gtbsyz5.png') no-repeat; margin: 19px 23px 0px 23px; }
+.syzhongtu6 { background: url('/Content/images/gtbsyz6.png') no-repeat; margin-top: 19px; }
+.syzhongspan { display: block; width: 100%; height: 35px; line-height: 30px; font-size: 22px; color: #fff; text-align: center; }
+.syxiadiv { }
+.syxiatzgg { width: 100%; height: 35px; line-height: 35px; border-bottom: solid 1px #efefef; color: #000000; font-size: 16px; }
+.syxiaul { width: 100%; height: auto; overflow: hidden; }
+    .syxiaul li { height: 40px; line-height: 40px; overflow: hidden; border-bottom: dashed 1px #cccccc; padding-left: 20px; background: url('/Content/images/gtbsydian.png') no-repeat; background-position: 6px 17px; }
+.syxiaa { float: left; max-width: 800px; height: 40px; line-height: 40px; overflow: hidden; }
+.syxiaspan { float: right; text-align: right; width: 100px; height: 40px; line-height: 40px; overflow: hidden; }
+/*#endregion */
+/*#endregion */
+
+/*#region hk-汇款确认.html */
+.hkremittance { line-height: 47px; height: 47px; width: 100%; text-indent: 1em; border-bottom: solid 1px #efefef; color: #000; font-size: 16px; }
+.hkremdiv { line-height: 36px; height: 36px; margin-bottom: 18px; width: 100%; border-bottom: solid 1px #efefef; color: #000; font-size: 16px; }
+/*#region 汇款确认ul布局 */
+.hkremul { width: 927px; border: solid 1px #efefef; height: auto; overflow: hidden; }
+    .hkremul li { width: 100%; height: auto; overflow: hidden; }
+.hkremspanbt { float: left; height: 39px; line-height: 39px; text-align: center; border-right: solid 1px #efefef; border-bottom: solid 1px #efefef; overflow: hidden; background-color: #f6f6f6; }
+.hkremspannr { float: left; height: 34px; line-height: 34px; text-align: center; border-right: solid 1px #efefef; border-bottom: solid 1px #efefef; overflow: hidden; }
+.hkw126 { width: 126px; }
+.hkw151 { width: 151px; }
+.hkw138 { width: 138px; }
+.hkw148 { width: 148px; }
+.hkw202 { width: 202px; }
+.hkw157 { width: 157px; }
+/*#endregion */
+.hktable { border-collapse: collapse; }
+    .hktable th { border: solid 1px #efefef; text-align: center; height: 39px; color: #000000; background-color: #f6f6f6; }
+    .hktable td { border: solid 1px #efefef; text-align: center; height: 34px; color: #000000; }
+.hkwyhkul { width: 100%; height: auto; overflow: hidden; }
+    .hkwyhkul li { width: 100%; height: auto; overflow: hidden; margin-bottom: 13px; }
+.hkspan { float: left; width: 300px; text-align: right; height: 32px; line-height: 32px; color: #1c1c1c; }
+.hktext { float: left; width: 231px; height: 30px; line-height: 30px; border: solid 1px #efefef; text-indent: 0.5em; color: #1c1c1c; }
+.hktarea { float: left; width: 348px; height: 109px; line-height: 20px; border: solid 1px #efefef; padding: 10px; color: #1c1c1c; }
+.hktijiaoa { float: left; width: 103px; height: 36px; text-align: center; line-height: 36px; color: #fff; }
+/*#endregion */
+
+/*#region 分页样式 */
+.fenyediv { margin: 20px auto; width: 500px; height: auto; overflow: hidden; }
+    .fenyediv * { color: #575757; font-family: '宋体'; font-size: 14px; }
+    .fenyediv .fenyediva { float: left; height: 28px; line-height: 28px; padding: 0px 12px; border: solid 1px #e6e6e6; border-radius: 5px; margin-right: 10px; text-decoration: none; cursor: pointer; }
+    .fenyediv .fenyedivaa { float: left; height: 28px; line-height: 16px; margin-right: 10px; text-decoration: none; cursor: pointer; }
+    .fenyediv .fenyedivtext { float: left; width: 68px; height: 28px; line-height: 28px; border: solid 1px #e6e6e6; border-radius: 5px; margin: 0px 10px 0px 0px; padding: 0px; text-indent: 0.5em; }
+    .fenyediv .fenyehot { background-color: #d00000; border: solid 1px #d00000; color: #fff; }
+/*#endregion */
+
+/*#region zlkj-租赁矿机注册.html */
+.zlkjzcdiv { line-height: 47px; height: 47px; width: 100%; text-indent: 1em; border-bottom: solid 1px #efefef; color: #000; font-size: 16px; }
+.zlkjul { width: 100%; height: auto; overflow: hidden; }
+    .zlkjul li { width: 100%; height: auto; overflow: hidden; margin-bottom: 13px; }
+.zlkjspan { float: left; width: 300px; text-align: right; height: 32px; line-height: 32px; color: #1c1c1c; }
+.zlkjtext { float: left; width: 231px; height: 30px; line-height: 30px; border: solid 1px #efefef; text-indent: 0.5em; color: #1c1c1c; }
+.zlkjtijiaoa { float: left; width: 103px; height: 36px; text-align: center; line-height: 36px; color: #fff; margin: 0px 8px 0px 60px; background-color: #0db89a; }
+.zlkjmoney { width: 232px; line-height: 32px; float: left; }
+.zlkjsex { float: left; background: url('/Content/images/gtbzlkjzcradio.png') no-repeat; background-position: -66px 8px; padding-left: 25px; margin-right: 15px; }
+.zlkjsexhot { background-position: 4px 8px; }
+/*#endregion */
+
+.editbox{position: relative; top: 20px; bottom: 18px; left: 14px; border: 1px solid #dedede; width:956px;overflow:auto;}

@@ -1,0 +1,204 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="https://logink.lcfis.com/Public/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>高特币交易市场-@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link href="/theme/css/css.css" rel="stylesheet" type="text/css">
+    <script src="/theme/js/jquery.js" type="text/javascript"></script>
+    <script src="/theme/js/area_select.js" type="text/javascript"></script>
+    <script src="/theme/js/xstable.js" type="text/javascript"></script>
+    <script src="/theme/js/kindeditor.js" type="text/javascript"></script>
+    <script src="/theme/js/transfer.js" type="text/javascript"></script>
+    <script src="~/Scripts/Market/Market.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //判断当前方法是哪一个 对其进行显
+            var data = '{"\u4e2a\u4eba\u4fe1\u606f":[{"model":"User","action":"view","title":"\u8d44\u6599\u67e5\u770b","level":1,"secPwd":"false","pin":"zlck"},{"model":"User","action":"edit","title":"\u4fe1\u606f\u66f4\u65b0","level":1,"secPwd":"false","pin":"xxgx"},{"model":"User","action":"setPass","title":"\u66f4\u6539\u5bc6\u7801","level":1,"secPwd":"false","pin":"ggmm"}],"\u77ff\u4e3b\u7ba1\u7406":[{"model":"Sale","action":"tj_acclist","title":"\u9080\u8bf7\u6ce8\u518c\u5ba1\u6838","level":1,"pin":"yqzcsh"},{"model":"Sale","action":"acclist","title":"\u6ce8\u518c\u5ba1\u6838","level":1,"pin":"zcsh"},{"model":"Sale","stat":"die","action":"mysale","title":"\u6211\u7684\u8d2d\u4e70\u8bb0\u5f55","level":1,"secPwd":"false","pin":"wdgmjl"}],"\u8d44\u4ea7\u7ba1\u7406":[{"model":"Fun_bank","action":"rem","title":"\u6c47\u6b3e\u901a\u77e5","level":1,"pin":"hktz"},{"model":"Tle","action":"index","title":"\u6211\u7684\u4f63\u91d1","xpath":"tle","level":1,"pin":"wdyj"},{"model":"Fun_bank","action":"index","title":"BT\u8d26\u6237","xpath":"fun_bank[1]","level":1,"pin":"BTzh"},{"model":"Fun_bank","action":"get","title":"BT\u8d26\u6237\u63d0\u73b0","xpath":"fun_bank[1]","level":1,"pin":"BTzhtx"},{"model":"Fun_bank","action":"index","title":"BT1\u8d26\u6237","xpath":"fun_bank[2]","level":1,"pin":"BT1zh"},{"model":"Fun_bank","action":"index","title":"BT2\u8d26\u6237","xpath":"fun_bank[3]","level":1,"pin":"BT2zh"},{"model":"Fun_bank","action":"get","title":"BT2\u8d26\u6237\u63d0\u73b0","xpath":"fun_bank[3]","level":1,"pin":"BT2zhtx"},{"model":"Fun_bank","action":"index","title":"GT\u8d26\u6237","xpath":"fun_bank[4]","level":1,"pin":"GTzh"},{"model":"Fun_bank","action":"index","title":"GT1\u8d26\u6237","xpath":"fun_bank[5]","level":1,"pin":"GT1zh"},{"model":"Fun_bank","action":"get","title":"GT1\u8d26\u6237\u63d0\u73b0","xpath":"fun_bank[5]","level":1,"pin":"GT1zhtx"},{"model":"Fun_bank","action":"index","title":"\u67e5\u770b\u77ff\u673a","xpath":"fun_bank[6]","level":1,"pin":"ckkj"},{"model":"Fun_bank","action":"get","title":"\u67e5\u770b\u77ff\u673a\u63d0\u73b0","xpath":"fun_bank[6]","level":1,"pin":"ckkjtx"},{"model":"Fun_bank","action":"give","stat":"die","title":"BT\u8d26\u6237\u8f6c\u8d26","xpath":"fun_bank[1]","level":1,"pin":"BTzhzz"},{"model":"Fun_bank","action":"give","stat":"die","title":"BT1\u8d26\u6237\u8f6c\u8d26","xpath":"fun_bank[2]","level":1,"pin":"BT1zhzz"},{"model":"Fun_bank","action":"give","stat":"die","title":"BT2\u8d26\u6237\u8f6c\u8d26","xpath":"fun_bank[3]","level":1,"pin":"BT2zhzz"},{"model":"Fun_bank","action":"give","stat":"die","title":"GT\u8d26\u6237\u8f6c\u8d26","xpath":"fun_bank[4]","level":1,"pin":"GTzhzz"}],"BT\u4ea4\u6613\u5e02\u573a":[{"model":"Fun_gold","action":"index","title":"BT\u5e02\u573a","xpath":"fun_gold","level":1,"pin":"BTsc"},{"model":"Fun_gold","stat":"die","action":"detail","title":"\u4ea4\u6613\u8bb0\u5f55","xpath":"fun_gold","level":1,"pin":"jyjl"},{"model":"Fun_gold","stat":"die","action":"sell","title":"\u51fa\u552eBT","xpath":"fun_gold","level":1,"pin":"csBT"}],"GD\u4ea4\u6613\u5e02\u573a":[{"model":"Market","action":"charts","title":"GD\u5e02\u573a","level":1,"pin":"GDsc"}],"\u4fe1\u606f\u4e2d\u5fc3":[{"model":"Mail","action":"index","title":"\u7ad9\u5185\u90ae\u4ef6","level":1,"pin":"znyj"},{"model":"Mail","stat":"die","action":"send","title":"\u53d1\u9001\u90ae\u4ef6","level":1,"pin":"fsyj"},{"model":"Mail","stat":"die","action":"sendbox","title":"\u53d1\u90ae\u7bb1","level":1,"pin":"fyx"},{"model":"User","action":"viewNotice","title":"\u7cfb\u7edf\u516c\u544a","level":1,"secPwd":"false","pin":"xtgg"},{"model":"Fun_gold","action":"assist","title":"\u5bc6\u7801\u627e\u56de\u8ba4\u8bc1","xpath":"sale_buy","level":1,"pin":"mmzhrz"}]}';
+            var action = 'index';
+            var model = 'Index';
+            var title = '';
+            var args = '';
+            data_arr = {};
+            data_arr = eval('(' + data + ')');
+            for (var key in data_arr) {//key 为资料管理 data_arr[key] 为一维数组 key 为一级菜单的标题
+                for (var key1 in data_arr[key]) {//key1 为一维数组的元素 data_arr[key][key1]['model']为模型 data_arr[key][key1]['Action']为方法 data_arr[key][key1]['title']为二级菜单标题  
+                    if (data_arr[key][key1]['model'] == model && data_arr[key][key1]['action'] == action) {
+                        //替换属性的值
+                        $("#" + key).next().css('display', 'block').siblings(".menuContent").hide();
+                        //判断一下args和Action是否相等
+                        if (data_arr[key][key1]['action'] == action) {
+                            if (args) {
+                                if (args == data_arr[key][key1]['xpath']) {
+                                    $("#" + key).attr("class", "menuTitle_active");
+                                    $("#" + data_arr[key][key1]['title']).addClass("curr");
+                                    title = data_arr[key][key1]['title'];
+                                } else {
+                                    $("#" + data_arr[key][key1]['title']).removeClass("curr");
+                                }
+                            } else {
+                                $("#" + key).attr("class", "menuTitle_active");
+                                $("#" + data_arr[key][key1]['title']).addClass("curr");
+                                title = data_arr[key][key1]['title'];
+                            }
+                        }
+                    }
+
+                }
+
+            }
+            //判断事件     
+
+            $("#ulstyle li").mousemove(function () {
+                if (title) {
+                    var title_now = $(this).attr("id");
+                    if (title != title_now) {
+                        $(this).addClass("curr");
+                        $("#" + title).removeClass("curr");
+                    }
+                }
+            });
+            $("#ulstyle li").mouseleave(function () {
+                if (title) {
+                    var title_now = $(this).attr("id");
+                    if (title != title_now) {
+                        $(this).removeClass("curr");
+                        $("#" + title).addClass("curr");
+                    }
+                }
+            });
+        });
+
+        $(function () {
+            //$(".menuTitle,.menuTitle_active").click(function () {
+            //    if ($(this).next().css('display') == 'none') {
+            //        $(this).next().css('display', 'block').siblings(".menuContent").hide();
+            //    } else {
+            //        $(this).next().css('display', 'none');
+            //    }
+            //});
+            $("#ulstyle li").mousemove(function () {
+                $(this).addClass("curr");
+            });
+            $("#ulstyle li").mouseleave(function () {
+                $(this).removeClass("curr");
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function change(obj) {
+            var comment = document.getElementById(obj.id);
+
+            if (document.all) {
+                // For IE
+                comment.click();
+            } else if (document.createEvent) {
+                //FOR DOM2
+                var ev = document.createEvent('MouseEvents');
+                ev.initEvent('click', false, true);
+                comment.dispatchEvent(ev);
+            }
+        }
+
+
+    </script>
+    <style>
+        #tabless ul {
+            padding: 0px;
+            margin: 0px;
+            width: auto;
+        }
+
+        #tabless li {
+            margin: 0;
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            padding: 5px 0px;
+        }
+    </style>
+</head>
+<body id="blanc_blue">
+    <!--头部-->
+    <div class="header">
+        <div class="right">
+            <div class="right_1">
+                <div id="user-nav" class="navbar">
+                    <ul class="nav1">
+                       
+                        <!-- <li><a title="" href=""><div class="icon-cog"></div><span class="text">系统设置</span></a></li> -->
+                        <li class="btn2 btn-inverse"><a title="" href="/Home/Index">
+                            <div class="icon-share-alt"></div>
+                            <span class="text">返回矿机中心</span></a></li>
+                        <li class="btn2 btn-inverse" style="margin-left:10px;"><a title="" href="/Market/btmarket">
+                            <div class="icon-share-alt"></div>
+                            <span class="text">返回交易市场</span></a></li>
+                     
+                    </ul>
+                </div>
+            </div>
+            <div class="right_2">
+                <div id="breadcrumb" style="text-align: left;"><span class="icon-home"></span><a href="/home/index"><span class="icon-align-justify"></span>首页</a></div>
+            </div>
+        </div>
+    </div>
+    <!--头部结束-->
+
+    <div class="centre">
+        <div class="centre_left" style="text-align: left;">
+            <div class="container">
+                <div class="menuTitle_active"><a href="/Market/btmarket"><span class="dh-home"></span>交易市场</a></div>
+               @* <div id="资产管理" class="menuTitle"><span class="dh-signal" oldclass=""></span>资产管理</div>*@
+                <div class="menuContent" style="display:block">
+                    <ul id="ulstyle">
+                        <li id="MRCbuy"><a href="/User/BybtLog">购买记录</a></li>
+                        <li id="MRCsale"><a href="/Market/BTorder">出售记录</a></li>
+                        <!--li id="MRCdeal"><a href="javascript:;">回收记录</a></li-->
+                        <li id="MRClog"><a href="/Market/MrcLog">收支流水</a></li>
+                    </ul>
+                </div>
+                 
+             @*   <div id="高特币交易市场" class="menuTitle"><span class="dh-signal" oldclass=""></span>高特币交易市场</div>
+                <div class="menuContent">
+                    <ul id="ulstyle">
+                        <li id="MRC市场"><a href="/market/btmarket">MRC市场</a></li>
+                        <input name="xpaths" id="MRC市场" value="fun_gold" type="hidden">
+                    </ul>
+                </div>*@
+
+            </div>
+        </div>
+        <!--左侧菜单栏结束-->
+        <!--左侧菜单栏结束-->
+        <link href="/theme/css/view.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/theme/css/bootstrap.css" />
+        <link rel="stylesheet" href="/theme/css/unicorn.css" />
+        <div class="centre_right">
+            @RenderBody()
+        </div>
+    </div>
+    <!--中间结束-->
+<style>
+.loading_message_mask{position:fixed;left:0;top:0;bottom:0;right:0;background:#ccc;opacity:0.3;filter:alpha(opacity=30);display:none;z-index:10000000000;}
+.loading_message{position:fixed;left:50%;top:50%;width:auto;height:50px;width:50px;background:#fff url('/Content/images/loading12.gif') no-repeat  center;border:2px solid #fece2f;color:#222;display:none;z-index:10000000001;}
+</style>
+<div class="loading_message_mask"></div>
+<div class="loading_message"></div>
+<script type="text/javascript" >
+    function loadingShow() {
+        $('.loading_message_mask').show();
+        $('.loading_message').show();
+    }
+
+    function loadingHide() {
+        $('.loading_message_mask').hide();
+        $('.loading_message').hide();
+    }
+</script>
+</body>
+</html>

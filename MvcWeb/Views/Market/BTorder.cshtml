@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "出售GTC";
+    Layout = "~/Views/_Market.cshtml";
+}
+
+<div id="deal_list" class="core_main Fun_ep_deal">
+    <div class="core_title">
+        <span class="core_title_con">当前位置：高特币交易市场&gt;&gt;出售高特币<span><a class="btn-danger2" data-toggle="modal" href="/Market/btmarket">返回交易市场</a></span></span>
+    </div>
+    <div class="core_title">
+        <span class="core_title_con">挂单记录</span>
+    </div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr class="datafield">
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>时间</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>出售数量</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>未出售数量</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>成交中数量</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>已成交数量</nobr>
+                    </th>
+                    
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>总额</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>状态</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>操作</nobr>
+                    </th>
+                </tr>
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <tr class="datalist">
+                        <td style="font-size: 12px;">
+                            <nobr>@Model.Rows[i]["addtime"]</nobr>
+                        </td>
+                        <td style="font-size: 12px;">
+                            <nobr>@Model.Rows[i]["allmoney"]</nobr>
+                        </td>
+                        <td style="font-size: 12px;">
+                            <nobr>@Model.Rows[i]["showmoney"]</nobr>
+                        </td>
+                         <td style="font-size: 12px;">
+                            <nobr>@Model.Rows[i]["dealmoney"]</nobr>
+                        </td>
+                         <td style="font-size: 12px;">
+                            <nobr>@Model.Rows[i]["salemoney"]</nobr>
+                        </td>
+                        
+                         <td style="font-size: 12px;">
+                            <nobr>@Model.Rows[i]["allmoney"]</nobr>
+                        </td>
+                        <td style="font-size: 12px;">
+                            <nobr>@ZGZY.BLL.BTtransaction.ReturnState(Model.Rows[i]["state"].ToString())</nobr>
+                        </td>
+                         <td style="font-size: 12px;">                            
+                            <nobr>                   
+                                   
+                                 @if (Model.Rows[i]["state"].ToString() != "1")
+                                 {
+                                 
+                                   <a href="/Market/BTordersonlist?BTtransactionID=@Model.Rows[i]["ID"]">查看详情</a>
+                              
+                                     if (Convert.ToDecimal(Model.Rows[i]["showmoney"].ToString()) > 0)
+                                     {
+                                       
+                                        @:| <a href="#" onclick="backbtorder('@Model.Rows[i]["ID"]')">收回挂出</a>
+                                    }
+
+                                 }
+                                 else if (Model.Rows[i]["state"].ToString() == "1")
+                                 {
+                                     @:挂单已撤回
+                                 }
+                                 
+                            </nobr>
+                            
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="core_page">
+          @Html.Raw(ViewBag.pagination)
+    </div>
+    <div class="core_page">
+        <p style="color: red; text-align: left; line-height: 25px; padding-right: 10px;">
+            提示：1：本列表是您的高特币出售订单列表，如果您没有正确填写您的联系电话和收款信息、或者您不想出售高特币了，在没有卖出订单前可以点击“收回挂出”，避免被投诉减少信誉星级。<br>
+            2：如果您已经收到汇款，请点击“查看详情记录”-“确认收款”     
+        </p>
+    </div>
+</div>
+<script>
+    function backbtorder(id) {
+        var para = {};
+        para.ID = id;
+        $.ajax({
+            url: "/Market/backbtorder",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (pagedata) {
+                if (pagedata.success) {
+                    alert(pagedata.msg);
+                    window.location.reload();
+                }
+                else {
+                    alert(pagedata.msg);
+                }
+            }
+        });
+    }
+</script>

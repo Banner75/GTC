@@ -1,0 +1,90 @@
+﻿body,li,ul{ list-style:none; padding:0px; margin:0px; }
+.fntmessage {color:#FFFFFF; font-family:'Microsoft YaHei'; font-size:9pt;}
+.fntpathinfo { color:#1E1E1E; font-family:'Microsoft YaHei'; font-size:9pt; font-weight:normal; }
+
+.fnttitle { color:#6AA7EA; font-family:'Microsoft YaHei'; font-size:16pt; font-weight:bold; }
+/*.fntcpt { color:#1E1E1E; font-family:'Microsoft YaHei'; font-size:10pt; font-weight:bold; }*/
+.fnttxt { color:#1E1E1E; font-family:'Microsoft YaHei'; font-size:10pt; font-weight:normal; }
+
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+
+a:link { text-decoration:none; color:#1E1E1E; font-family:'Microsoft YaHei';  }
+a:visited { text-decoration:none; color:#1E1E1E; font-family:'Microsoft YaHei';  }
+a:hover { text-decoration:none; /*color:#58B8F3;*/ font-family:'Microsoft YaHei';  }
+a:active { text-decoration:none;  color:#1E1E1E; font-family:'Microsoft YaHei';  }
+.deftitle {
+    height: 36px;
+    line-height: 36px;
+    background-color: #B9D1EA;
+    margin: 10px 1%;
+}
+
+a.lnkmenu { text-decoration:none; color:#FFF; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:100; }
+/*a.lnkmenu:visited { text-decoration:none; color:#EDF3E2; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:bold;}
+a.lnkmenu:hover { text-decoration:none; color:#58B8F3; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:bold;}
+a.lnkmenu:active { text-decoration:none;  color:#EDF3E2; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:bold;}*/
+
+a.lnksubmenu  { text-decoration:none; color:#fff; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:100; }
+/*a.lnksubmenu:visited { text-decoration:none; color:#1E1E1E; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:bold;}
+a.lnksubmenu:hover { text-decoration:none; color:#58B8F3; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:bold;}
+a.lnksubmenu:active { text-decoration:none;  color:#1E1E1E; font-family:'Microsoft YaHei'; font-size:11pt; font-weight:bold;}*/
+
+* { margin:0; padding:0; }
+html, body { width:100%; height:100%; }
+.left { float:left;}
+.right { float:right;}
+.clear { clear:both; }
+.headbox { height:90px; background-color:#292c3e; position:absolute; top:0; left:0; right:0;}
+
+.leftbox { width:200px;  position:absolute; top:90px; left:0px; bottom:24px; overflow:auto; background:url(/theme/images/body.jpg) repeat-y left 0; }
+.pathinfobox { height:26px; line-height:26px; position:absolute; top:60px; left:200px; right:0; background-color:#EFDEB3;}
+.pathinfoimg { width:30px; height:26px; margin-left:10px; float:left; background-image:url(../Images/Menus/p_00.png); background-repeat:no-repeat;}
+.pathinfo { height:26px; line-height:26px; float:left;}
+.subbox {  background-color:#F5F5F5; position:absolute; top:90px; left:202px; bottom:24px; right:0; overflow:auto; }
+.footbox { height:24px; background-color:#292c3e; position:absolute; left:0; bottom:0; right:0;}
+
+.logobox { width:194px; height:50px; float:left; margin: 5px 0 5px 20px; background-image:url(../Images/menus/p_logo.png); background-repeat:no-repeat; }
+.loginuser { height:90px;  float:right;  overflow:hidden; }
+.headtips{height:60px; line-height:60px; padding:0px 10px; float:left;  color:#fff; font-size:14px;}
+
+.homeitem { width:200px; height:36px; line-height:36px;  padding:5px 0;  background:#272541; /*background-image:url(../Images/Menus/p_menubg.png); background-repeat:repeat-x;*/}
+.homeitem ul { width:100%; height:36px; list-style:none; }
+.homeitem ul li.pic { width:40px; height:36px; line-height:36px; text-align:right; float:left; vertical-align:middle; display:table-cell;}
+.homeitem ul li.pic img { vertical-align:middle; }
+.homeitem ul li.lnk { height:36px; line-height:36px; float:left; }
+.menubox { width:200px; }
+.menu { width:200px; height:36px;  padding:5px 0;   line-height:36px;  background:#272541; border-bottom:1px solid #1f262d /*background-image:url(../Images/Menus/p_menubg.png); background-repeat:no-repeat;*/ }
+.menu ul { width:100%; height:36px; list-style:none; }
+.menu ul li.pic { width:40px; height:36px;  text-align:right; float:left; vertical-align:middle; display:table-cell; }
+.menu ul li.pic img { vertical-align:middle; }
+.menu ul li.lnk { height:36px; line-height:36px; float:left; }
+.submentbox { width:200px;  }
+.submenu { width:200px; height:36px; line-height:36px;  padding:5px 0; background:#141528 }
+.submenu ul { width:100%; height:36px; list-style:none; }
+.submenu ul li.pic { width:40px; height:36px; line-height:36px; text-align:right; float:left; }
+.submenu ul li.lnk { height:36px; line-height:36px; float:left; }
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+.msg{ color:red; padding-left:3px; }
+
+.editrow { height:36px; line-height:36px; margin:2px 0; border-bottom:1px solid #F2F2F2; }
+.editrow ul { height:36px; line-height:36px; width:100%; list-style:none; }
+.editrow ul li.cpt { width:30%; height:36px; line-height:36px; text-align:right; float:left;  }
+.editrow ul li.txt { width:70%; height:36px; line-height:36px; text-align:left; float:left;}
+
+input.txt {  height:26px; line-height:24px; background-color:#FAFAFA; border:1px double #E6E6E6;}
+
+.buttonbox, bottonrowl, bottonrowc, bottonrowr { height: 40px; line-height:40px; padding:14px;} 
+.buttonrowc { text-align:center;}
+.buttonrowl { float:left; }
+.buttonrowr { float: right; }
+.button { width:78px; height:26px; line-height:26px; text-align:center; background-image:url(../Images/Login/p_buttonbg.png); background-repeat:no-repeat; }
+
+
+.loading_message_mask{position:fixed;left:0;top:0;bottom:0;right:0;background:#ccc;opacity:0.3;filter:alpha(opacity=30);display:none;z-index:10000000000;}
+.loading_message{position:fixed;left:50%;top:50%;width:auto;height:50px;width:50px;background:#fff url('/Content/images/loading12.gif') no-repeat  center;border:2px solid #fece2f;color:#222;display:none;z-index:10000000001;}
+/*分页*/
+.page { text-align: center; }
+.page a { color: #515151; background-color: #f4f4f4; border: 1px solid #bfbfbf; display: inline-block; padding: 7px 12px; }
+.page a.hot { color: #fff; background-color: #f65d26; border: 1px solid #f65d26; }

@@ -1,0 +1,23 @@
+﻿
+.fnt-head { color:#ffffff; font-family:'Courier New','Microsoft YaHei'; font-size:11pt; }
+.fnt-caption { color:#000000; font-family:'Courier New','Microsoft YaHei'; font-size:9pt; }
+.fnt-text { color:#000000; font-family:'Courier New','Microsoft YaHei'; font-size:9pt; }
+.fnt-hint { color:red; font-family:'Courier New','Microsoft YaHei'; font-size:12pt; }
+
+* { margin:0; padding:0; }
+html, body {width:100%; height:100%; background:url(../Images/Login/login-logo.png) no-repeat  center 8.5% #292c3e;    overflow:hidden;}
+@media screen and (max-width: 600px) {
+    html, body {background-size:70%;}
+}
+.outerbox { width:314px; height:196px; position:absolute; top:50%; left:50%; margin: -98px 0 0 -157px; background-color:#ffffff; }
+.login-head { height:16px; line-height:16px; background-color:#fff; text-align:center; }
+.login-row { height:36px; }
+.login-row ul { list-style:none; height:36px;}
+.login-row ul li.caption { width:30%; height:36px; line-height:36px; text-align:right; float:left; }
+.login-row ul li.text { width:70%; height:36px; line-height:36px; text-align:left; float:left; }
+.checkcode { width:100px; height:30px; float:right; margin-right:10px; }
+.buttonbox { height:40px; line-height:40px; text-align:center;}
+.login-button { width:80px; height:28px;  padding:0px; margin:0px; border:1px solid #fff; text-align:center; background-color:#292c3e;  color:#fff; border-radius:4px;  }
+input.txt {  height:26px; line-height:24px; background-color:#FAFAFA; border:1px double #E6E6E6; padding:0 5px; }
+.login-hint { height:36px; line-height:36px; text-align:center; position:absolute; left:0; bottom:30px; right:0; color:#fff}
+.login-row ul li.text img { width:50px; }

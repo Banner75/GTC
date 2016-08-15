@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "交易记录";
+    Layout = "~/Views/_Market.cshtml";
+}
+<div id="index" class="core_main Fun_ep_deal">
+    <div class="core_title">
+        <span class="core_title_con">当前位置：高特币交易市场&gt;&gt;交易记录<span><a class="btn-danger2" data-toggle="modal" href="/Market/BTorder">返回高特币挂单</a></span></span>
+    </div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr class="datafield">
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>买家编号</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>交易数量</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>汇款金额</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>状态</nobr>
+                    </th>
+                    <th style="border-right: 1px solid #cdcdcd; font-size: 12px; border-bottom: 1px #cdcdcd solid">
+                        <nobr>操作</nobr>
+                    </th>
+                </tr>
+
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <tr class="datalist">
+                        <td style="border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr>@Model.Rows[i]["buyuserID"]</nobr>
+                        </td>
+                        <td style="border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr>@Model.Rows[i]["dealmoney"]</nobr>
+                        </td>
+                        <td style="border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr>@Model.Rows[i]["dealmoney"]</nobr>
+                        </td>
+                        <td style="border-right: 1px #cdcdcd solid; font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            @{ string controlstr = "";}
+                            @if (Model.Rows[i]["state"] == 1)
+                            {
+                                <nobr>取消</nobr>
+                                controlstr = "<a href='/Market/bybtdetail?ID=" + Model.Rows[i]["ID"] + "'>查看详情</a>";
+                            }
+                            else if (Model.Rows[i]["state"] == 2)
+                            {
+                                <nobr>待付</nobr>
+                                controlstr = "<a href='/Market/bybtdetail?ID=" + Model.Rows[i]["ID"] + "'>查看详情</a>";
+                            }
+                            else if (Model.Rows[i]["state"] == 3)
+                            {
+                                <nobr>管理员介入</nobr>
+                                controlstr = "<a href='/Market/bybtdetail?ID=" + Model.Rows[i]["ID"] + "'>查看详情</a>";
+                            }
+                            else if (Model.Rows[i]["state"] == 4)
+                            {
+                                <nobr>成功</nobr>
+                                controlstr = "<a href='/Market/bybtdetail?ID=" + Model.Rows[i]["ID"] + "'>查看详情</a>";
+                            }
+                            else if (Model.Rows[i]["state"] == 5)
+                            {
+                                <nobr>失败</nobr>
+                                controlstr = "<a href='/Market/bybtdetail?ID=" + Model.Rows[i]["ID"] + "'>查看详情</a>";
+                            }
+                            else
+                            {
+                                <nobr>等待确认</nobr>
+                                controlstr = "<a href='#'onclick=\"affirmbtsonlist('" + Model.Rows[i]["ID"] + "')\">确认</a>" + " | " + "<a href='/Market/appealindex?ID=" + Model.Rows[i]["ID"] + "'>申请仲裁</a>" + " | <a href='/Market/bybtdetail?ID=" + Model.Rows[i]["ID"] + "'>查看详情</a>";
+                            }
+                        </td>
+                        <td style="font-size: 12px; border-bottom: 1px #cdcdcd solid;">
+                            <nobr>@Html.Raw(controlstr)</nobr>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+   
+    </div>
+    <div class="core_page">
+        @Html.Raw(ViewBag.pagination)
+    </div>
+</div>
+<script>
+
+</script>

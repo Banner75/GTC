@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "首页";
+    ZGZY.Model.BS_Customers CustomerInfo = (ZGZY.Model.BS_Customers)ViewBag.CustomerInfo;
+    
+    string userName="";
+    if( CustomerInfo.Bank_User.Length ==0)
+    {
+        userName = CustomerInfo.Login_Account;    
+    }
+    else
+    {
+        userName = CustomerInfo.Bank_User;
+    }
+    
+}
+
+<div class="syrightdiv">
+
+    <div class="syyoudiv">
+
+        <div class="syshangdiv">
+            <img src="/content/images/gtbsytouxiang.png" class="sytximg" />
+            <div class="syhydiv">
+                <div class="syzxdiv">@userName，欢迎回来！</div>
+                <div class="syzxdiv">租赁期限 @ViewBag.End_Run_Time</div>
+            </div>
+            <div class="sygbw"><p style="font-size:16px;">今天开采：<span id="TodayCount" style="font-size:16px;"></span></p></div>
+        </div>
+
+        <div class="syzhongdiv">
+            <a class="syzhonga syzhongtu1">
+                <span class="syzhongspan">GTC交易钱包</span>
+                <span class="syzhongspan">@ViewBag.GQty</span>
+            </a>
+            <a class="syzhonga syzhongtu2">
+                <span class="syzhongspan">GTC消费汇总</span>
+                <span class="syzhongspan">@ViewBag.PaySum</span>
+            </a>
+            <a class="syzhonga syzhongtu3" title="高特币对美元">
+                <span class="syzhongspan">GTC当日价格</span>
+                <span class="syzhongspan">@ViewBag.TodayPrice</span>
+            </a>
+            <a class="syzhonga syzhongtu4">
+                <span class="syzhongspan">GTC消费钱包</span>
+                <span class="syzhongspan">@CustomerInfo.cAmt</span>
+            </a>
+            <a class="syzhonga syzhongtu5">
+                <span class="syzhongspan">团队</span>
+                <span class="syzhongspan">@ViewBag.TeamNumbers</span>
+            </a>
+            <a class="syzhonga syzhongtu6">
+                <span class="syzhongspan">昨日所获奖金</span>
+                <span class="syzhongspan">@ViewBag.LastInCome</span>
+            </a>
+        </div>
+
+        <div class="syxiadiv">
+            <div class="syxiatzgg" id="syxiatzgg">
+                通知公告
+            <a href="javascript:SubMenuItemClick(15,'公司公告','新闻公告','/Notice/Notice?1');" style="float: right; color: #1c1c1c;">更多>></a>
+            </div>
+            <ul class="syxiaul">
+
+                @{
+                    System.Data.DataTable mNotice = ViewBag.NoticeList;   
+                }
+
+                    @for (int i = 0; i < mNotice.Rows.Count && i < 5; i++)
+                    {
+                        <li>
+                            <a href="javascript:openNotice(@mNotice.Rows[i]["ID"]);" target="_blank" class="syxiaa">@mNotice.Rows[i]["Title"]</a>
+                            <span class="syxiaspan">@mNotice.Rows[i]["Created_Date"]</span>
+                        </li>
+                        
+                    }
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+@{
+    DateTime DateTimeNow = ViewBag.DataNow;
+    }
+<script>
+    var TimeStr = '@ViewBag.Count_Time'
+    var CountStr = '@ViewBag.Today_Count'
+    var Now = '@DateTimeNow'
+    var i = 0;
+    setInterval(function () {
+        var date1 = new Date(TimeStr);
+        clock(date1, CountStr, Now);
+        
+}, 200);
+
+    function clock(date1, Count,now2)
+    {
+  var date2 = new Date(now2);
+  var date3 = ((date2.getTime()+i*200) - date1.getTime()) / 1000;
+  date2 = date2.getTime() + 1;
+  var SeCondCount = (Count / (24 * 60 * 60)) * date3
+  $('#TodayCount').text(SeCondCount.toFixed(5));
+  i++;
+    }
+
+    function openNotice(noticeId) {
+        window.open('/Notice/NoticeDetail?ID=' + noticeId, '_blank', 'height=600,width=800,toolbar=no,menubar=no,scrollbars=auto, resizable=no,location=no, status=no,alwaysRaised =yes');
+
+    }
+
+
+
+</script>

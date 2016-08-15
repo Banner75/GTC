@@ -1,0 +1,110 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>高特币-矿机登录中心</title>
+    <link href="~/Content/Patterns/bassGTB.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/Home/Login.js"></script>
+    <meta name="keywords" content="高特币,虚拟货币，虚拟货币，国际货币" />
+    <meta name="description" content="高特币，是美国五大寡头斯蒂尔曼家族旗下美瑞财团发行的一款第三代全球开源数字加密货币。它整合了目前市场上所有虚拟货币的特性，在此基础之上融入了创新、盈利、安全等概念的升级版虚拟数字货币，并不断引领全球虚拟货币进入3.0微时代。高特币于2016年6月正式推广发行，全球总量限定2.6亿枚，内排期发行" />
+    <script type="text/javascript">
+        function freshVerifyCode(type) {
+
+            // 重载验证码
+            var timenow = new Date().getTime();
+            $('#imgVerifyCode').attr("src", '/Common/ValidateCode/' + timenow);
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#txtLoginAccount').focus(function () {
+                var zhanghao = $(this).val();
+                if (zhanghao == "用户名") {
+                    $(this).val("");
+                    $(this).css("color", "#000");
+                }
+            });
+            $('#txtLoginAccount').blur(function () {
+                var val = $(this).val();
+                if (val == "") {
+                    $(this).val("用户名");
+                    $(this).css("color", "");
+                }
+            });
+            
+            $('#pwd').focus(function () {
+                $('#txtLoginPassword').show().focus();
+                $('#pwd').hide();
+                $('#txtLoginPassword').css("color", "#000");
+            });
+            $('#txtLoginPassword').blur(function () {
+                var val = $(this).val();
+                if (val == "") {
+                    $('#txtLoginPassword').hide();
+                    $('#pwd').show();
+                }
+            });
+            
+            $('#txtVerifyCode').focus(function () {
+                var zhanghao = $(this).val();
+                if (zhanghao == "验证码") {
+                    $(this).val("");
+                    $(this).css("color", "#000");
+                }
+            });
+            $('#txtVerifyCode').blur(function () {
+                var val = $(this).val();
+                if (val == "") {
+                    $(this).val("验证码");
+                    $(this).css("color", "");
+                }
+            });
+        })
+    </script>
+</head>
+<body style="text-align: center; background-color: #125e9e;" >
+    <div class="dldenglu wd16">
+        <img src="/Content/images/gtbdllogo.png" class="dllogo" />
+        <div class="dllogindiv">
+            <ul class="dlloginul">
+                 <li>
+                    <span class="dlyhdlspan">用户登录</span>
+                </li>
+                <li>
+                    <input placeholder="用户名" type="text" class="dlymytext" value="用户名" id="txtLoginAccount" />
+                </li>
+                <li style="margin: 20px 0px;">
+                    <input type="text" class="dlymytext" placeholder="密码" id="pwd" value="密码" />
+                    <input type="password" class="dlymytext" style="display: none;" id="txtLoginPassword" />
+                </li>
+                <li>
+                    <input type="text" class="dlymytext" style="width: 160px;" placeholder="验证码" id="txtVerifyCode" value="验证码" />
+                    <img alt="点击刷新验证码" style="width: 100px; height: 30px; float: right; margin-right: 10px;" class="dlyzmlgimg" id="imgVerifyCode" src="/Common/ValidateCode" onclick="freshVerifyCode()" />
+                </li>
+                <li>
+                    <input type="button" id="btnLogin" class="dllogindla" style="cursor:pointer;" value="登 录" />
+                </li>
+                <!--li>
+                    <a class="dlloginwma">忘记密码</a>
+                </li-->
+            </ul>
+        </div>
+    </div>
+    <!-- 提示信息 -->
+    <div id="txtHintInfo" class="login-hint fnt-hint">
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnLogin").click(function () { Logining(); });
+        $("#btnClear").click(function () { Clear(); });
+    });
+</script>

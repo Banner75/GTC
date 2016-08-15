@@ -1,0 +1,21 @@
+﻿@{
+    Page.Title = @ViewBag.Title;
+    Layout = null;
+}
+
+<style type="text/css">
+    .deftitle { height:36px; line-height:36px;  position:absolute; right:10%; bottom:86%; left:10%; background-color:#B9D1EA; }
+    .editbox { position: absolute; top: 15%; right: 10%; bottom: 15%; left: 10%; border: 1px solid #8C988A; }
+</style>
+
+@{
+    var MyNotice = (ZGZY.Model.BS_Notices)ViewBag.MyNotice;
+    if (MyNotice != null)
+    {
+        <div id="dvMyTitle" class="deftitle fnttitle">@ViewBag.Title</div>
+        <div class="editbox fntcpt">
+            @MyNotice.Contents;
+        </div>
+    }
+}
+

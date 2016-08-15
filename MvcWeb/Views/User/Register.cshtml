@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "注册新矿主";
+    Layout = "~/Views/_Layout.cshtml";
+    
+<link href="~/Content/Patterns/view.css" rel="stylesheet" />
+}
+<div id="edit" class="core_main User">
+    <div class="hkremittance"><span class="core_title_con"><span>当前位置</span>：注册新矿主</span></div>
+    <div class="core_con">
+        <form   method="post">
+            <table class="tablebg">
+                <tbody>
+                    <tr>
+                        <td class="tbkey">登录名：</td>
+                        <td class="tbval">
+                           <input type="text" value="" id="username" name="username">
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">矿主级别：</td>
+                        <td class="tbval">
+                            <select class="xiala" id="usertype" name="usertype">
+                                <option value="0000">请选择</option>
+
+                                @{ System.Data.DataSet ds = new ZGZY.BLL.UserType().GetUserTypeList("1=1"); }
+                                @for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                                {
+                                    <option value="@ds.Tables[0].Rows[i]["Id"]">@ds.Tables[0].Rows[i]["name"]</option>
+                                }
+                            </select>
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">区域位置：</td>
+                        <td class="tbval">
+                            <select class="xiala" id="useraddr" name="useraddr">
+                                <option value="0000">请选择</option>
+                                <option value="@ZGZY.Common.UserHelper.GetUserlist().ID">@ZGZY.Common.UserHelper.GetUserlist().username</option>
+                                @{ 
+                                System.Collections.ArrayList Arraysonlist = new ZGZY.BLL.Userlist().getsonlist(ZGZY.Common.UserHelper.GetUserlist().ID); }
+                                @for (int i = 0; i < Arraysonlist.Count; i++)
+                                {
+                                    <option value="@Arraysonlist[i].ToString()">@Arraysonlist[i].ToString()]</option>
+                                }
+                            </select>
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">昵称：</td>
+                        <td class="tbval">
+                            <input type="text" value="" id="nickname" name="nickname">
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">性别：</td>
+                        <td class="tbval">
+                            <select class="xiala" id="sex" name="sex">
+                                <option value="true">男</option>
+                                <option value="false">女</option>
+                            </select>
+                            <span class="msg">*</span>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">证件号码：</td>
+                        <td class="tbval">
+                            <input type="text" value="" id="cardnum" name="cardnum">
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">Email：</td>
+                        <td class="tbval">
+                            <input type="text" value="" id="email" name="email">
+                            <span class="msg">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">移动电话：</td>
+                        <td class="tbval">
+                            <input type="text" value="" id="mobile" name="mobile">
+                            <span class="msg">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户银行：</td>
+                        <td class="tbval">
+                            <select class="xiala" id="bank" name="bank">
+                                <option value="">请选择</option>
+                                <option value="中国银行">中国银行</option>
+                                <option value="中国建设银行">中国建设银行</option>
+                                <option value="中国工商银行">中国工商银行</option>
+                                <option value="中国农业银行">中国农业银行</option>
+                                <option value="浦发银行">浦发银行</option>
+                                <option value="交通银行">交通银行</option>
+                                <option value="中国民生银行">中国民生银行</option>
+                                <option value="中国光大银行">中国光大银行</option>
+                                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                                <option value="兴业银行">兴业银行</option>
+                                <option value="中信银行">中信银行</option>
+                                <option value="招商银行">招商银行</option>
+                                <option value="华夏银行">华夏银行</option>
+                            </select>
+                            <span class="msg"></span>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户名：</td>
+                        <td class="tbval">
+                            <input type="text" value="" id="bankuser" name="bankuser">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">银行卡号：</td>
+                        <td class="tbval">
+                            <input type="text" value="" name="banknum" id="banknum">
+                            <span class="msg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbkey">开户分行：</td>
+                        <td class="tbval">
+                            <input type="text" value="" name="bankname" id="bankname">
+                            <span class="msg"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="tbkey">支付宝账号:</td>
+                        <td class="tbval">
+                            <input type="text" value="" class="xiala" name="alipay" id="alipay"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;" colspan="2">
+                            <input type="button" value="确定" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text" onclick="Registerfrom()">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    @* <div class="core_page">
+        <p style="color: red; text-align: left; line-height: 25px; padding-right: 10px;">提示：请详细核对确认您的个人信息是否正确！为了您高特币交易的安全请务必完善您的联系电话、邮箱、和个人收款信息准确无误！如果未填写联系电话和收款信息就提交BT挂单，您将面临扣除信誉星级处罚！</p>
+    </div>*@
+</div>
+
+<script>
+    function Registerfrom() {
+        var usertype = $("#usertype").val();
+        var useraddr = $("#useraddr").val();
+        var nickname = $("#nickname").val();
+        var sex = $("#sex").val();
+        var cardnum = $("#cardnum").val();
+        var email = $("#email").val();
+        var mobile = $("#mobile").val();
+        var bank = $("#bank").val();
+        var bankuser = $("#bankuser").val();
+        var banknum = $("#banknum").val();
+        var alipay = $("#alipay").val();
+        var username = $("#username").val();
+        var bankname = $("#bankname").val();
+        if (username.length == 0) {
+            alert("登录名不能为空");
+            return;
+        }
+        if (usertype.length == "0000") {
+            alert("请选择矿主级别");
+            return;
+        }
+        if (useraddr == "0000") {
+            alert("请选择区域位置");
+            return;
+        }
+        if (nickname.length == 0) {
+            alert("昵称不能为空");
+            return;
+        }
+        if (sex.length == 0) {
+            alert("请选择性别");
+            return;
+        }
+        if (cardnum.length == 0) {
+            alert("证件号码不能为空");
+            return;
+        }
+
+        if (email.length == 0) {
+            alert("Email不能为空");
+            return;
+        }
+       
+        if (mobile.length == 0) {
+            alert("移动电话不能为空");
+            return;
+        }
+        var para = {};
+        para.usertype = usertype;
+        para.useraddr = useraddr;
+        para.nickname = nickname;
+        para.sex = sex;
+        para.cardnum = cardnum;
+        para.email = email;
+        para.mobile = mobile;
+        para.bank = bank;
+        para.bankuser = bankuser;
+        para.banknum = banknum;
+        para.alipay = alipay;
+        para.bankname = bankname;
+        para.username = username;
+        $.ajax({
+            url: "/User/Registerfrom",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (pagedata) {
+                if (pagedata.success) {
+                    alert(pagedata.msg);
+                    window.location.reload();
+                }
+                else {
+                    alert(pagedata.msg);
+                }
+            }
+        });
+        
+
+        
+    }
+</script>
+

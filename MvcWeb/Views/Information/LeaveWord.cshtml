@@ -1,0 +1,42 @@
+﻿@{
+    Page.Title = "我的留言";
+    Layout = null;    
+}
+
+<style type="text/css">
+    .editbox { position: absolute; top: 15%; right: 20%; bottom: 15%; left: 20%; border: 1px solid #808080; }
+    .defeditrow { height:36px; line-height:36px; margin:2px 0; border-bottom:1px solid #F2F2F2; }
+    .defeditrow ul { height: 36px; line-height: 36px; width: 100%; list-style: none; }
+    .defeditrow ul li.li1 { width: 20%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .defeditrow ul li.li2 { width: 30%; height: 36px; line-height: 36px; text-align: left; float: left; }
+    .defeditrow ul li.li3 { width: 20%; height: 36px; line-height: 36px; text-align: right; float: left; }
+</style>
+
+@{
+    var LeaveWordList = (List<ZGZY.Model.BS_Leave_Words>)ViewBag.LeaveWordList;
+}
+
+@{
+    if(LeaveWordList != null  && LeaveWordList.Count > 0)
+    {
+        <div class="defedtirow">
+            <ul>
+                <li class="li1">留言标题</li>
+                <li class="li2">留言内容</li>
+                <li class="li3">留言日期</li>
+            </ul>
+        </div>
+        foreach(ZGZY.Model.BS_Leave_Words l in LeaveWordList)
+        {
+            <div class="defedtirow">
+                <ul>
+                    <li class="li1">@l.Title</li>
+                    <li class="li2">@l.Contents</li>
+                    <li class="li3">@l.CreatedDate</li>
+                </ul>
+            </div>
+        }
+        <!-- 待加分页 -->
+    }
+    
+ }

@@ -1,0 +1,51 @@
+﻿@{
+    Page.Title = "帮助中心";
+    Layout = null;
+ }
+
+@{
+    var HelpList = (List<ZGZY.Model.BS_Helps>)ViewBag.HelpList;
+    
+ }
+
+<style type="text/css">
+    .editbox { position: absolute; top: 15%; right: 20%; bottom: 15%; left: 20%; border: 1px solid #808080; }
+    
+    .defeditrow1 { height:60px; line-height:60px; margin:2px 0; border-bottom:1px solid #F2F2F2; }
+    .defeditrow1 ul { height: 60px; line-height: 60px; width: 100%; list-style: none; }
+    .defeditrow1 ul li.li1 { width: 20%; height: 60px; line-height: 60px; text-align: left; float: left; }
+    .defeditrow1 ul li.li2 { width: 25%; height: 60px; line-height: 60px; text-align: left; float: left; }
+    .defeditrow1 ul li.li3 { width: 10%; height: 60px; line-height: 60px; text-align: right; float: left; }
+    .defeditrow1 ul li.li4 { width: 45%; height: 60px; line-height: 60px; text-align: right; float: left; }
+
+    .defeditrow2 { height:36px; line-height:36px; margin:2px 0; border-bottom:1px solid #F2F2F2; }
+    .editbox2 { border: 1px solid #ff006e; }
+    .defeditrow3 { height:36px; line-height:36px; margin:2px 0; border-bottom:1px solid #F2F2F2; }
+
+</style>
+
+<div class="editbox">
+    <div class="defeditrow1">
+        <ul>
+            <li class="li1"></li>
+            <li class="li2"></li>
+            <li class="li3"></li>
+            <li class="li4"></li>
+        </ul>
+    </div>
+    <div class="defeditrow2"></div>
+    <div class="editbox2">
+        @{
+            if (HelpList != null && HelpList.Count > 0)
+            {
+                foreach(ZGZY.Model.BS_Helps b in HelpList)
+                {
+                    <div class="defeditrow3">
+                       @Html.ActionLink(@b.Title, "DoHelp", "Information", new {@ID = @b.ID });
+
+                    </div>
+                }
+            }
+        }
+        </div>
+</div>

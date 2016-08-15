@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "申诉";
+    Layout = "~/Views/_Market.cshtml";
+}
+<div id="edit" class="core_main User">
+    <div class="core_title"><span class="core_title_con"><span>当前位置</span>：申诉</span></div>
+    <div class="core_con">
+        <table class="tablebg">
+            <tbody>
+                <tr>
+                    <td class="tbkey">买家编号：</td>
+                    <td class="tbval">@Model.buyuserID
+                        <input type="hidden" id="ID" value="@Model.ID" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbkey">汇款金额：</td>
+                    <td class="tbval">@Model.dealmoney</td>
+                </tr>
+
+                <tr>
+                    <td class="tbkey">购买时间：</td>
+                    <td class="tbval">@Model.addtime</td>
+                </tr>
+
+                <tr>
+                    <td class="tbkey">购买方式：</td>
+                    <td class="tbval">
+                        @if (Model.buytype == 1)
+                        {
+                            <nobr>支付宝</nobr>
+                        }
+                        else
+                        {
+                            <nobr>银行转账</nobr>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbkey">汇款时间：</td>
+                    <td class="tbval">@Model.transfertime</td>
+                </tr>
+                <tr>
+                    <td class="tbkey">汇款流水：</td>
+                    <td class="tbval">@Model.transfernum</td>
+                </tr>
+                <tr>
+                    <td class="tbkey">申请说明：</td>
+                    <td class="tbval">
+                        <textarea id="appealcontent" name="appealcontent" class="kuangao" style="width: 320px; height: 170px;">@Model.appealcontent</textarea></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="2">
+                        @if(Model.state!=3)
+                        {
+                        <input type="button" value="确定" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text" onclick="appeal()">
+                        }
+                        <input type="button" value="返回" onmouseout="this.className='button_onmouseout'" onmouseover="this.className='button_onmouseover'" onmousedown="this.className='button_onmousedown'" class="button_text" onclick="history.back();">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function appeal() {
+        var appealcontent = $("#appealcontent").val();
+        var ID = $("#ID").val();
+        if (ID.lentgh == 0) {
+            alert("参数错误！");
+            return;
+        }
+        if (appealcontent.lentgh == 0) {
+            alert("申请说明不能为空！");
+            return;
+        }
+        var para = {};
+        para.ID = ID;
+        para.appealcontent = appealcontent;
+        $.ajax({
+            url: "/Market/appeal",
+            data: para,
+            type: "POST",
+            dataType: "json",
+            success: function (pagedata) {
+                if (pagedata.success) {
+                    alert(pagedata.msg);
+                    window.location.reload();
+                }
+                else {
+                    alert(pagedata.msg);
+                }
+            }
+        });
+    }
+</script>
+
